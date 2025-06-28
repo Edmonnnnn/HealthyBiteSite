@@ -1,62 +1,95 @@
-// 🍔 Бургер-меню логика
+// 🍔 Бургер-меню
 const burger = document.getElementById('burger');
 const sideMenu = document.getElementById('sideMenu');
-
 burger.addEventListener('click', () => {
   const isOpen = sideMenu.classList.toggle('active');
   burger.classList.toggle('open', isOpen);
 });
 
-// 🎬 Видео слайдшоу
+// 🎬 Видео логика
 const videoSources = [
-  "assets/videos/3195728-uhd_3840_2160_25fps.mp4",
-  "assets/videos/3245641-uhd_3840_2160_25fps.mp4",
-  "assets/videos/5645055-hd_1920_1080_25fps.mp4",
-  "assets/videos/5865847-uhd_3840_2160_25fps.mp4"
+  "assets/videos/1.mp4", "assets/videos/2.mp4", "assets/videos/3.mp4", "assets/videos/4.mp4",
+  "assets/videos/5.mp4", "assets/videos/6.mp4", "assets/videos/7.mp4", "assets/videos/8.mp4"
 ];
 
-const video = document.getElementById("hero-video");
+const startBtn = document.getElementById("startVideos");
+const videoBox = document.querySelector(".video-box");
+const mainVideo = document.getElementById("hero-video");
 const errorBox = document.getElementById("videoError");
 
-let index = 0;
-let slideshowInterval;
+let videoIndex = 0;
 
-function playVideo(i) {
-  const source = videoSources[i];
-  video.src = source;
-  video.load();
+// 🌌 Сетка миниатюр
+function showThumbnails() {
+  const grid = document.createElement("div");
+  grid.className = "thumbnail-grid";
+  videoBox.innerHTML = "";
+  videoBox.appendChild(grid);
 
-  video.oncanplay = () => {
-    video.play().catch(err => {
-      errorBox.textContent = "⚠️ Не удалось воспроизвести видео.";
-    });
+  let thumbIndex = 0;
+  const showThumb = () => {
+    const thumb = document.createElement("video");
+    thumb.className = "thumb fade-thumb";
+    thumb.src = videoSources[thumbIndex];
+    thumb.muted = true;
+    thumb.playsInline = true;
+    thumb.autoplay = true;
+    grid.appendChild(thumb);
+    thumbIndex++;
+    if (thumbIndex < videoSources.length) {
+      setTimeout(showThumb, 1000);
+    } else {
+      // После 8 секунд паузы удаляем сетку
+      setTimeout(() => {
+        grid.remove();
+        videoIndex = 0;
+        startVideoSequence();
+      }, 8000);
+    }
   };
-
-  video.onerror = () => {
-    errorBox.textContent = "⚠️ Видео не загрузилось.";
-  };
+  showThumb();
 }
 
-function startSlideshow() {
-  playVideo(index);
-  slideshowInterval = setInterval(() => {
-    index = (index + 1) % videoSources.length;
-    playVideo(index);
-  }, 5000);
+// 🔁 Воспроизведение видео по очереди
+function startVideoSequence() {
+  videoBox.innerHTML = "";
+  videoBox.appendChild(mainVideo);
+  mainVideo.classList.add("fade");
+  mainVideo.style.opacity = 0;
+
+  const playNext = () => {
+    mainVideo.style.opacity = 0;
+    setTimeout(() => {
+      mainVideo.src = videoSources[videoIndex];
+      mainVideo.load();
+      mainVideo.oncanplay = () => {
+        mainVideo.play();
+        mainVideo.style.opacity = 1;
+      };
+      videoIndex++;
+      if (videoIndex < videoSources.length) {
+        setTimeout(playNext, 5000);
+      } else {
+        setTimeout(showThumbnails, 5000);
+      }
+    }, 1000); // fade delay
+  };
+  playNext();
 }
 
-document.getElementById("startVideos")?.addEventListener("click", () => {
-  document.getElementById("startVideos").remove();
-  startSlideshow();
+// 🚀 Запуск при клике
+startBtn?.addEventListener("click", () => {
+  startBtn.remove();
+  videoBox.style.display = "block";
+  videoBox.classList.add("centered-box");
+  startVideoSequence();
 });
 
-// 🧭 Анимации появления блоков
+// 🧭 Анимации появления
 const faders = document.querySelectorAll('.fade-up');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('show');
   });
 }, { threshold: 0.3 });
 faders.forEach(el => observer.observe(el));

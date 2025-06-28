@@ -31,7 +31,10 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
+  z-index: 1002; /* выше всего! */
+  position: relative;
 }
+
 
 /* 🍔 Бургер */
 .burger {
@@ -272,5 +275,47 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.centered-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 480px;
+  margin-top: 30px;
+  position: relative;
+}
+
+.fade {
+  transition: opacity 1s ease;
+  opacity: 1;
+}
+
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  perspective: 1000px;
+}
+
+.thumb {
+  width: 100%;
+  max-width: 180px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  transform: translateY(-30px) rotateX(45deg);
+  opacity: 0;
+  animation: thumbIn 0.6s ease forwards;
+}
+
+@keyframes thumbIn {
+  to {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
   }
 }
