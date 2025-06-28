@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthy Bite</title>
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/home.css" />
+  <link rel="stylesheet" href="css/pages/about.css" />
+
+  <style>
+    /* Центрирование кнопки */
+    #startVideos {
+      display: inline-block;
+      margin: 30px auto;
+      padding: 14px 28px;
+      font-size: 18px;
+      background-color: #1abc9c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #startVideos:hover {
+      background-color: #16a085;
+    }
+
+    .video-loading-error {
+      color: red;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="logo">Healthy <span>Bite</span></div>
+      <nav class="nav">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#ai">AI</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="container">
+      <h1>Eat Smart. Live Better.</h1>
+      <p>Your personal guide to healthy eating and lifestyle.</p>
+      <a href="#ai" class="btn">Try AI Assistant</a>
+    </div>
+  </section>
+
+  <!-- ▶️ Кнопка запуска видео -->
+  <div style="text-align: center;">
+    <button id="startVideos">🎬 Показать видео</button>
+    <div id="videoError" class="video-loading-error"></div>
+  </div>
+
+  <!-- 🌿 Видео блок -->
+  <section class="hero-video" id="hero-video">
+    <video muted playsinline></video>
+  </section>
+
+  <!-- 🧭 О нас -->
+  <section class="about" id="about">
+    <div class="container about-container fade-up">
+      <div class="about-text about-card">
+        <h2>
+          <img src="assets/icons/leaf.svg" alt="" style="width: 28px; vertical-align: middle; margin-right: 8px;">
+          О нас
+        </h2>
+        <p><strong>Healthy Bite</strong> — экосистема, созданная, чтобы помочь тебе сделать питание осознанным, вкусным и полезным.</p>
+        <p>
+          Мы объединяем <span class="gradient-text">технологии</span>, 
+          <span class="gradient-text">заботу</span> и 
+          <span class="gradient-text">мотивацию</span>, чтобы путь к здоровью был простым и приятным.
+        </p>
+        <blockquote class="motto">"Здоровое питание — не диета, а образ жизни."</blockquote>
+      </div>
+      <div class="about-image">
+        <img src="assets/images/about-healthy-illustration.jpg" alt="Healthy food illustration" />
+      </div>
+    </div>
+    <svg viewBox="0 0 1440 100" style="display: block;" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#f9fff9" d="M0,0 C360,100 1080,0 1440,100 L1440,0 L0,0 Z"></path>
+    </svg>
+  </section>
+
+  <!-- Скрипты -->
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const videoSources = [
+      "assets/videos/3195728-uhd_3840_2160_25fps.mp4",
+      "assets/videos/3245641-uhd_3840_2160_25fps.mp4",
+      "assets/videos/5645055-hd_1920_1080_25fps.mp4",
+      "assets/videos/5865847-uhd_3840_2160_25fps.mp4",
+      "assets/videos/4253150-uhd_4096_2160_25fps.mp4",
+      "assets/videos/6617422-uhd_3840_2160_30fps.mp4",
+      "assets/videos/3298718-uhd_4096_2160_25fps.mp4",
+      "assets/videos/5645037-hd_1920_1080_25fps.mp4"
+    ];
+
+    const video = document.querySelector("#hero-video video");
+    const errorBox = document.getElementById("videoError");
+    let index = 0;
+    let slideshowInterval;
+
+    function log(message) {
+      console.log(`[🎥 VIDEO]: ${message}`);
+    }
+
+    function playVideo(i) {
+      if (!video) {
+        log("❌ video element not found.");
+        return;
+      }
+
+      const source = videoSources[i];
+      log(`🔁 Switching to video ${i + 1}/${videoSources.length}: ${source}`);
+      video.classList.remove("active");
+      void video.offsetWidth; // reflow for animation
+      video.src = source;
+
+      video.load();
+
+      video.oncanplay = () => {
+        video.play().then(() => {
+          log("✅ Video started playing.");
+          video.classList.add("active");
+          errorBox.textContent = "";
+        }).catch(err => {
+          log(`❌ Error playing video: ${err.message}`);
+          errorBox.textContent = "⚠️ Не удалось воспроизвести видео.";
+        });
+      };
+
+      video.onerror = () => {
+        log(`❌ Error loading video: ${source}`);
+        errorBox.textContent = "⚠️ Видео не загрузилось.";
+      };
+    }
+
+    function startSlideshow() {
+      log("▶️ Starting slideshow...");
+      playVideo(index);
+      slideshowInterval = setInterval(() => {
+        index = (index + 1) % videoSources.length;
+        playVideo(index);
+      }, 5000);
+    }
+
+    const btn = document.getElementById("startVideos");
+    if (btn) {
+      btn.addEventListener("click", () => {
+        log("🎬 Button clicked.");
+        btn.remove();
+        startSlideshow();
+      });
+    } else {
+      log("⚠️ Start button not found.");
+    }
+
+    // Анимация появления секции
+    const faders = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.3 });
+    faders.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
