@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find a Doctor - Healthy Bite</title>
+  <link rel="stylesheet" href="../Css/find_doctor.css" />
+</head>
+<body>
+
+  <!-- 🍔 Бургер и логотип -->
+  <header class="header">
+    <div class="menu-container">
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo">Healthy <span>Bite</span></div>
+    </div>
+    <nav class="side-menu" id="sideMenu">
+      <a href="../index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="#ai">AI</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="../consultation.html">Consultation</a>
+      <a href="find_doctor.html">Find Doctor</a>
+    </nav>
+  </header>
+  <div class="auth-container">
+    <h1>Find a Specialist</h1>
+    <select id="specialtySelect">
+      <option value="all">All Specialties</option>
+      <option value="dietologist">Dietologist</option>
+      <option value="nutritionist">Nutritionist</option>
+      <option value="endocrinologist">Endocrinologist</option>
+      <option value="general">General Health</option>
+    </select>
+
+    <div class="doctor-grid" id="doctorGrid"></div>
+  </div>
+  
+  <script src="../Js/find_doctor.js">
+    
+  if (!localStorage.getItem("loggedIn")) {
+    alert("You must log in first.");
+    window.location.href = "../login.html";
+  }
+</script>
+
+  </script>
+</body>
+</html>

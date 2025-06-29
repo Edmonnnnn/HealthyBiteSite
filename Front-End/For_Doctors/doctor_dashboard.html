@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Dashboard - Healthy Bite</title>
+  <link rel="stylesheet" href="../Css/doctor.css" />
+
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h1>Welcome, Dr. [Name]</h1>
+      <button id="logoutBtn">Logout</button>
+    </header>
+
+    <section class="profile-section">
+      <h2>👨‍⚕️ My Profile</h2>
+      <p><strong>Specialization:</strong> Dietologist</p>
+      <p><strong>Email:</strong> doctor@example.com</p>
+      <p><strong>About:</strong> Graduated from XYZ Medical University. 10+ years experience helping people improve their health through nutrition and lifestyle change.</p>
+    </section>
+
+    <section class="create-section">
+      <h2>📝 Share a New Post</h2>
+      <form id="postForm">
+        <input type="text" placeholder="Title" required />
+        <textarea placeholder="Write your article, recipe, or advice here..." rows="5" required></textarea>
+        <input type="file" accept="image/*" />
+        <button type="submit" class="create-btn">Publish</button>
+      </form>
+    </section>
+
+    <section class="requests-section">
+      <h2>📬 Patient Requests</h2>
+      <ul class="request-list">
+        <li><strong>Anna P.</strong> — "Looking for a nutrition plan" <button>Respond</button></li>
+        <li><strong>David M.</strong> — "Need help with diabetes diet" <button>Respond</button></li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      alert("Logged out (demo)");
+      window.location.href = "index.html";
+    });
+    document.getElementById("postForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Post published (demo)");
+    });
+  </script>
+</body>
+</html>

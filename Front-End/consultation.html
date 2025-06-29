@@ -48,7 +48,15 @@
     </div>
   </div>
 
-  <script src="../Front-End/Js/consultation.js"></script>
+  <script src="../Front-End/Js/consultation.js">
+
+  if (!localStorage.getItem("loggedIn")) {
+    alert("You must log in first.");
+    window.location.href = "../login.html";
+  }
+</script>
+
+  </script>
 </body>
 
 </html>

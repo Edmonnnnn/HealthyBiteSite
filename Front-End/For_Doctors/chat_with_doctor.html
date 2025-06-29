@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat with Doctor - Healthy Bite</title>
+  <link rel="stylesheet" href="For_Doctors/chat_with_doctor.css" />
+</head>
+<body>
+  <div class="chat-wrapper">
+    <header class="chat-header">
+      <img src="../assets/image/doctor1.jpg" alt="Doctor" class="doctor-avatar">
+      <h2>Dr. Anna Green</h2>
+    </header>
+
+    <div class="chat-box" id="chatBox">
+      <div class="message doctor">Hello! How can I help you today?</div>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Type your message..." />
+      <button id="sendBtn">➤</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chatBox');
+    const input = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    sendBtn.addEventListener('click', sendMessage);
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+
+    function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user';
+      userMsg.textContent = text;
+      chatBox.appendChild(userMsg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+      input.value = '';
+
+      setTimeout(() => {
+        const docReply = document.createElement('div');
+        docReply.className = 'message doctor';
+        docReply.textContent = 'Thank you for your message. I’ll get back to you shortly.';
+        chatBox.appendChild(docReply);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Healthy Bite</title>
+  <link rel="stylesheet" href="Css/auth.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <h1 class="welcome-title">Добро пожаловать на <span class="brand">Healthy Bite</span></h1>
+    <p class="subtitle">Выберите, как вы хотите зарегистрироваться:</p>
+
+    <div class="role-selection">
+      <label class="role-option">
+        <input type="radio" name="role" value="user" />
+        <div class="role-card">
+          <span class="icon">👤</span>
+          <p>Я пользователь — хочу получить рекомендации</p>
+        </div>
+      </label>
+
+      <label class="role-option">
+        <input type="radio" name="role" value="doctor" />
+        <div class="role-card">
+          <span class="icon">🩺</span>
+          <p>Я доктор — хочу консультировать пользователей</p>
+        </div>
+      </label>
+    </div>
+
+    <button id="createAccountBtn" class="create-btn" disabled>Перейти к регистрации</button>
+
+    <p class="login-link">
+      Уже есть аккаунт? <a href="login.html">Войти</a>
+    </p>
+  </div>
+
+  <script src="Js/auth.js"></script>
+</body>
+</html>

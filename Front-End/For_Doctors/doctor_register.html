@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Registration - Healthy Bite</title>
+  <link rel="stylesheet" href="../Css/doctor_register.css">
+
+</head>
+<body>
+  <div class="auth-container">
+    <h1>Doctor Registration</h1>
+
+    <form id="doctorRegisterForm">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+
+      <select required>
+        <option value="" disabled selected>Select Specialization</option>
+        <option value="dietologist">Dietologist</option>
+        <option value="nutritionist">Nutritionist</option>
+        <option value="endocrinologist">Endocrinologist</option>
+        <option value="general">General Health Specialist</option>
+      </select>
+
+      <textarea placeholder="About Me (education, experience...)" rows="4" required></textarea>
+
+      <button type="submit" class="create-btn">Register</button>
+
+      <p class="login-link">
+       Already have an account? <a href="/Front-End/login.html">Log In</a>
+
+
+      </p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('doctorRegisterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Doctor registered (demo). Redirecting...');
+      window.location.href = 'doctor_dashboard.html';
+    });
+  </script>
+</body>
+</html>
