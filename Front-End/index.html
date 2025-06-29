@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthy Bite</title>
+  <link rel="stylesheet" href="../Front-End/Css/index.css" />
+
+</head>
+<body>
+
+  <!-- 🍔 Бургер и логотип -->
+  <header class="header">
+    <div class="menu-container">
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo">Healthy <span>Bite</span></div>
+    </div>
+    <nav class="side-menu" id="sideMenu">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#ai">AI</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="consultation.html">Consultation</a>
+    </nav>
+  </header>
+
+  <div id="preview-container">
+  <video class="preview-video" muted loop></video>
+</div>
+
+
+  <!-- ▶️ Кнопка запуска видео -->
+<section class="hero fade-up" id="hero">
+  <h1>Eat Smart. Live Better.</h1>
+  <p>Your personal guide to healthy eating and lifestyle.</p>
+  <a href="#ai" class="btn">Try AI Assistant</a>
+</section>
+
+<section class="video-section fade-up">
+  <div class="video-button-container">
+    <button id="startVideos">🎬 Показать видео</button>
+    <div id="videoError" class="video-loading-error"></div>
+  </div>
+  <div class="video-box">
+    <video id="hero-video" muted playsinline></video>
+  </div>
+</section>
+
+<section class="about-section fade-up" id="about">
+  <div class="about-text">
+    <h2>О нас</h2>
+    <p><strong>Healthy Bite</strong> — экосистема, созданная, чтобы помочь тебе сделать питание осознанным, вкусным и полезным.</p>
+    <p>Мы объединяем <span class="gradient-text">технологии</span>, <span class="gradient-text">заботу</span> и <span class="gradient-text">мотивацию</span>, чтобы путь к здоровью был простым и приятным.</p>
+    <blockquote>"Здоровое питание — не диета, а образ жизни."</blockquote>
+  </div>
+  <div class="about-image">
+    <div class="image-card">
+    <img src="assets/image/about.png" alt="Healthy Food Illustration" />
+    </div>
+  </div>
+</section>
+
+  <!-- 📜 Подключение скрипта -->
+  <script src="js/index.js"></script>
+
+</body>
+</html>
