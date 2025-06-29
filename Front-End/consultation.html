@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consultation - Healthy Bite</title>
+  <link rel="stylesheet" href="../Front-End/Css/consultation.css" />
+</head>
+<body>
+
+  <!-- 🍔 Бургер и логотип -->
+  <header class="header">
+    <div class="menu-container">
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo">Healthy <span>Bite</span></div>
+    </div>
+    <nav class="side-menu" id="sideMenu">
+      <a href="index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="#ai">AI</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="consultation.html">Consultation</a>
+    </nav>
+  </header>
+
+  <!-- 🌄 Фоновое изображение -->
+  <div class="background-wrapper" id="backgroundWrapper">
+    <img src="../Front-End/assets/image/BG_Photo_consultation.png" class="background-image" alt="Background" />
+  </div>
+
+  <!-- 💬 Кнопка запуска чата -->
+  <button id="toggle-chat" class="toggle-chat-btn">💬 Open Chat</button>
+
+  <!-- 💬 Чат-бокс -->
+  <div class="chat-container" id="chat-container" style="display: none;">
+    <div class="chat-header">
+      Консультация <span id="close-chat" style="cursor: pointer;">✖</span>
+    </div>
+    <div class="chat-box" id="chat-box"></div>
+    <div class="chat-input">
+      <input type="text" id="message-input" placeholder="Напиши сообщение..." />
+      <button id="send-button">➤</button>
+    </div>
+  </div>
+
+  <script src="../Front-End/Js/consultation.js"></script>
+</body>
+
+</html>

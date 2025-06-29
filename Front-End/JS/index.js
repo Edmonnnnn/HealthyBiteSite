@@ -93,3 +93,11 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.3 });
 faders.forEach(el => observer.observe(el));
+
+// Автоматическое закрытие меню при клике на любую ссылку
+document.querySelectorAll('.side-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    sideMenu.classList.remove('active');
+    burger.classList.remove('open');
+  });
+});
