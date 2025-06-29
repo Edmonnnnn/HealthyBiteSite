@@ -12,6 +12,27 @@ body {
   overflow-x: hidden;
 }
 
+/* 🈯 Языковой переключатель */
+.lang-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 90px;
+}
+.lang-btn {
+  background-color: #2ecc71;
+  border: none;
+  padding: 6px 14px;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.lang-btn:hover {
+  background-color: #27ae60;
+}
+
 /* 📦 Компактный хедер */
 .header {
   position: fixed;
@@ -31,7 +52,7 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  z-index: 1002; /* выше всего! */
+  z-index: 1002;
   position: relative;
 }
 
@@ -160,8 +181,6 @@ body {
   gap: 16px;
 }
 
-
-
 /* 🎬 Видео-секция */
 .video-section {
   text-align: center;
@@ -205,7 +224,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* Левая карточка */
 .about-text {
   background-color: #ffffff;
   padding: 30px;
@@ -240,7 +258,6 @@ body {
   font-size: 14px;
 }
 
-/* Правая картинка */
 .about-image .image-card {
   background-color: #00e676;
   border-radius: 16px;
@@ -342,4 +359,3 @@ body {
 .signup-btn:hover {
   background-color: #27ae60;
 }
-

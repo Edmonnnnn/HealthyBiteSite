@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   createBtn.addEventListener('click', () => {
     if (selectedRole === 'user') {
-      window.location.href = 'index.html'; // обычный пользователь
+      window.location.href = 'register_users.html'; // обычный пользователь
     } else if (selectedRole === 'doctor') {
       window.location.href = 'For_Doctors/doctor_register.html'; // врач
     }

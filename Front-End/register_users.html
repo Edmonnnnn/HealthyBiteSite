@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Registration - Healthy Bite</title>
+  <link rel="stylesheet" href="Css/register_users.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <h1>Регистрация Пользователя</h1>
+
+    <form id="userRegisterForm">
+      <input type="text" placeholder="ФИО" required />
+      <input type="email" placeholder="Электронная почта" required />
+      <input type="password" placeholder="Пароль" required />
+      <input type="number" placeholder="Возраст" required />
+      <select required>
+        <option value="" disabled selected>Цель питания</option>
+        <option value="lose">Похудение</option>
+        <option value="gain">Набор массы</option>
+        <option value="healthy">Просто правильное питание</option>
+      </select>
+
+      <textarea placeholder="Доп. пожелания (аллергии, стиль жизни...)" rows="4"></textarea>
+
+      <button type="submit" class="create-btn">Зарегистрироваться</button>
+
+      <p class="login-link">
+        Уже есть аккаунт? <a href="login.html">Войти</a>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('userRegisterForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert("Пользователь зарегистрирован (демо). Перенаправляем...");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

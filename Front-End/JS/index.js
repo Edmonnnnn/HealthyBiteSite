@@ -101,3 +101,33 @@ document.querySelectorAll('.side-menu a').forEach(link => {
     burger.classList.remove('open');
   });
 });
+
+// 🌍 Языковой переключатель
+const langBtns = document.querySelectorAll(".lang-btn");
+const langContent = {
+  en: {
+    heroTitle: "Eat Smart. Live Better.",
+    heroDesc: "Your personal guide to healthy eating and lifestyle.",
+    tryBtn: "Try AI Assistant"
+  },
+  ru: {
+    heroTitle: "Питайся умно. Живи лучше.",
+    heroDesc: "Твой личный гид по здоровому питанию и образу жизни.",
+    tryBtn: "Попробовать AI помощника"
+  },
+  hy: {
+    heroTitle: "Սնվիր խելամիտ։ Ապրիր լավ։",
+    heroDesc: "Քո ուղեցույցը առողջ սննդի և ապրելակերպի համար։",
+    tryBtn: "Փորձիր AI օգնականին"
+  }
+};
+
+langBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const lang = btn.dataset.lang;
+    const t = langContent[lang];
+    document.querySelector(".hero h1").textContent = t.heroTitle;
+    document.querySelector(".hero p").textContent = t.heroDesc;
+    document.querySelector(".hero .btn").textContent = t.tryBtn;
+  });
+});

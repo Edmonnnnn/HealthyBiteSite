@@ -1,0 +1,75 @@
+/* === About Page Styling === */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fcfcfc;
+  color: #333;
+}
+
+.about-hero {
+  background-image: url('../assets/image/about.png');
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.overlay h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 18px;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.about-content h2 {
+  color: #4caf50;
+  font-size: 22px;
+  margin-top: 30px;
+}
+
+.about-content p,
+.about-content ul,
+.about-content ol {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.about-content ul,
+.about-content ol {
+  padding-left: 20px;
+}
+
+.quote {
+  font-style: italic;
+  color: #777;
+  text-align: center;
+  margin: 40px 0;
+  font-size: 20px;
+}
+
+.team {
+  background-color: #f0fdf4;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
