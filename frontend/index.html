@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Healthy Bite</title>
 
-  <!-- Стили -->
+  <!-- Styles -->
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
@@ -13,23 +13,6 @@
   <link rel="stylesheet" href="css/pages/about.css" />
 
   <style>
-    /* Центрирование кнопки */
-    #startVideos {
-      display: inline-block;
-      margin: 30px auto;
-      padding: 14px 28px;
-      font-size: 18px;
-      background-color: #1abc9c;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    #startVideos:hover {
-      background-color: #16a085;
-    }
-
     .video-loading-error {
       color: red;
       font-size: 16px;
@@ -40,148 +23,193 @@
 </head>
 <body>
 
+  <!-- HEADER -->
   <header class="header">
-    <div class="container">
+    <div class="container header-bar">
       <div class="logo">Healthy <span>Bite</span></div>
+
       <nav class="nav">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#ai">AI</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
+        <ul class="nav-list">
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="ai.html">AI</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </nav>
+
+      <div class="lang-switcher">
+        <button class="lang-btn is-active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="am">AM</button>
+      </div>
+
+      <button class="nav-toggle" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="header-panel">
+      <div class="container header-panel-inner">
+
+        <div class="header-panel-col">
+          <h4>Home</h4>
+          <a href="#hero">Overview</a>
+          <a href="#hero-video">Intro video</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4>About</h4>
+          <a href="about.html#how-it-works">How it works</a>
+          <a href="about.html#mission">Mission & values</a>
+          <a href="about.html#team">Team</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4>AI</h4>
+          <a href="ai.html">AI Assistant</a>
+          <a href="ai.html#plans">Meal plans</a>
+          <a href="ai.html#faq">AI FAQ</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4>Blog</h4>
+          <a href="blog.html">All articles</a>
+          <a href="blog.html#stories">Success stories</a>
+          <a href="blog.html#tips">Tips & guides</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4>Contact</h4>
+          <a href="consultation.html">Book a consultation</a>
+          <a href="contact.html">Contact & support</a>
+          <a href="contact.html#faq">FAQ</a>
+        </div>
+
+      </div>
     </div>
   </header>
 
+
+  <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="container">
-      <h1>Eat Smart. Live Better.</h1>
-      <p>Your personal guide to healthy eating and lifestyle.</p>
-      <a href="#ai" class="btn">Try AI Assistant</a>
+    <div class="container hero-inner">
+
+      <div class="hero-copy">
+        <h1>Eat Smart. Live Better.</h1>
+        <p>Your personal guide to healthy eating and lifestyle.</p>
+        <a href="#ai" class="btn">Try AI Assistant</a>
+      </div>
+
+      <!-- Video inside hero -->
+      <div class="hero-video" id="hero-video">
+        <div class="video-wrapper">
+          <video id="heroPlayer" muted playsinline></video>
+          <div class="video-overlay"></div>
+        </div>
+        <div id="videoError" class="video-loading-error"></div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ▶️ Кнопка запуска видео -->
-  <div style="text-align: center;">
-    <button id="startVideos">🎬 Показать видео</button>
-    <div id="videoError" class="video-loading-error"></div>
-  </div>
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="container fade-up">
+      <div class="why-header">
+        <p class="why-eyebrow">Why Healthy Bite works</p>
+        <h2 class="why-title">Small steps. Smart support. Real change.</h2>
+        <p class="why-subtitle">We don’t force strict diets. We help you build gentle, sustainable habits.</p>
+      </div>
 
-  <!-- 🌿 Видео блок -->
-  <section class="hero-video" id="hero-video">
-    <video muted playsinline></video>
+      <div class="why-grid">
+        <article class="why-item">
+          <div class="why-icon">🌱</div>
+          <h3>Gentle pace</h3>
+          <p>You change 1–2 habits at a time — no burnout.</p>
+        </article>
+
+        <article class="why-item">
+          <div class="why-icon">🤖</div>
+          <h3>AI adapts to you</h3>
+          <p>The assistant learns from your routines and goals.</p>
+        </article>
+
+        <article class="why-item">
+          <div class="why-icon">🍰</div>
+          <h3>No forbidden foods</h3>
+          <p>You can enjoy your meals — we focus on balance.</p>
+        </article>
+
+        <article class="why-item">
+          <div class="why-icon">🔁</div>
+          <h3>Sustainable progress</h3>
+          <p>Small steps turn into long-term results.</p>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <!-- 🧭 О нас -->
+  <!-- WEEK -->
+  <section class="week" id="week">
+    <div class="container fade-up">
+      <div class="week-header">
+        <p class="week-eyebrow">Your first 7 days</p>
+        <h2 class="week-title">A week with Healthy Bite</h2>
+      </div>
+
+      <div class="week-timeline">
+        <div class="week-step"><div class="week-circle">1</div><h3>Day 1</h3><p>Quick onboarding.</p></div>
+        <div class="week-step"><div class="week-circle">2</div><h3>Day 2–3</h3><p>First small habits.</p></div>
+        <div class="week-step"><div class="week-circle">4</div><h3>Day 4</h3><p>Smart adjustments.</p></div>
+        <div class="week-step"><div class="week-circle">5</div><h3>Day 5–6</h3><p>Light experiments.</p></div>
+        <div class="week-step"><div class="week-circle">7</div><h3>Day 7</h3><p>Summary.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAT -->
+  <section class="chat-demo" id="chat-demo">
+    <div class="container fade-up">
+      <div class="chat-header">
+        <p class="chat-eyebrow">See how AI talks</p>
+        <h2 class="chat-title">Healthy Bite AI in action</h2>
+      </div>
+
+      <div class="chat-box">
+        <div class="msg user"><div class="bubble">I snack late at night. Help?</div></div>
+        <div class="msg ai"><div class="avatar">🤖</div><div class="bubble">Let's find your triggers.</div></div>
+        <div class="msg user"><div class="bubble">Probably stress.</div></div>
+        <div class="msg ai"><div class="avatar">🤖</div><div class="bubble">Try a 2-minute pause ritual tonight.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINI ABOUT -->
   <section class="about" id="about">
     <div class="container about-container fade-up">
       <div class="about-text about-card">
-        <h2>
-          <img src="assets/icons/leaf.svg" alt="" style="width: 28px; vertical-align: middle; margin-right: 8px;">
-          О нас
-        </h2>
-        <p><strong>Healthy Bite</strong> — экосистема, созданная, чтобы помочь тебе сделать питание осознанным, вкусным и полезным.</p>
-        <p>
-          Мы объединяем <span class="gradient-text">технологии</span>, 
-          <span class="gradient-text">заботу</span> и 
-          <span class="gradient-text">мотивацию</span>, чтобы путь к здоровью был простым и приятным.
-        </p>
-        <blockquote class="motto">"Здоровое питание — не диета, а образ жизни."</blockquote>
+        <h2>About us</h2>
+        <p>Healthy Bite helps you build better habits.</p>
       </div>
       <div class="about-image">
-        <img src="assets/images/about-healthy-illustration.jpg" alt="Healthy food illustration" />
+        <img src="assets/images/about-healthy-illustration.jpg" alt="" />
       </div>
     </div>
-    <svg viewBox="0 0 1440 100" style="display: block;" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#f9fff9" d="M0,0 C360,100 1080,0 1440,100 L1440,0 L0,0 Z"></path>
-    </svg>
   </section>
 
-  <!-- Скрипты -->
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">Healthy <span>Bite</span></div>
+      <p class="footer-copy">© 2025 Healthy Bite. Small steps. Real change.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/lang.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    const videoSources = [
-      "assets/videos/3195728-uhd_3840_2160_25fps.mp4",
-      "assets/videos/3245641-uhd_3840_2160_25fps.mp4",
-      "assets/videos/5645055-hd_1920_1080_25fps.mp4",
-      "assets/videos/5865847-uhd_3840_2160_25fps.mp4",
-      "assets/videos/4253150-uhd_4096_2160_25fps.mp4",
-      "assets/videos/6617422-uhd_3840_2160_30fps.mp4",
-      "assets/videos/3298718-uhd_4096_2160_25fps.mp4",
-      "assets/videos/5645037-hd_1920_1080_25fps.mp4"
-    ];
 
-    const video = document.querySelector("#hero-video video");
-    const errorBox = document.getElementById("videoError");
-    let index = 0;
-    let slideshowInterval;
-
-    function log(message) {
-      console.log(`[🎥 VIDEO]: ${message}`);
-    }
-
-    function playVideo(i) {
-      if (!video) {
-        log("❌ video element not found.");
-        return;
-      }
-
-      const source = videoSources[i];
-      log(`🔁 Switching to video ${i + 1}/${videoSources.length}: ${source}`);
-      video.classList.remove("active");
-      void video.offsetWidth; // reflow for animation
-      video.src = source;
-
-      video.load();
-
-      video.oncanplay = () => {
-        video.play().then(() => {
-          log("✅ Video started playing.");
-          video.classList.add("active");
-          errorBox.textContent = "";
-        }).catch(err => {
-          log(`❌ Error playing video: ${err.message}`);
-          errorBox.textContent = "⚠️ Не удалось воспроизвести видео.";
-        });
-      };
-
-      video.onerror = () => {
-        log(`❌ Error loading video: ${source}`);
-        errorBox.textContent = "⚠️ Видео не загрузилось.";
-      };
-    }
-
-    function startSlideshow() {
-      log("▶️ Starting slideshow...");
-      playVideo(index);
-      slideshowInterval = setInterval(() => {
-        index = (index + 1) % videoSources.length;
-        playVideo(index);
-      }, 5000);
-    }
-
-    const btn = document.getElementById("startVideos");
-    if (btn) {
-      btn.addEventListener("click", () => {
-        log("🎬 Button clicked.");
-        btn.remove();
-        startSlideshow();
-      });
-    } else {
-      log("⚠️ Start button not found.");
-    }
-
-    // Анимация появления секции
-    const faders = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.3 });
-    faders.forEach(el => observer.observe(el));
-  </script>
 </body>
 </html>

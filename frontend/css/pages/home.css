@@ -1,97 +1,478 @@
-/* === HERO SECTION === */
+/* === HERO SECTION (текст + видео) === */
 .hero {
-    height: 100vh;
-    background: linear-gradient(to right, #dff9fb, #c8f7c5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: linear-gradient(to right, #dff9fb, #c8f7c5);
+  padding: 80px 0 40px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.hero-copy h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 800;
+  color: #1a3d2d;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.hero-copy p {
+  font-size: 20px;
+  margin-bottom: 24px;
+  color: #2c3e50;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.hero .btn {
+  background-color: #1abc9c;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .btn:hover {
+  background-color: #16a085;
+}
+
+/* адаптив hero */
+@media (max-width: 768px) {
+  .hero {
+    padding: 64px 0 32px;
+  }
+
+  .hero-copy h1 {
+    font-size: 36px;
+  }
+
+  .hero-copy p {
+    font-size: 18px;
+  }
+}
+
+/* === VIDEO ВНУТРИ HERO (hero-video) === */
+
+.hero-video {
+  width: 100%;
+  padding-top: 8px;
+  background: transparent;
+}
+
+/* Обёртка под видео: фиксируем пропорции и даём тень */
+.hero-video .video-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  aspect-ratio: 16 / 9;
+}
+
+/* Само видео: лёгкий зум, чтобы съесть чёрные полосы */
+.hero-video .video-wrapper video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.04);
+}
+
+/* Оверлей, который даёт белый / светлый переход между роликами */
+.hero-video .video-wrapper .video-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(120deg, #e8fff0, #f9fff9);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.hero-video .video-wrapper .video-overlay.is-active {
+  opacity: 1;
+}
+
+/* === FADE-IN ДЛЯ БЛОКОВ (about и др.) === */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Чтобы переход по якорям не прятался под фиксированную шапку */
+#hero,
+#about,
+#why,
+#week,
+#chat-demo {
+  scroll-margin-top: 160px;
+}
+
+/* === WHY HEALTHY BITE WORKS === */
+
+.why {
+  padding: 56px 0 40px;
+  background: #ffffff;
+}
+
+.why-header {
+  max-width: 720px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.why-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #27ae60;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.why-title {
+  font-size: 32px;
+  line-height: 1.2;
+  color: #1a3d2d;
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+
+.why-subtitle {
+  color: #4a6572;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.why-item {
+  background: #f9fff9;
+  border-radius: 18px;
+  padding: 22px 22px 20px;
+  border: 1px solid rgba(39, 174, 96, 0.12);
+  box-shadow: 0 16px 40px rgba(31, 97, 72, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.why-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background: radial-gradient(circle at 30% 0%, #ffffff, #e6fff1);
+  margin-bottom: 6px;
+}
+
+.why-item h3 {
+  font-size: 18px;
+  color: #1a3d2d;
+  margin: 0;
+}
+
+.why-item p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #4a6572;
+  margin: 0;
+}
+
+/* адаптив */
+
+@media (max-width: 992px) {
+  .why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .why {
+    padding: 48px 0 32px;
+  }
+
+  .why-title {
+    font-size: 26px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === WEEK WITH HEALTHY BITE (TIMELINE) === */
+
+.week {
+  padding: 56px 0 40px;
+  background: #f9fff9;
+}
+
+.week-header {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.week-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #27ae60;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.week-title {
+  font-size: 32px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  color: #1a3d2d;
+  font-weight: 800;
+}
+
+.week-subtitle {
+  font-size: 16px;
+  color: #4a6572;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.week-timeline {
+  position: relative;
+  margin: 0 auto;
+  max-width: 720px;
+  padding-left: 32px;
+  border-left: 3px solid rgba(39, 174, 96, 0.25);
+}
+
+.week-step {
+  margin-bottom: 40px;
+  position: relative;
+  padding-left: 24px;
+}
+
+.week-circle {
+  position: absolute;
+  left: -43px;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background: #27ae60;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(39, 174, 96, 0.25);
+}
+
+.week-step h3 {
+  font-size: 18px;
+  color: #1a3d2d;
+  margin-bottom: 6px;
+}
+
+.week-step p {
+  font-size: 15px;
+  color: #4a6572;
+  line-height: 1.7;
+  max-width: 580px;
+}
+
+/* адаптив */
+
+@media (max-width: 600px) {
+  .week-timeline {
+    padding-left: 20px;
+  }
+
+  .week-circle {
+    left: -32px;
+  }
+
+  .week-title {
+    font-size: 26px;
+  }
+}
+
+/* === AI CHAT DEMO === */
+
+.chat-demo {
+  padding: 56px 0 32px;
+  background: #ffffff;
+}
+
+.chat-header {
+  max-width: 720px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.chat-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #27ae60;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.chat-title {
+  font-size: 32px;
+  line-height: 1.2;
+  color: #1a3d2d;
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+
+.chat-subtitle {
+  color: #4a6572;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* chat box */
+.chat-box {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #f9fff9;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(31, 97, 72, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* messages */
+
+.msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.msg.user {
+  justify-content: flex-end;
+}
+
+.msg.user .bubble {
+  background: #1abc9c;
+  color: #fff;
+  border-radius: 16px 16px 4px 16px;
+}
+
+.msg.ai .bubble {
+  background: #ffffff;
+  border-radius: 16px 16px 16px 4px;
+  border: 1px solid rgba(39, 174, 96, 0.2);
+  color: #2c3e50;
+}
+
+.bubble {
+  max-width: 75%;
+  padding: 14px 18px;
+  font-size: 15px;
+  line-height: 1.6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+/* avatar for AI */
+.avatar {
+  width: 34px;
+  height: 34px;
+  background: #e6fff1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 18px;
+  border: 1px solid rgba(39, 174, 96, 0.2);
+}
+
+/* адаптив */
+@media (max-width: 600px) {
+  .chat-title {
+    font-size: 26px;
+  }
+
+  .bubble {
+    max-width: 100%;
+  }
+
+  .chat-box {
+    padding: 24px;
+  }
+}
+
+/* === SITE FOOTER === */
+
+.site-footer {
+  padding: 16px 0 16px;
+  background: #f9fff9;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14px;
+  color: #4a6572;
+}
+
+.footer-brand {
+  font-weight: 800;
+  font-size: 18px;
+  color: #1a3d2d;
+}
+
+.footer-brand span {
+  color: #27ae60;
+}
+
+.footer-copy {
+  margin: 0;
+}
+
+/* адаптив футера */
+@media (max-width: 600px) {
+  .footer-inner {
     flex-direction: column;
     text-align: center;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2;
   }
-  
-  .hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    font-weight: 800;
-    color: #1a3d2d;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .hero p {
-    font-size: 20px;
-    margin-bottom: 30px;
-    color: #2c3e50;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .hero .btn {
-    background-color: #1abc9c;
-    color: white;
-    padding: 14px 28px;
-    border-radius: 8px;
-    font-size: 16px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-  }
-  
-  .hero .btn:hover {
-    background-color: #16a085;
-  }
-  
-  /* === VIDEO BUTTON === */
-  .video-button-wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 24px 0;
-  }
-  
-  #startVideos {
-    padding: 14px 28px;
-    font-size: 16px;
-    background-color: #1abc9c;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  #startVideos:hover {
-    background-color: #16a085;
-  }
-  
-  /* === VIDEO BLOCK === */
-  .hero-video {
-    position: relative;
-    width: 100%;
-    max-height: 540px;
-    overflow: hidden;
-    border-radius: 16px;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-  }
-  
-  .hero-video video {
-    width: 100%;
-    display: block;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
-  
-  .hero-video video.fade-in {
-    opacity: 1;
-  }
-  
-  /* === FADE IN ANIMATION (about) === */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .fade-up.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
+}

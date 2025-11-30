@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "Healthy Bite — smart nutrition assistant"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "ai": "AI",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Eat Smart. Live Better.",
+    "subtitle": "Your personal guide to healthy eating and lifestyle.",
+    "cta": "Try AI Assistant"
+  },
+  "about": {
+    "section_title": "About",
+    "p1": "Healthy Bite is an ecosystem created to help you make your eating mindful, tasty, and truly healthy.",
+    "p2": "We combine technology, care, and motivation so that your path to better health is simple and enjoyable.",
+    "quote": "Healthy eating is not a diet, it is a way of life."
+  },
+  "panel": {
+    "home": {
+      "title": "Home",
+      "overview": "Overview",
+      "video": "Intro video"
+    },
+    "about": {
+      "title": "About",
+      "how": "How it works",
+      "mission": "Mission & values",
+      "team": "Team"
+    },
+    "ai": {
+      "title": "AI",
+      "assistant": "AI Assistant",
+      "plans": "Meal plans",
+      "faq": "AI FAQ"
+    },
+    "blog": {
+      "title": "Blog",
+      "all": "All articles",
+      "stories": "Success stories",
+      "tips": "Tips & guides"
+    },
+    "contact": {
+      "title": "Contact",
+      "consult": "Book a consultation",
+      "contact": "Contact & support",
+      "faq": "FAQ"
+    }
+  },
+  "aboutPage": {
+    "hero": {
+      "title": "Healthy Bite: mindful eating without extremes",
+      "subtitle": "We help you build a way of eating you can actually live with — not just survive for two weeks on a diet.",
+      "cta_primary": "Start with AI assistant",
+      "cta_secondary": "Learn our approach"
+    },
+    "story": {
+      "title": "Why we created Healthy Bite",
+      "p1": "We were tired of diets that work only in before/after photos, but not in real life. Strict bans, guilt after every \"mistake\" and the feeling that food controls you — not the other way around.",
+      "p2": "Healthy Bite grew out of a simple idea: small realistic changes plus a smart assistant that helps you stay consistent. Without toxic fitness culture, magic detoxes or rigid lists of \"forbidden\" foods.",
+      "p3": "Our goal is not to turn your life into endless calorie counting. We want you to understand your own patterns and build a way of eating that supports your energy, mood and health for years."
+    },
+    "principles": {
+      "title": "What we believe in",
+      "items": {
+        "balance": {
+          "title": "No extremes",
+          "text": "No crash diets, starvation plans or perfect eating rules. We focus on sustainable, flexible habits that fit your real life."
+        },
+        "steps": {
+          "title": "Small steps",
+          "text": "Each week you adjust only one or two things: portions, snacks, water, sleep. The goal is steady progress, not rigid perfection."
+        },
+        "data": {
+          "title": "Data over myths",
+          "text": "We rely on questions, check-ins and science-based guidelines — not random tips from social media or miracle products."
+        },
+        "support": {
+          "title": "Support, not pressure",
+          "text": "We do not punish you for \"slips\". We help understand what happened and how to return to your routine gently."
+        }
+      }
+    },
+    "audience": {
+      "title": "Who Healthy Bite is for",
+      "items": {
+        "beginners": "People who are just starting to think about nutrition and do not know where to begin.",
+        "busy": "Busy people who want structure without spending hours cooking and tracking every detail.",
+        "tried": "Those who have already tried many diets but cannot keep the result for long.",
+        "feel_better": "Anyone who wants to feel lighter and more energetic, without chasing a perfect body image."
+      }
+    },
+    "team": {
+      "title": "The team behind Healthy Bite",
+      "items": {
+        "product": {
+          "title": "Product & engineering",
+          "text": "We build Healthy Bite as a tool we would use ourselves: clear UI, minimal friction and practical recommendations instead of complex settings."
+        },
+        "nutrition": {
+          "title": "Nutrition & practice",
+          "text": "We consult with practitioners so that AI suggestions align with real-world nutrition practice and can be adapted to different lifestyles."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to start without strict diets?",
+      "text": "Answer a few questions and the AI assistant will suggest simple first steps and a rough structure for your meals based on your preferences.",
+      "button": "Start with a free AI plan"
+    }
+  }
+}

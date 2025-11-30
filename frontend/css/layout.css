@@ -1,39 +1,289 @@
+/* Общий контейнер */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* === HEADER / NAVBAR === */
+
+.header {
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Верхняя полоса шапки */
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 12px 20px;
+  position: relative; /* для абсолютного меню на мобилке */
+}
+
+/* Лого */
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #27ae60;
+  font-family: "Segoe UI", sans-serif;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+.logo span {
+  color: #2ecc71;
+}
+
+/* Правая часть (меню + язык + бургер) */
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Навигация */
+
+
+/* Список ссылок */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 15px;
+  font-family: "Segoe UI", sans-serif;
+  padding: 4px 0;
+  position: relative;
+}
+
+/* Подчеркивание при ховере */
+.nav-list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: #27ae60;
+  transition: width 0.25s ease;
+}
+
+.nav-list a:hover::after {
+  width: 100%;
+}
+
+/* Переключатель языка */
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+}
+
+.lang-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: #7f8c8d;
+  transition: background-color 0.18s ease, color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.lang-btn:hover {
+  background-color: rgba(39, 174, 96, 0.08);
+  color: #2c3e50;
+  transform: translateY(-1px);
+}
+
+.lang-btn.is-active {
+  background-color: #27ae60;
+  color: #ffffff;
+}
+
+/* Бургер — по умолчанию скрыт (только для мобилки) */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 999px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background-color: #2c3e50;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Анимация иконки бургера в "крестик" */
+.header.header--menu-open .nav-toggle span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.header.header--menu-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+.header.header--menu-open .nav-toggle span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* === РАЗДВИГАЮЩАЯСЯ ПАНЕЛЬ ПОД ШАПКОЙ === */
+
+.header-panel {
+  background: linear-gradient(120deg, #ffffff, #f9fff9);
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.28s ease, opacity 0.28s ease, transform 0.28s ease;
+  pointer-events: none;
+}
+
+/* Сетка внутри панели */
+.header-panel-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+  padding: 18px 24px 22px;
+}
+
+/* Принудительное скрытие панели после клика по ссылке */
+.header.header--panel-hidden .header-panel {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+
+/* Колонки панели */
+.header-panel-col h4 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #7f8c8d;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+}
+
+.header-panel-col a {
+  display: block;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #2c3e50;
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  transition: color 0.18s ease, background-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.header-panel-col a:hover {
+  color: #27ae60;
+  background-color: rgba(39, 174, 96, 0.06);
+  transform: translateX(2px);
+}
+
+/* Открытие панели при наведении мышкой на header (десктоп) */
+@media (min-width: 769px) {
+  .header:hover .header-panel {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
-  
-  .header {
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    padding: 20px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+}
+
+/* === АДАПТИВ ДЛЯ МОБИЛКИ === */
+@media (max-width: 768px) {
+  .header-bar {
+    padding: 10px 16px;
+  }
+
+  .header-right {
+    gap: 12px;
+  }
+
+  .lang-switcher {
+    gap: 4px;
+    font-size: 12px;
+  }
+
+  /* Лого слева, бургер справа */
+  .nav-toggle {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
   }
-  
-  .logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #27ae60;
-  }
-  
-  .logo span {
-    color: #2ecc71;
-  }
-  
+
+  /* Прячем меню по умолчанию и делаем выезжающую панель */
   .nav {
-    display: flex;
-    gap: 20px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
-  
-  .nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px 16px;
+    gap: 12px;
   }
-  
+
+  /* Когда меню открыто */
+  .header.header--menu-open .nav {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Раздвигающуюся панель под шапкой на мобилке прячем */
+  .header-panel {
+    display: none;
+  }
+}
+
+/* Можно чуть спрятать язык на совсем узких экранах */
+@media (max-width: 480px) {
+  .lang-switcher {
+    display: none;
+  }
+}

@@ -1,0 +1,117 @@
+# ================================
+#  OS / SYSTEM
+# ================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ================================
+#  NODE / FRONTEND BUILD (если появится Vite/Webpack)
+# ================================
+node_modules/
+dist/
+build/
+.cache/
+.vite/
+.next/
+out/
+
+# ================================
+#  PYTHON (если будешь добавлять backend)
+# ================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+.env
+.venv/
+venv/
+
+# Pip / Poetry
+pip-wheel-metadata/
+poetry.lock
+poetry-cache/
+.venv
+
+# ================================
+#  VS CODE / IDE / EDITORS
+# ================================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.log
+
+# ================================
+#  TEMP / UPLOADS / MEDIA
+# ================================
+*.tmp
+*.temp
+*.bak
+*.old
+*.log
+
+# ================================
+#  PROJECT-SPECIFIC
+# ================================
+
+# Python HTTP server cache
+frontend/__pycache__/
+
+# Local test files
+test/
+tests/
+tmp/
+temp/
+
+# Video cache (оставляем только сами mp4)
+frontend/assets/videos/*.tmp
+frontend/assets/videos/*.mov
+frontend/assets/videos/*.avi
+frontend/assets/videos/*.mkv
+
+# Image exports from graphic tools
+*.psd
+*.xcf
+
+# ================================
+#  ENVIRONMENT / SECURITY
+# ================================
+.env
+*.env
+.env.*
+*.key
+*.pem
+*.crt
+*.cert
+
+# ================================
+#  OS-generated on Windows
+# ================================
+ehthumbs.db
+*.stackdump
+
+# ================================
+#  BACKUP FILES
+# ================================
+*~
+*.orig
+*.bak
+*.backup
+*.swp
+*.swo
+
+# ================================
+#  OPTIONAL: IGNORE AI MODEL FILES
+# (если в будущем добавишь модели)
+# ================================
+*.bin
+*.pt
+*.pth
+*.model

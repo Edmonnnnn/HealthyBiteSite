@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthy Bite — About</title>
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/about.css" />
+</head>
+<body>
+
+  <header class="header">
+    <!-- Верхняя полоса: логотип + меню + выбор языка -->
+    <div class="container header-bar">
+      <div class="logo">
+        Healthy <span>Bite</span>
+      </div>
+
+      <div class="header-right">
+        <nav class="nav">
+          <ul class="nav-list">
+            <li><a href="index.html#hero" data-i18n="nav.home">Home</a></li>
+            <li><a href="about.html#hero" data-i18n="nav.about">About</a></li>
+            <li><a href="ai.html" data-i18n="nav.ai">AI</a></li>
+            <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="lang-switcher" aria-label="Language switcher">
+          <button type="button" class="lang-btn is-active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="am">AM</button>
+        </div>
+
+        <!-- Бургер для мобильных -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Раздвигающаяся панель под шапкой -->
+    <div class="header-panel">
+      <div class="container header-panel-inner">
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.home.title">Home</h4>
+          <a href="index.html#hero" data-i18n="panel.home.overview">Overview</a>
+          <a href="index.html#hero-video" data-i18n="panel.home.video">Intro video</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.about.title">About</h4>
+          <!-- ВАЖНО: правильные якоря -->
+          <a href="#how-it-works" data-i18n="panel.about.how">How it works</a>
+          <a href="#mission" data-i18n="panel.about.mission">Mission &amp; values</a>
+          <a href="#team" data-i18n="panel.about.team">Team</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.ai.title">AI</h4>
+          <a href="ai.html" data-i18n="panel.ai.assistant">AI Assistant</a>
+          <a href="ai.html#plans" data-i18n="panel.ai.plans">Meal plans</a>
+          <a href="ai.html#faq" data-i18n="panel.ai.faq">AI FAQ</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.blog.title">Blog</h4>
+          <a href="blog.html" data-i18n="panel.blog.all">All articles</a>
+          <a href="blog.html#stories" data-i18n="panel.blog.stories">Success stories</a>
+          <a href="blog.html#tips" data-i18n="panel.blog.tips">Tips &amp; guides</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.contact.title">Contact</h4>
+          <a href="consultation.html" data-i18n="panel.contact.consult">Book a consultation</a>
+          <a href="contact.html" data-i18n="panel.contact.contact">Contact &amp; support</a>
+          <a href="contact.html#faq" data-i18n="panel.contact.faq">FAQ</a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO ABOUT -->
+    <section class="about-page-hero" id="hero">
+      <div class="container about-page-hero-inner">
+        <div class="about-page-hero-text">
+          <h1 data-i18n="aboutPage.hero.title">
+            Healthy Bite: mindful eating without extremes
+          </h1>
+          <p data-i18n="aboutPage.hero.subtitle">
+            We help you build a way of eating you can actually live with — not just survive for two weeks on a diet.
+          </p>
+          <div class="about-page-hero-actions">
+            <a href="ai.html" class="btn" data-i18n="aboutPage.hero.cta_primary">
+              Start with AI assistant
+            </a>
+            <a href="#how-it-works" class="btn btn-secondary" data-i18n="aboutPage.hero.cta_secondary">
+              Learn our approach
+            </a>
+          </div>
+        </div>
+        <div class="about-page-hero-image">
+          <img src="assets/images/about-healthy-illustration.jpg" alt="Healthy Bite concept" />
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="about-page-how" id="how-it-works">
+      <div class="container about-page-how-inner">
+        <h2 data-i18n="aboutPage.how.title">
+          How Healthy Bite works
+        </h2>
+        <p data-i18n="aboutPage.how.intro">
+          Instead of strict rules and “perfect” diets, Healthy Bite helps you change your eating habits step by step — in a way that actually fits your real life.
+        </p>
+
+        <div class="about-page-how-steps">
+          <article class="about-card">
+            <h3 data-i18n="aboutPage.how.steps.checkin.title">
+              1. Quick check-in
+            </h3>
+            <p data-i18n="aboutPage.how.steps.checkin.text">
+              You answer a few questions about your day, energy, sleep and meals — no calorie spreadsheets.
+            </p>
+          </article>
+
+          <article class="about-card">
+            <h3 data-i18n="aboutPage.how.steps.plan.title">
+              2. Simple plan for the week
+            </h3>
+            <p data-i18n="aboutPage.how.steps.plan.text">
+              The AI suggests 1–2 realistic changes for the next days: portions, snacks, water, timing.
+            </p>
+          </article>
+
+          <article class="about-card">
+            <h3 data-i18n="aboutPage.how.steps.track.title">
+              3. Gentle tracking, not control
+            </h3>
+            <p data-i18n="aboutPage.how.steps.track.text">
+              You mark how your week went, what was easy and what was hard — without guilt for “slips”.
+            </p>
+          </article>
+
+          <article class="about-card">
+            <h3 data-i18n="aboutPage.how.steps.adapt.title">
+              4. Adapting to your real life
+            </h3>
+            <p data-i18n="aboutPage.how.steps.adapt.text">
+              The assistant adjusts recommendations to your schedule, preferences and mood, so changes stay with you long-term.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY / MISSION -->
+    <section class="about-page-story" id="mission">
+      <div class="container about-page-story-inner">
+        <h2 data-i18n="aboutPage.story.title">
+          Why we created Healthy Bite
+        </h2>
+        <p data-i18n="aboutPage.story.p1">
+          We were tired of diets that work only in before/after photos, but not in real life. Strict bans, guilt after every “mistake” and the feeling that food controls you — not the other way around.
+        </p>
+        <p data-i18n="aboutPage.story.p2">
+          Healthy Bite grew out of a simple idea: small realistic changes + smart assistant that helps you stay consistent. Without toxic fitness culture, magic detoxes and rigid lists of “forbidden foods”.
+        </p>
+        <p data-i18n="aboutPage.story.p3">
+          Our goal is not to turn your life into endless calorie counting. We want you to understand your own patterns and build a way of eating that supports your energy, mood and health for years.
+        </p>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section class="about-page-principles">
+      <div class="container">
+        <h2 data-i18n="aboutPage.principles.title">
+          What we believe in
+        </h2>
+        <div class="about-page-principles-grid">
+          <article class="about-card" data-i18n-scope="aboutPage.principles.items.balance">
+            <h3 data-i18n="aboutPage.principles.items.balance.title">No extremes</h3>
+            <p data-i18n="aboutPage.principles.items.balance.text">
+              No crash diets, 1200 kcal limits or “perfect” eating. We focus on sustainable, flexible habits that fit your real life.
+            </p>
+          </article>
+          <article class="about-card" data-i18n-scope="aboutPage.principles.items.steps">
+            <h3 data-i18n="aboutPage.principles.items.steps.title">Small steps</h3>
+            <p data-i18n="aboutPage.principles.items.steps.text">
+              Each week you adjust only 1–2 things: portions, snacks, water, sleep. The point is progress, not perfection.
+            </p>
+          </article>
+          <article class="about-card" data-i18n-scope="aboutPage.principles.items.data">
+            <h3 data-i18n="aboutPage.principles.items.data.title">Data over myths</h3>
+            <p data-i18n="aboutPage.principles.items.data.text">
+              We rely on questions, check-ins and science-based guidelines — not random tips from social media.
+            </p>
+          </article>
+          <article class="about-card" data-i18n-scope="aboutPage.principles.items.support">
+            <h3 data-i18n="aboutPage.principles.items.support.title">Support, not pressure</h3>
+            <p data-i18n="aboutPage.principles.items.support.text">
+              We don’t punish you for “slips”. We help understand why it happened and how to get back on track gently.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="about-page-audience">
+      <div class="container">
+        <h2 data-i18n="aboutPage.audience.title">
+          Who Healthy Bite is for
+        </h2>
+        <div class="about-page-audience-tags">
+          <div class="audience-tag">
+            <span data-i18n="aboutPage.audience.items.beginners">
+              Those who are starting to care about nutrition and don’t know where to begin.
+            </span>
+          </div>
+          <div class="audience-tag">
+            <span data-i18n="aboutPage.audience.items.busy">
+              Busy people who don’t want to spend two hours a day cooking.
+            </span>
+          </div>
+          <div class="audience-tag">
+            <span data-i18n="aboutPage.audience.items.tried">
+              Those who “tried everything” but can’t keep the result.
+            </span>
+          </div>
+          <div class="audience-tag">
+            <span data-i18n="aboutPage.audience.items.feel_better">
+              Anyone who wants to feel lighter, clearer and more energetic — without chasing a perfect body.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="about-page-team" id="team">
+      <div class="container">
+        <h2 data-i18n="aboutPage.team.title">
+          The team behind Healthy Bite
+        </h2>
+        <div class="about-page-team-grid">
+          <article class="about-card">
+            <h3 data-i18n="aboutPage.team.items.product.title">
+              Product & engineering
+            </h3>
+            <p data-i18n="aboutPage.team.items.product.text">
+              We design and build Healthy Bite as a tool we would use ourselves: minimal friction, clear UI and practical recommendations instead of endless settings.
+            </p>
+          </article>
+          <article class="about-card">
+            <h3 data-i18n="aboutPage.team.items.nutrition.title">
+              Nutrition & practice
+            </h3>
+            <p data-i18n="aboutPage.team.items.nutrition.text">
+              We consult with practitioners so that our AI suggestions align with real-world nutrition practice and can be safely adapted to different lifestyles.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-page-cta">
+      <div class="container about-page-cta-inner">
+        <div class="about-page-cta-text">
+          <h2 data-i18n="aboutPage.cta.title">
+            Ready to start without strict diets?
+          </h2>
+          <p data-i18n="aboutPage.cta.text">
+            Answer a few questions, and the AI assistant will suggest simple first steps and a rough structure for your meals — with food you actually like.
+          </p>
+        </div>
+        <a href="ai.html" class="btn" data-i18n="aboutPage.cta.button">
+          Start with a free AI plan
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Скрипты -->
+  <script src="js/lang.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
