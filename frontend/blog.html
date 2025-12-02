@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthy Bite - Blog</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/blog.css" />
+</head>
+<body data-hb-page="blog">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-bar">
+      <div class="logo">Healthy <span>Bite</span></div>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html#hero" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="ai.html" data-i18n="nav.ai">AI</a></li>
+          <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-switcher">
+        <button class="lang-btn is-active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="am">AM</button>
+      </div>
+
+      <button class="nav-toggle" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="header-panel">
+      <div class="container header-panel-inner">
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.home.title">Home</h4>
+          <a href="index.html#hero" data-i18n="panel.home.overview">Overview</a>
+          <a href="index.html#intro-video" data-i18n="panel.home.video">Intro video</a>
+          <a href="index.html#section-steps" data-i18n="panel.home.smallSteps">Small steps</a>
+          <a href="index.html#section-week" data-i18n="panel.home.week">Week with Healthy Bite</a>
+          <a href="index.html#section-ai" data-i18n="panel.home.ai">HealthyBite AI</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.about.title">About</h4>
+          <a href="about.html#how-it-works" data-i18n="panel.about.how">How it works</a>
+          <a href="about.html#mission" data-i18n="panel.about.mission">Mission & values</a>
+          <a href="about.html#team" data-i18n="panel.about.team">Team</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.ai.title">AI</h4>
+          <a href="ai.html#ai-assistant" data-i18n="panel.ai.assistant">AI Assistant</a>
+          <a href="ai.html#meal-plans" data-i18n="panel.ai.plans">Meal plans</a>
+          <a href="ai.html#ai-faq" data-i18n="panel.ai.faq">AI FAQ</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.blog.title">Blog</h4>
+          <a href="blog.html#all-articles" data-i18n="panel.blog.all">All articles</a>
+          <a href="blog.html#success-stories" data-i18n="panel.blog.stories">Success stories</a>
+          <a href="blog.html#tips-guides" data-i18n="panel.blog.tips">Tips & guides</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.contact.title">Contact</h4>
+          <a href="contact.html#contact-consultation" data-i18n="panel.contact.consult">Book a consultation</a>
+          <a href="contact.html#contact-support" data-i18n="panel.contact.contact">Contact & support</a>
+          <a href="contact.html#contact-faq" data-i18n="panel.contact.faq">FAQ</a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-hero" id="blog-hero">
+      <div class="container blog-hero-inner">
+        <div class="blog-hero-copy">
+          <p class="blog-eyebrow" data-i18n="blogPage.hero.eyebrow">HealthyBite Blog</p>
+          <h1 data-i18n="blogPage.hero.title">
+            HealthyBite Blog - stories, guides and gentle nutrition
+          </h1>
+          <p class="blog-lead" data-i18n="blogPage.hero.lead">
+            A calm corner for real stories, practical guides, and mindful eating tips. No extremes, just ideas you can use this week.
+          </p>
+          <div class="blog-search">
+            <span class="blog-search-icon" aria-hidden="true"></span>
+            <input
+              type="search"
+              aria-label="Search articles"
+              data-i18n="blogPage.hero.search.placeholder"
+              placeholder="Search articles, stories, topics..."
+            />
+            <button type="button" class="blog-search-btn" data-i18n="blogPage.hero.search.button">
+              Search
+            </button>
+          </div>
+          <div class="blog-chip-row">
+            <button class="blog-chip is-active" data-i18n="blogPage.hero.filters.all">All</button>
+            <button class="blog-chip" data-i18n="blogPage.hero.filters.stories">Success stories</button>
+            <button class="blog-chip" data-i18n="blogPage.hero.filters.tips">Tips & guides</button>
+            <button class="blog-chip" data-i18n="blogPage.hero.filters.mindful">Mindful eating</button>
+            <button class="blog-chip" data-i18n="blogPage.hero.filters.busy">Busy days</button>
+          </div>
+        </div>
+
+        <div class="blog-hero-side">
+          <div class="blog-hero-card">
+            <div class="blog-badge" data-i18n="blogPage.hero.weekly.badge">Weekly picks</div>
+            <h3 data-i18n="blogPage.hero.weekly.title">What readers loved this week</h3>
+            <ul class="blog-hero-list">
+              <li data-i18n="blogPage.hero.weekly.items.1">
+                Morning routines that do not involve strict meal prep.
+              </li>
+              <li data-i18n="blogPage.hero.weekly.items.2">
+                How Anna learned to pause evening snacking.
+              </li>
+              <li data-i18n="blogPage.hero.weekly.items.3">
+                3 gentle ways to balance work lunches.
+              </li>
+            </ul>
+            <a class="blog-link" href="#blog-featured" data-i18n="blogPage.hero.weekly.link">
+              See featured
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-featured" id="blog-featured">
+      <div class="container blog-featured-inner">
+        <div class="blog-featured-card">
+          <div class="blog-badge" data-i18n="blogPage.featured.badge">Success story</div>
+          <h2 data-i18n="blogPage.featured.title">From chaotic snacking to steady energy</h2>
+          <p class="blog-lead" data-i18n="blogPage.featured.lead">
+            How Maya reshaped her day with two simple check-ins and a flexible plate model that fit her commute and late meetings.
+          </p>
+          <div class="blog-meta">
+            <span data-i18n="blogPage.featured.meta.author">By Elise Parker</span>
+            <span class="blog-dot" aria-hidden="true"></span>
+            <span data-i18n="blogPage.featured.meta.date">Oct 18</span>
+            <span class="blog-dot" aria-hidden="true"></span>
+            <span data-i18n="blogPage.featured.meta.readTime">6 min read</span>
+          </div>
+          <a class="btn" href="#success-stories" data-i18n="blogPage.featured.button">
+            Read story
+          </a>
+        </div>
+
+        <div class="blog-trending">
+          <div class="blog-trending-header">
+            <h3 data-i18n="blogPage.trending.title">Trending now</h3>
+            <span class="blog-trending-note" data-i18n="blogPage.trending.note">Refreshed daily</span>
+          </div>
+          <div class="blog-trending-list">
+            <article class="blog-trending-item">
+              <div>
+                <div class="blog-badge subtle" data-i18n="blogPage.trending.items.1.badge">Guide</div>
+                <h4 data-i18n="blogPage.trending.items.1.title">
+                  3 gentle ways to survive busy days
+                </h4>
+                <p data-i18n="blogPage.trending.items.1.text">
+                  Simple anchors for meals when your calendar is packed.
+                </p>
+              </div>
+              <span class="blog-trending-meta" data-i18n="blogPage.trending.items.1.readTime">
+                5 min read
+              </span>
+            </article>
+            <article class="blog-trending-item">
+              <div>
+                <div class="blog-badge subtle" data-i18n="blogPage.trending.items.2.badge">
+                  Success story
+                </div>
+                <h4 data-i18n="blogPage.trending.items.2.title">Mark's calmer evenings</h4>
+                <p data-i18n="blogPage.trending.items.2.text">
+                  Why a 10-minute reset beat strict food bans.
+                </p>
+              </div>
+              <span class="blog-trending-meta" data-i18n="blogPage.trending.items.2.readTime">
+                4 min read
+              </span>
+            </article>
+            <article class="blog-trending-item">
+              <div>
+                <div class="blog-badge subtle" data-i18n="blogPage.trending.items.3.badge">Guide</div>
+                <h4 data-i18n="blogPage.trending.items.3.title">Build a "good enough" plate</h4>
+                <p data-i18n="blogPage.trending.items.3.text">
+                  The quick visual that keeps portions balanced.
+                </p>
+              </div>
+              <span class="blog-trending-meta" data-i18n="blogPage.trending.items.3.readTime">
+                7 min read
+              </span>
+            </article>
+            <article class="blog-trending-item">
+              <div>
+                <div class="blog-badge subtle" data-i18n="blogPage.trending.items.4.badge">Mindset</div>
+                <h4 data-i18n="blogPage.trending.items.4.title">When you miss a meal</h4>
+                <p data-i18n="blogPage.trending.items.4.text">
+                  How to reset without guilt or overcorrecting.
+                </p>
+              </div>
+              <span class="blog-trending-meta" data-i18n="blogPage.trending.items.4.readTime">
+                3 min read
+              </span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-section blog-success" id="success-stories">
+      <div class="container">
+        <div class="blog-section-header">
+          <p class="blog-eyebrow" data-i18n="blogPage.success.eyebrow">Success stories</p>
+          <h2 data-i18n="blogPage.success.title">
+            Success stories - real lives, gentle changes
+          </h2>
+          <p class="blog-lead" data-i18n="blogPage.success.lead">
+            No crash diets here. Just honest journeys toward calmer meals and steadier energy.
+          </p>
+        </div>
+
+        <div class="blog-card-grid">
+          <article class="blog-card">
+            <div class="blog-card-thumb">A</div>
+            <div class="blog-badge" data-i18n="blogPage.success.cards.1.badge">Success story</div>
+            <h3 data-i18n="blogPage.success.cards.1.title">
+              Anna, 27 - From chaotic snacking to calmer evenings
+            </h3>
+            <p data-i18n="blogPage.success.cards.1.text">
+              Anna stopped skipping lunch and learned a 5-minute pause ritual before late-night snacks.
+            </p>
+            <a class="blog-link" href="#success-stories" data-i18n="blogPage.success.cards.1.link">
+              Read story
+            </a>
+          </article>
+          <article class="blog-card">
+            <div class="blog-card-thumb">M</div>
+            <div class="blog-badge" data-i18n="blogPage.success.cards.2.badge">Success story</div>
+            <h3 data-i18n="blogPage.success.cards.2.title">
+              Mark, 34 - Balancing office days and workouts
+            </h3>
+            <p data-i18n="blogPage.success.cards.2.text">
+              Mark switched from giant dinners to steady afternoon protein snacks and felt lighter in meetings.
+            </p>
+            <a class="blog-link" href="#success-stories" data-i18n="blogPage.success.cards.2.link">
+              Read story
+            </a>
+          </article>
+          <article class="blog-card">
+            <div class="blog-card-thumb">S</div>
+            <div class="blog-badge" data-i18n="blogPage.success.cards.3.badge">Success story</div>
+            <h3 data-i18n="blogPage.success.cards.3.title">
+              Sofia, 30 - Eating well with night shifts
+            </h3>
+            <p data-i18n="blogPage.success.cards.3.text">
+              She created a night-shift plate and a gentle hydration habit that fit 2 a.m. cravings.
+            </p>
+            <a class="blog-link" href="#success-stories" data-i18n="blogPage.success.cards.3.link">
+              Read story
+            </a>
+          </article>
+          <article class="blog-card">
+            <div class="blog-card-thumb">D</div>
+            <div class="blog-badge" data-i18n="blogPage.success.cards.4.badge">Success story</div>
+            <h3 data-i18n="blogPage.success.cards.4.title">
+              Daniel, 41 - Family dinners without tension
+            </h3>
+            <p data-i18n="blogPage.success.cards.4.text">
+              Daniel added one shared veggie and removed pressure to finish plates - dinners became calmer.
+            </p>
+            <a class="blog-link" href="#success-stories" data-i18n="blogPage.success.cards.4.link">
+              Read story
+            </a>
+          </article>
+          <article class="blog-card">
+            <div class="blog-card-thumb">L</div>
+            <div class="blog-badge" data-i18n="blogPage.success.cards.5.badge">Success story</div>
+            <h3 data-i18n="blogPage.success.cards.5.title">
+              Lina, 22 - Student life, steady meals
+            </h3>
+            <p data-i18n="blogPage.success.cards.5.text">
+              Lina prepped two mix-and-match lunches and kept fruit in her bag to avoid vending machine runs.
+            </p>
+            <a class="blog-link" href="#success-stories" data-i18n="blogPage.success.cards.5.link">
+              Read story
+            </a>
+          </article>
+          <article class="blog-card">
+            <div class="blog-card-thumb">E</div>
+            <div class="blog-badge" data-i18n="blogPage.success.cards.6.badge">Success story</div>
+            <h3 data-i18n="blogPage.success.cards.6.title">
+              Emily, 36 - Less coffee, more balance
+            </h3>
+            <p data-i18n="blogPage.success.cards.6.text">
+              Emily swapped her third coffee for a protein snack and noticed fewer evening cravings.
+            </p>
+            <a class="blog-link" href="#success-stories" data-i18n="blogPage.success.cards.6.link">
+              Read story
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-section blog-tips" id="tips-guides">
+      <div class="container">
+        <div class="blog-section-header">
+          <p class="blog-eyebrow" data-i18n="blogPage.tips.eyebrow">Guides</p>
+          <h2 data-i18n="blogPage.tips.title">
+            Tips & guides you can actually use this week
+          </h2>
+          <p class="blog-lead" data-i18n="blogPage.tips.lead">
+            Practical ideas you can try in real life - no complicated meal plans required.
+          </p>
+        </div>
+
+        <div class="blog-tips-grid">
+          <article class="blog-guide-card">
+            <div class="blog-badge" data-i18n="blogPage.tips.cards.1.badge">Guide</div>
+            <h3 data-i18n="blogPage.tips.cards.1.title">
+              3 gentle ways to survive busy days without skipping meals
+            </h3>
+            <ul>
+              <li data-i18n="blogPage.tips.cards.1.items.1">Anchor one consistent meal time.</li>
+              <li data-i18n="blogPage.tips.cards.1.items.2">Pack a 2-item backup snack.</li>
+              <li data-i18n="blogPage.tips.cards.1.items.3">Use water + stretch as a reset.</li>
+            </ul>
+            <a class="blog-link" href="#all-articles" data-i18n="blogPage.tips.cards.1.link">
+              Read guide
+            </a>
+          </article>
+          <article class="blog-guide-card">
+            <div class="blog-badge" data-i18n="blogPage.tips.cards.2.badge">Guide</div>
+            <h3 data-i18n="blogPage.tips.cards.2.title">
+              How to build a "good enough" plate
+            </h3>
+            <ul>
+              <li data-i18n="blogPage.tips.cards.2.items.1">
+                Half plants, quarter protein, quarter starch.
+              </li>
+              <li data-i18n="blogPage.tips.cards.2.items.2">
+                Add a small fat for flavor, not fear.
+              </li>
+              <li data-i18n="blogPage.tips.cards.2.items.3">
+                Make it look inviting, not perfect.
+              </li>
+            </ul>
+            <a class="blog-link" href="#all-articles" data-i18n="blogPage.tips.cards.2.link">
+              Read guide
+            </a>
+          </article>
+          <article class="blog-guide-card">
+            <div class="blog-badge" data-i18n="blogPage.tips.cards.3.badge">Guide</div>
+            <h3 data-i18n="blogPage.tips.cards.3.title">
+              Evening snacks that do not turn into all-you-can-eat
+            </h3>
+            <ul>
+              <li data-i18n="blogPage.tips.cards.3.items.1">
+                Pre-plate your snack away from screens.
+              </li>
+              <li data-i18n="blogPage.tips.cards.3.items.2">
+                Pair carbs with protein for calm energy.
+              </li>
+              <li data-i18n="blogPage.tips.cards.3.items.3">
+                Keep a 5-minute wind-down ritual.
+              </li>
+            </ul>
+            <a class="blog-link" href="#all-articles" data-i18n="blogPage.tips.cards.3.link">
+              Read guide
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-section blog-all" id="all-articles">
+      <div class="container">
+        <div class="blog-section-header">
+          <p class="blog-eyebrow" data-i18n="blogPage.all.eyebrow">Library</p>
+          <h2 data-i18n="blogPage.all.title">All articles</h2>
+          <p class="blog-lead" data-i18n="blogPage.all.lead">
+            Browse every piece by theme. Filters are decorative for now - start wherever feels helpful.
+          </p>
+        </div>
+
+        <div class="blog-filter-row">
+          <button class="blog-chip is-active" data-i18n="blogPage.all.filters.all">All</button>
+          <button class="blog-chip" data-i18n="blogPage.all.filters.stories">Success stories</button>
+          <button class="blog-chip" data-i18n="blogPage.all.filters.tips">Tips & guides</button>
+          <button class="blog-chip" data-i18n="blogPage.all.filters.mindset">Mindset</button>
+          <button class="blog-chip" data-i18n="blogPage.all.filters.routine">Routine</button>
+        </div>
+
+        <div class="blog-list">
+          <article class="blog-list-card">
+            <div class="blog-list-top">
+              <div class="blog-badge" data-i18n="blogPage.all.cards.1.badge">Guide</div>
+              <span class="blog-list-meta" data-i18n="blogPage.all.cards.1.readTime">6 min read</span>
+            </div>
+            <h3 data-i18n="blogPage.all.cards.1.title">Resetting after a chaotic week</h3>
+            <p data-i18n="blogPage.all.cards.1.text">
+              Use a simple Sunday check-in to set two gentle anchors instead of rebuilding everything at once.
+            </p>
+            <div class="blog-tag-row">
+              <span class="blog-chip subtle" data-i18n="blogPage.all.cards.1.tags.mindset">Mindset</span>
+              <span class="blog-chip subtle" data-i18n="blogPage.all.cards.1.tags.routine">Routine</span>
+              <span class="blog-chip subtle" data-i18n="blogPage.all.cards.1.tags.weekend">Weekend</span>
+            </div>
+            <a class="blog-link" href="#all-articles" data-i18n="blogPage.all.cards.1.link">
+              Read more
+            </a>
+          </article>
+
+          <article class="blog-list-card">
+            <div class="blog-list-top">
+              <div class="blog-badge" data-i18n="blogPage.all.cards.2.badge">Success story</div>
+              <span class="blog-list-meta" data-i18n="blogPage.all.cards.2.readTime">5 min read</span>
+            </div>
+            <h3 data-i18n="blogPage.all.cards.2.title">
+              How Sam stopped grazing at night
+            </h3>
+            <p data-i18n="blogPage.all.cards.2.text">
+              Small pre-dinner snack, screen-free meals, and a pre-bed tea ritual lowered late-night cravings.
+            </p>
+            <div class="blog-tag-row">
+              <span class="blog-chip subtle" data-i18n="blogPage.all.cards.2.tags.evenings">Evenings</span>
+              <span class="blog-chip subtle" data-i18n="blogPage.all.cards.2.tags.mindful">Mindful eating</span>
+            </div>
+            <a class="blog-link" href="#all-articles" data-i18n="blogPage.all.cards.2.link">
+              Read more
+            </a>
+          </article>
+
+          <article class="blog-list-card">
+            <div class="blog-list-top">
+              <div class="blog-badge" data-i18n="blogPage.all.cards.3.badge">Guide</div>
+              <span class="blog-list-meta" data-i18n="blogPage.all.cards.3.readTime">7 min read</span>
+            </div>
+            <h3 data-i18n="blogPage.all.cards.3.title">
+              Meal ideas for busy office days
+            </h3>
+            <p data-i18n="blogPage.all.cards.3.text">
+              Quick assemblies, shelf-stable backups, and how to choose takeout without feeling off track.
+            </p>
+            <div class="blog-tag-row">
+              <span class="blog-chip subtle" data-i18n="blogPage.all.cards.3.tags.office">Office days</span>
+              <span class="blog-chip subtle" data-i18n="blogPage.all.cards.3.tags.planning">Planning</span>
+              <span class="blog-chip subtle" data-i18n="blogPage.all.cards.3.tags.takeout">Takeout</span>
+            </div>
+            <a class="blog-link" href="#all-articles" data-i18n="blogPage.all.cards.3.link">
+              Read more
+            </a>
+          </article>
+
+          <article class="blog-list-card">
+            <div class="blog-list-top">
+              <div class="blog-badge" data-i18n="blogPage.all.cards.4.badge">Mindset</div>
+              <span class="blog-list-meta" data-i18n="blogPage.all.cards.4.readTime">4 min read</span>
+            </div>
+            <h3 data-i18n="blogPage.all.cards.4.title">
+              What to do after a big holiday meal
+            </h3>
+            <p data-i18n="blogPage.all.cards.4.text">
+              Skip the punishment. Hydrate, move gently, and plan one balanced plate for the next day.
+            </p>
+            <div class="blog-tag-row">
+              <span class="blog-chip subtle" data-i18n="blogPage.all.cards.4.tags.holidays">Holidays</span>
+              <span class="blog-chip subtle" data-i18n="blogPage.all.cards.4.tags.recovery">Recovery</span>
+            </div>
+            <a class="blog-link" href="#all-articles" data-i18n="blogPage.all.cards.4.link">
+              Read more
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-section blog-cta" id="blog-cta">
+      <div class="container">
+        <div class="blog-cta-card">
+          <div class="blog-cta-text">
+            <p class="blog-eyebrow" data-i18n="blogPage.cta.eyebrow">Next step</p>
+            <h2 data-i18n="blogPage.cta.title">Have a question after reading?</h2>
+            <p class="blog-lead" data-i18n="blogPage.cta.lead">
+              Ask HealthyBite AI to shape a small plan based on what you just explored.
+            </p>
+          </div>
+          <div class="blog-cta-actions">
+            <a class="btn" href="ai.html#ai-hero" data-i18n="blogPage.cta.primary">
+              Ask HealthyBite AI
+            </a>
+            <a class="btn blog-btn-secondary" href="ai.html#ai-assistant" data-i18n="blogPage.cta.secondary">
+              See how AI works
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">Healthy <span>Bite</span></div>
+      <p class="footer-copy" data-i18n="footer.copy">
+        © 2025 Healthy Bite. Small steps. Real change.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/lang.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

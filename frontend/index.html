@@ -30,11 +30,11 @@
 
       <nav class="nav">
         <ul class="nav-list">
-          <li><a href="index.html#hero">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html#hero" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="ai.html" data-i18n="nav.ai">AI</a></li>
+          <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </nav>
 
@@ -53,37 +53,40 @@
       <div class="container header-panel-inner">
 
         <div class="header-panel-col">
-          <h4>Home</h4>
-          <a href="#hero">Overview</a>
-          <a href="#hero-video">Intro video</a>
+          <h4 data-i18n="panel.home.title">Home</h4>
+          <a href="index.html#hero" data-i18n="panel.home.overview">Overview</a>
+          <a href="index.html#intro-video" data-i18n="panel.home.video">Intro video</a>
+          <a href="index.html#section-steps" data-i18n="panel.home.smallSteps">Small steps</a>
+          <a href="index.html#section-week" data-i18n="panel.home.week">Week with Healthy Bite</a>
+          <a href="index.html#section-ai" data-i18n="panel.home.ai">HealthyBite AI</a>
         </div>
 
         <div class="header-panel-col">
-          <h4>About</h4>
-          <a href="about.html#how-it-works">How it works</a>
-          <a href="about.html#mission">Mission & values</a>
-          <a href="about.html#team">Team</a>
+          <h4 data-i18n="panel.about.title">About</h4>
+          <a href="about.html#how-it-works" data-i18n="panel.about.how">How it works</a>
+          <a href="about.html#mission" data-i18n="panel.about.mission">Mission & values</a>
+          <a href="about.html#team" data-i18n="panel.about.team">Team</a>
         </div>
 
         <div class="header-panel-col">
-          <h4>AI</h4>
-          <a href="ai.html">AI Assistant</a>
-          <a href="ai.html#plans">Meal plans</a>
-          <a href="ai.html#faq">AI FAQ</a>
+          <h4 data-i18n="panel.ai.title">AI</h4>
+          <a href="ai.html#ai-assistant" data-i18n="panel.ai.assistant">AI Assistant</a>
+          <a href="ai.html#meal-plans" data-i18n="panel.ai.plans">Meal plans</a>
+          <a href="ai.html#ai-faq" data-i18n="panel.ai.faq">AI FAQ</a>
         </div>
 
         <div class="header-panel-col">
-          <h4>Blog</h4>
-          <a href="blog.html">All articles</a>
-          <a href="blog.html#stories">Success stories</a>
-          <a href="blog.html#tips">Tips & guides</a>
+          <h4 data-i18n="panel.blog.title">Blog</h4>
+          <a href="blog.html#all-articles" data-i18n="panel.blog.all">All articles</a>
+          <a href="blog.html#success-stories" data-i18n="panel.blog.stories">Success stories</a>
+          <a href="blog.html#tips-guides" data-i18n="panel.blog.tips">Tips & guides</a>
         </div>
 
         <div class="header-panel-col">
-          <h4>Contact</h4>
-          <a href="consultation.html">Book a consultation</a>
-          <a href="contact.html">Contact & support</a>
-          <a href="contact.html#faq">FAQ</a>
+          <h4 data-i18n="panel.contact.title">Contact</h4>
+          <a href="contact.html#contact-consultation" data-i18n="panel.contact.consult">Book a consultation</a>
+          <a href="contact.html#contact-support" data-i18n="panel.contact.contact">Contact & support</a>
+          <a href="contact.html#contact-faq" data-i18n="panel.contact.faq">FAQ</a>
         </div>
 
       </div>
@@ -96,13 +99,22 @@
     <div class="container hero-inner">
 
       <div class="hero-copy">
-        <h1>Eat Smart. Live Better.</h1>
-        <p>Your personal guide to healthy eating and lifestyle.</p>
-        <a href="#ai" class="btn">Try AI Assistant</a>
+        <h1 data-i18n="homePage.hero.title">Eat Smart. Live Better.</h1>
+        <p data-i18n="homePage.hero.subtitle">
+          Your personal guide to healthy eating and lifestyle.
+        </p>
+        <div class="hero-actions">
+          <a href="ai.html#ai-hero" class="btn" data-i18n="homePage.hero.cta_primary">
+            Start with AI assistant
+          </a>
+          <a href="about.html#how-it-works" class="btn" data-i18n="homePage.hero.cta_secondary">
+            Learn our approach
+          </a>
+        </div>
       </div>
 
       <!-- Video inside hero -->
-      <div class="hero-video" id="hero-video">
+      <div class="hero-video" id="intro-video">
         <div class="video-wrapper">
           <video id="heroPlayer" muted playsinline></video>
           <div class="video-overlay"></div>
@@ -114,86 +126,114 @@
   </section>
 
   <!-- WHY -->
-  <section class="why" id="why">
+  <section class="why" id="section-steps">
     <div class="container fade-up">
       <div class="why-header">
-        <p class="why-eyebrow">Why Healthy Bite works</p>
-        <h2 class="why-title">Small steps. Smart support. Real change.</h2>
-        <p class="why-subtitle">We don’t force strict diets. We help you build gentle, sustainable habits.</p>
+        <p class="why-eyebrow" data-i18n="homePage.why.eyebrow">Why Healthy Bite works</p>
+        <h2 class="why-title" data-i18n="homePage.why.title">Small steps. Smart support. Real change.</h2>
+        <p class="why-subtitle" data-i18n="homePage.why.subtitle">
+          We don't force strict diets. We help you build gentle, sustainable habits.
+        </p>
       </div>
 
       <div class="why-grid">
         <article class="why-item">
-          <div class="why-icon">🌱</div>
-          <h3>Gentle pace</h3>
-          <p>You change 1–2 habits at a time — no burnout.</p>
+          <div class="why-icon">●</div>
+          <h3 data-i18n="homePage.why.cards.1.title">Gentle pace</h3>
+          <p data-i18n="homePage.why.cards.1.text">You change 1-2 habits at a time - no burnout.</p>
         </article>
 
         <article class="why-item">
-          <div class="why-icon">🤖</div>
-          <h3>AI adapts to you</h3>
-          <p>The assistant learns from your routines and goals.</p>
+          <div class="why-icon">●</div>
+          <h3 data-i18n="homePage.why.cards.2.title">AI adapts to you</h3>
+          <p data-i18n="homePage.why.cards.2.text">The assistant learns from your routines and goals.</p>
         </article>
 
         <article class="why-item">
-          <div class="why-icon">🍰</div>
-          <h3>No forbidden foods</h3>
-          <p>You can enjoy your meals — we focus on balance.</p>
+          <div class="why-icon">●</div>
+          <h3 data-i18n="homePage.why.cards.3.title">No forbidden foods</h3>
+          <p data-i18n="homePage.why.cards.3.text">You can enjoy your meals - we focus on balance.</p>
         </article>
 
         <article class="why-item">
-          <div class="why-icon">🔁</div>
-          <h3>Sustainable progress</h3>
-          <p>Small steps turn into long-term results.</p>
+          <div class="why-icon">●</div>
+          <h3 data-i18n="homePage.why.cards.4.title">Sustainable progress</h3>
+          <p data-i18n="homePage.why.cards.4.text">Small steps turn into long-term results.</p>
         </article>
       </div>
     </div>
   </section>
 
+
   <!-- WEEK -->
-  <section class="week" id="week">
+  <section class="week" id="section-week">
     <div class="container fade-up">
       <div class="week-header">
-        <p class="week-eyebrow">Your first 7 days</p>
-        <h2 class="week-title">A week with Healthy Bite</h2>
+        <p class="week-eyebrow" data-i18n="homePage.week.eyebrow">Your first 7 days</p>
+        <h2 class="week-title" data-i18n="homePage.week.title">A week with Healthy Bite</h2>
       </div>
 
       <div class="week-timeline">
-        <div class="week-step"><div class="week-circle">1</div><h3>Day 1</h3><p>Quick onboarding.</p></div>
-        <div class="week-step"><div class="week-circle">2</div><h3>Day 2–3</h3><p>First small habits.</p></div>
-        <div class="week-step"><div class="week-circle">4</div><h3>Day 4</h3><p>Smart adjustments.</p></div>
-        <div class="week-step"><div class="week-circle">5</div><h3>Day 5–6</h3><p>Light experiments.</p></div>
-        <div class="week-step"><div class="week-circle">7</div><h3>Day 7</h3><p>Summary.</p></div>
+        <div class="week-step">
+          <div class="week-circle">1</div>
+          <h3 data-i18n="homePage.week.steps.1.title">Day 1</h3>
+          <p data-i18n="homePage.week.steps.1.text">Quick onboarding.</p>
+        </div>
+        <div class="week-step">
+          <div class="week-circle">2</div>
+          <h3 data-i18n="homePage.week.steps.2.title">Day 2-3</h3>
+          <p data-i18n="homePage.week.steps.2.text">First small habits.</p>
+        </div>
+        <div class="week-step">
+          <div class="week-circle">4</div>
+          <h3 data-i18n="homePage.week.steps.3.title">Day 4</h3>
+          <p data-i18n="homePage.week.steps.3.text">Smart adjustments.</p>
+        </div>
+        <div class="week-step">
+          <div class="week-circle">5</div>
+          <h3 data-i18n="homePage.week.steps.4.title">Day 5–6</h3>
+          <p data-i18n="homePage.week.steps.4.text">Light experiments.</p>
+        </div>
+        <div class="week-step">
+          <div class="week-circle">7</div>
+          <h3 data-i18n="homePage.week.steps.5.title">Day 7</h3>
+          <p data-i18n="homePage.week.steps.5.text">Summary.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CHAT -->
-  <section class="chat-demo" id="chat-demo">
+  <section class="chat-demo" id="section-ai">
     <div class="container fade-up">
       <div class="chat-header">
-        <p class="chat-eyebrow">See how AI talks</p>
-        <h2 class="chat-title">Healthy Bite AI in action</h2>
+        <p class="chat-eyebrow" data-i18n="homePage.chat.eyebrow">See how AI talks</p>
+        <h2 class="chat-title" data-i18n="homePage.chat.title">Healthy Bite AI in action</h2>
       </div>
 
       <div class="chat-box">
-        <div class="msg user"><div class="bubble">I snack late at night. Help?</div></div>
-        <div class="msg ai"><div class="avatar">🤖</div><div class="bubble">Let's find your triggers.</div></div>
-        <div class="msg user"><div class="bubble">Probably stress.</div></div>
-        <div class="msg ai"><div class="avatar">🤖</div><div class="bubble">Try a 2-minute pause ritual tonight.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MINI ABOUT -->
-  <section class="about" id="about">
-    <div class="container about-container fade-up">
-      <div class="about-text about-card">
-        <h2>About us</h2>
-        <p>Healthy Bite helps you build better habits.</p>
-      </div>
-      <div class="about-image">
-        <img src="assets/images/about-healthy-illustration.jpg" alt="" />
+        <div class="msg user">
+          <div class="bubble" data-i18n="homePage.chat.messages.user1">
+            I snack late at night. Help?
+          </div>
+        </div>
+        <div class="msg ai">
+          <div class="avatar">🤖</div>
+          <div class="bubble" data-i18n="homePage.chat.messages.ai1">
+            Let's find your triggers.
+          </div>
+        </div>
+        <div class="msg user">
+          <div class="bubble" data-i18n="homePage.chat.messages.user2">
+            Probably stress.
+          </div>
+        </div>
+        <div class="msg ai">
+          <div class="avatar">🤖</div>
+          <div class="bubble" data-i18n="homePage.chat.messages.ai2">
+            Try a 2-minute pause ritual tonight.
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -202,7 +242,9 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">Healthy <span>Bite</span></div>
-      <p class="footer-copy">© 2025 Healthy Bite. Small steps. Real change.</p>
+      <p class="footer-copy" data-i18n="footer.copy">
+        © 2025 Healthy Bite. Small steps. Real change.
+      </p>
     </div>
   </footer>
 

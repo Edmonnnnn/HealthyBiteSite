@@ -1,0 +1,162 @@
+{
+  "aiPage": {
+    "hero": {
+      "eyebrow": "HealthyBite AI",
+      "title": "HealthyBite AI - your mindful nutrition co-pilot",
+      "subtitle": "A gentle assistant that helps you structure eating habits without strict diets. Share your routine, get small steps, and keep balance instead of chasing perfection.",
+      "cta_primary": "Start chat with AI",
+      "cta_secondary": "How it works"
+    },
+    "pillars": {
+      "items": {
+        "schedule": "Built around your schedule",
+        "noExtremes": "No guilt, no extremes",
+        "smallSteps": "Small steps that stick"
+      }
+    },
+    "preview": {
+      "eyebrow": "Live preview",
+      "badge": "Supportive AI",
+      "messages": {
+        "user1": "I overeat at night, what can I change?",
+        "ai1": "Let's make evenings calmer: keep a light snack ready at 6 pm, add a 5-minute unwind after work, and put dinner on a plate instead of eating from the pot.",
+        "user2": "I also skip breakfast.",
+        "ai2": "Try a 2-minute breakfast: yogurt + fruit or toast + eggs. We can scale it up later when mornings feel steadier."
+      }
+    },
+    "assistant": {
+      "eyebrow": "AI Assistant",
+      "title": "What HealthyBite AI can do for you",
+      "intro": "The assistant listens first, then suggests small, realistic adjustments. No forbidden lists - just structure that fits your life.",
+      "items": {
+        "1": {
+          "title": "Turn vague goals into small steps",
+          "text": "Translate \"eat better\" into 1-2 doable actions each week."
+        },
+        "2": {
+          "title": "Adapt meals to your real schedule",
+          "text": "Plan around late shifts, school runs, or travel days."
+        },
+        "3": {
+          "title": "Suggest swaps instead of bans",
+          "text": "Keep your favorites, swap one element at a time."
+        },
+        "4": {
+          "title": "Help structure a shopping list",
+          "text": "Group by meals so you know what to buy and why."
+        },
+        "5": {
+          "title": "Explain \"why\", not only calories",
+          "text": "Learn simple reasons behind each suggestion."
+        },
+        "6": {
+          "title": "Remind about balance, not perfection",
+          "text": "Course-correct gently when life happens."
+        }
+      },
+      "disclaimer": {
+        "title": "Where we draw the line",
+        "items": {
+          "1": "We are not a doctor",
+          "2": "We don't override medical advice",
+          "3": "We don't promote extreme diets"
+        }
+      }
+    },
+    "plans": {
+      "eyebrow": "Smart meal plans",
+      "title": "Smart meal plans without strict diets",
+      "subtitle": "A flexible framework that follows your day instead of forcing you into a rigid menu.",
+      "steps": {
+        "1": {
+          "title": "Tell AI about your day and preferences",
+          "text": "Timing, hunger cues, foods you like, and what you want to avoid."
+        },
+        "2": {
+          "title": "AI suggests a flexible meal framework",
+          "text": "Portions, timing, and anchors that fit your energy curve."
+        },
+        "3": {
+          "title": "You tweak portions and foods together",
+          "text": "Swap ingredients, adjust sizes, keep favorites on the plan."
+        },
+        "4": {
+          "title": "AI helps adapt after real life happens",
+          "text": "Missed lunch? Busy evening? Get a quick pivot without guilt."
+        }
+      },
+      "example": {
+        "eyebrow": "Example day plan",
+        "title": "Office day",
+        "subtitle": "Gentle structure",
+        "meals": {
+          "breakfast": {
+            "title": "Breakfast",
+            "text": "Greek yogurt with berries, oats, and a handful of nuts."
+          },
+          "lunch": {
+            "title": "Lunch",
+            "text": "Grain bowl with roasted chicken, greens, avocado, and lemon dressing."
+          },
+          "snack": {
+            "title": "Snack",
+            "text": "Apple with peanut butter or hummus with carrots."
+          },
+          "dinner": {
+            "title": "Dinner",
+            "text": "Baked salmon, quinoa, and roasted vegetables. Optional dark chocolate after."
+          }
+        },
+        "footnote": "Designed to be adjustable, not perfect.",
+        "tags": [
+          "Vegetarian",
+          "Office days",
+          "Night shifts",
+          "Family cooking"
+        ]
+      }
+    },
+    "conversation": {
+      "eyebrow": "Conversation flow",
+      "title": "From chaos to clarity in a few messages",
+      "intro": "The chat stays short and practical, guiding you from a messy routine to a plan you can keep.",
+      "steps": {
+        "1": {
+          "title": "You: \"I snack randomly all day.\"",
+          "text": "You share when hunger hits and what snacks you reach for."
+        },
+        "2": {
+          "title": "AI asks simple follow-ups",
+          "text": "Schedule, sleep, stress, and where you eat - no long forms."
+        },
+        "3": {
+          "title": "AI proposes 1-2 changes for this week",
+          "text": "For example: anchor lunch at 1 pm and add a protein snack at 4 pm."
+        },
+        "4": {
+          "title": "You adjust together",
+          "text": "Swap foods, set reminders, and save a \"good enough\" plan in minutes."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "AI FAQ & safety",
+      "title": "AI FAQ & safety",
+      "intro": "Honest answers about what HealthyBite AI can and cannot do.",
+      "items": {
+        "1": "Is HealthyBite AI a doctor?",
+        "2": "Can AI replace a nutritionist?",
+        "3": "How is my data used?",
+        "4": "Can I use it if I have a medical condition?",
+        "5": "What if I don't follow the plan perfectly?",
+        "6": "Does AI push restrictive diets?"
+      }
+    },
+    "cta": {
+      "title": "Ready to try a kinder way to eat?",
+      "text": "Talk to HealthyBite AI and co-create a plan that respects your schedule, cravings, and real life.",
+      "primary": "Start with AI assistant",
+      "secondary": "See example plans"
+    }
+  }
+}

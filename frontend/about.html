@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Healthy Bite — About</title>
+  <title>Healthy Bite - About</title>
 
   <!-- Стили -->
   <link rel="stylesheet" href="css/base.css" />
@@ -12,87 +12,76 @@
   <link rel="stylesheet" href="css/pages/about.css" />
 </head>
 <body>
-
+  <!-- HEADER -->
   <header class="header">
-    <!-- Верхняя полоса: логотип + меню + выбор языка -->
     <div class="container header-bar">
-      <div class="logo">
-        Healthy <span>Bite</span>
+      <div class="logo">Healthy <span>Bite</span></div>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html#hero" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="ai.html" data-i18n="nav.ai">AI</a></li>
+          <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-switcher">
+        <button class="lang-btn is-active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="am">AM</button>
       </div>
 
-      <div class="header-right">
-        <nav class="nav">
-          <ul class="nav-list">
-            <li><a href="index.html#hero" data-i18n="nav.home">Home</a></li>
-            <li><a href="about.html#hero" data-i18n="nav.about">About</a></li>
-            <li><a href="ai.html" data-i18n="nav.ai">AI</a></li>
-            <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
-            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-          </ul>
-        </nav>
-
-        <div class="lang-switcher" aria-label="Language switcher">
-          <button type="button" class="lang-btn is-active" data-lang="en">EN</button>
-          <button type="button" class="lang-btn" data-lang="ru">RU</button>
-          <button type="button" class="lang-btn" data-lang="am">AM</button>
-        </div>
-
-        <!-- Бургер для мобильных -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+      <button class="nav-toggle" type="button">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <!-- Раздвигающаяся панель под шапкой -->
     <div class="header-panel">
       <div class="container header-panel-inner">
 
         <div class="header-panel-col">
           <h4 data-i18n="panel.home.title">Home</h4>
           <a href="index.html#hero" data-i18n="panel.home.overview">Overview</a>
-          <a href="index.html#hero-video" data-i18n="panel.home.video">Intro video</a>
+          <a href="index.html#intro-video" data-i18n="panel.home.video">Intro video</a>
+          <a href="index.html#section-steps" data-i18n="panel.home.smallSteps">Small steps</a>
+          <a href="index.html#section-week" data-i18n="panel.home.week">Week with Healthy Bite</a>
+          <a href="index.html#section-ai" data-i18n="panel.home.ai">HealthyBite AI</a>
         </div>
 
         <div class="header-panel-col">
           <h4 data-i18n="panel.about.title">About</h4>
-          <!-- ВАЖНО: правильные якоря -->
-          <a href="#how-it-works" data-i18n="panel.about.how">How it works</a>
-          <a href="#mission" data-i18n="panel.about.mission">Mission &amp; values</a>
-          <a href="#team" data-i18n="panel.about.team">Team</a>
+          <a href="about.html#how-it-works" data-i18n="panel.about.how">How it works</a>
+          <a href="about.html#mission" data-i18n="panel.about.mission">Mission & values</a>
+          <a href="about.html#team" data-i18n="panel.about.team">Team</a>
         </div>
 
         <div class="header-panel-col">
           <h4 data-i18n="panel.ai.title">AI</h4>
-          <a href="ai.html" data-i18n="panel.ai.assistant">AI Assistant</a>
-          <a href="ai.html#plans" data-i18n="panel.ai.plans">Meal plans</a>
-          <a href="ai.html#faq" data-i18n="panel.ai.faq">AI FAQ</a>
+          <a href="ai.html#ai-assistant" data-i18n="panel.ai.assistant">AI Assistant</a>
+          <a href="ai.html#meal-plans" data-i18n="panel.ai.plans">Meal plans</a>
+          <a href="ai.html#ai-faq" data-i18n="panel.ai.faq">AI FAQ</a>
         </div>
 
         <div class="header-panel-col">
           <h4 data-i18n="panel.blog.title">Blog</h4>
-          <a href="blog.html" data-i18n="panel.blog.all">All articles</a>
-          <a href="blog.html#stories" data-i18n="panel.blog.stories">Success stories</a>
-          <a href="blog.html#tips" data-i18n="panel.blog.tips">Tips &amp; guides</a>
+          <a href="blog.html#all-articles" data-i18n="panel.blog.all">All articles</a>
+          <a href="blog.html#success-stories" data-i18n="panel.blog.stories">Success stories</a>
+          <a href="blog.html#tips-guides" data-i18n="panel.blog.tips">Tips & guides</a>
         </div>
 
         <div class="header-panel-col">
           <h4 data-i18n="panel.contact.title">Contact</h4>
-          <a href="consultation.html" data-i18n="panel.contact.consult">Book a consultation</a>
-          <a href="contact.html" data-i18n="panel.contact.contact">Contact &amp; support</a>
-          <a href="contact.html#faq" data-i18n="panel.contact.faq">FAQ</a>
+          <a href="contact.html#contact-consultation" data-i18n="panel.contact.consult">Book a consultation</a>
+          <a href="contact.html#contact-support" data-i18n="panel.contact.contact">Contact & support</a>
+          <a href="contact.html#contact-faq" data-i18n="panel.contact.faq">FAQ</a>
         </div>
 
       </div>
     </div>
   </header>
+
 
   <main>
 
@@ -104,10 +93,10 @@
             Healthy Bite: mindful eating without extremes
           </h1>
           <p data-i18n="aboutPage.hero.subtitle">
-            We help you build a way of eating you can actually live with — not just survive for two weeks on a diet.
+            We help you build a way of eating you can actually live with - not just survive for two weeks on a diet.
           </p>
           <div class="about-page-hero-actions">
-            <a href="ai.html" class="btn" data-i18n="aboutPage.hero.cta_primary">
+            <a href="ai.html#ai-hero" class="btn" data-i18n="aboutPage.hero.cta_primary">
               Start with AI assistant
             </a>
             <a href="#how-it-works" class="btn btn-secondary" data-i18n="aboutPage.hero.cta_secondary">
@@ -128,7 +117,7 @@
           How Healthy Bite works
         </h2>
         <p data-i18n="aboutPage.how.intro">
-          Instead of strict rules and “perfect” diets, Healthy Bite helps you change your eating habits step by step — in a way that actually fits your real life.
+          Instead of strict rules and “perfect” diets, Healthy Bite helps you change your eating habits step by step - in a way that actually fits your real life.
         </p>
 
         <div class="about-page-how-steps">
@@ -137,7 +126,7 @@
               1. Quick check-in
             </h3>
             <p data-i18n="aboutPage.how.steps.checkin.text">
-              You answer a few questions about your day, energy, sleep and meals — no calorie spreadsheets.
+              You answer a few questions about your day, energy, sleep and meals - no calorie spreadsheets.
             </p>
           </article>
 
@@ -155,7 +144,7 @@
               3. Gentle tracking, not control
             </h3>
             <p data-i18n="aboutPage.how.steps.track.text">
-              You mark how your week went, what was easy and what was hard — without guilt for “slips”.
+              You mark how your week went, what was easy and what was hard - without guilt for “slips”.
             </p>
           </article>
 
@@ -173,12 +162,13 @@
 
     <!-- STORY / MISSION -->
     <section class="about-page-story" id="mission">
+      <div id="story"></div>
       <div class="container about-page-story-inner">
         <h2 data-i18n="aboutPage.story.title">
           Why we created Healthy Bite
         </h2>
         <p data-i18n="aboutPage.story.p1">
-          We were tired of diets that work only in before/after photos, but not in real life. Strict bans, guilt after every “mistake” and the feeling that food controls you — not the other way around.
+          We were tired of diets that work only in before/after photos, but not in real life. Strict bans, guilt after every “mistake” and the feeling that food controls you - not the other way around.
         </p>
         <p data-i18n="aboutPage.story.p2">
           Healthy Bite grew out of a simple idea: small realistic changes + smart assistant that helps you stay consistent. Without toxic fitness culture, magic detoxes and rigid lists of “forbidden foods”.
@@ -211,7 +201,7 @@
           <article class="about-card" data-i18n-scope="aboutPage.principles.items.data">
             <h3 data-i18n="aboutPage.principles.items.data.title">Data over myths</h3>
             <p data-i18n="aboutPage.principles.items.data.text">
-              We rely on questions, check-ins and science-based guidelines — not random tips from social media.
+              We rely on questions, check-ins and science-based guidelines - not random tips from social media.
             </p>
           </article>
           <article class="about-card" data-i18n-scope="aboutPage.principles.items.support">
@@ -248,7 +238,7 @@
           </div>
           <div class="audience-tag">
             <span data-i18n="aboutPage.audience.items.feel_better">
-              Anyone who wants to feel lighter, clearer and more energetic — without chasing a perfect body.
+              Anyone who wants to feel lighter, clearer and more energetic - without chasing a perfect body.
             </span>
           </div>
         </div>
@@ -290,10 +280,10 @@
             Ready to start without strict diets?
           </h2>
           <p data-i18n="aboutPage.cta.text">
-            Answer a few questions, and the AI assistant will suggest simple first steps and a rough structure for your meals — with food you actually like.
+            Answer a few questions, and the AI assistant will suggest simple first steps and a rough structure for your meals - with food you actually like.
           </p>
         </div>
-        <a href="ai.html" class="btn" data-i18n="aboutPage.cta.button">
+        <a href="ai.html#ai-hero" class="btn" data-i18n="aboutPage.cta.button">
           Start with a free AI plan
         </a>
       </div>
@@ -301,8 +291,19 @@
 
   </main>
 
-  <!-- Скрипты -->
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">Healthy <span>Bite</span></div>
+      <p class="footer-copy" data-i18n="footer.copy">
+        © 2025 Healthy Bite. Small steps. Real change.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script src="js/lang.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

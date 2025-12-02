@@ -1,0 +1,222 @@
+{
+  "blogPage": {
+    "hero": {
+      "eyebrow": "HealthyBite Blog",
+      "title": "HealthyBite Blog - stories, guides and gentle nutrition",
+      "subtitle": "A calm corner for real stories, practical guides, and mindful eating tips. No extremes, just ideas you can use this week.",
+      "search_placeholder": "Search articles, stories, topics...",
+      "search_button": "Search",
+      "filters": {
+        "all": "All",
+        "stories": "Success stories",
+        "tips": "Tips & guides",
+        "mindful": "Mindful eating",
+        "busy": "Busy days"
+      }
+    },
+    "weekly": {
+      "eyebrow": "Weekly picks",
+      "title": "What readers loved this week",
+      "items": {
+        "1": "Morning routines that do not involve strict meal prep.",
+        "2": "How Anna learned to pause evening snacking.",
+        "3": "3 gentle ways to balance work lunches."
+      },
+      "link": "See featured"
+    },
+    "featured": {
+      "eyebrow": "Success story",
+      "title": "From chaotic snacking to steady energy",
+      "text": "How Maya reshaped her day with two simple check-ins and a flexible plate model that fit her commute and late meetings.",
+      "meta": {
+        "author": "By Elise Parker",
+        "date": "Oct 18",
+        "readTime": "6 min read"
+      },
+      "button": "Read story"
+    },
+    "trending": {
+      "eyebrow": "Trending now",
+      "subtitle": "Refreshed daily",
+      "items": {
+        "1": {
+          "type": "Guide",
+          "title": "3 gentle ways to survive busy days",
+          "text": "Simple anchors for meals when your calendar is packed.",
+          "readTime": "5 min read"
+        },
+        "2": {
+          "type": "Success story",
+          "title": "Mark's calmer evenings",
+          "text": "Why a 10-minute reset beat strict food bans.",
+          "readTime": "4 min read"
+        },
+        "3": {
+          "type": "Guide",
+          "title": "Build a \"good enough\" plate",
+          "text": "The quick visual that keeps portions balanced.",
+          "readTime": "7 min read"
+        },
+        "4": {
+          "type": "Mindset",
+          "title": "When you miss a meal",
+          "text": "How to reset without guilt or overcorrecting.",
+          "readTime": "3 min read"
+        }
+      }
+    },
+    "stories": {
+      "eyebrow": "Success stories",
+      "title": "Success stories - real lives, gentle changes",
+      "subtitle": "No crash diets here. Just honest journeys toward calmer meals and steadier energy.",
+      "items": {
+        "anna": {
+          "initial": "A",
+          "badge": "Success story",
+          "title": "Anna, 27 - From chaotic snacking to calmer evenings",
+          "text": "Anna stopped skipping lunch and learned a 5-minute pause ritual before late-night snacks.",
+          "button": "Read story"
+        },
+        "mark": {
+          "initial": "M",
+          "badge": "Success story",
+          "title": "Mark, 34 - Balancing office days and workouts",
+          "text": "Mark switched from giant dinners to steady afternoon protein snacks and felt lighter in meetings.",
+          "button": "Read story"
+        },
+        "sofia": {
+          "initial": "S",
+          "badge": "Success story",
+          "title": "Sofia, 30 - Eating well with night shifts",
+          "text": "She created a night-shift plate and a gentle hydration habit that fit 2 a.m. cravings.",
+          "button": "Read story"
+        },
+        "daniel": {
+          "initial": "D",
+          "badge": "Success story",
+          "title": "Daniel, 41 - Family dinners without tension",
+          "text": "Daniel added one shared veggie and removed pressure to finish plates - dinners became calmer.",
+          "button": "Read story"
+        },
+        "lina": {
+          "initial": "L",
+          "badge": "Success story",
+          "title": "Lina, 22 - Student life, steady meals",
+          "text": "Lina prepped two mix-and-match lunches and kept fruit in her bag to avoid vending machine runs.",
+          "button": "Read story"
+        },
+        "emily": {
+          "initial": "E",
+          "badge": "Success story",
+          "title": "Emily, 36 - Less coffee, more balance",
+          "text": "Emily swapped her third coffee for a protein snack and noticed fewer evening cravings.",
+          "button": "Read story"
+        }
+      }
+    },
+    "guides": {
+      "eyebrow": "Guides",
+      "title": "Tips & guides you can actually use this week",
+      "subtitle": "Practical ideas you can try in real life - no complicated meal plans required.",
+      "items": {
+        "1": {
+          "type": "Guide",
+          "title": "3 gentle ways to survive busy days without skipping meals",
+          "bullets": [
+            "Anchor one consistent meal time.",
+            "Pack a 2-item backup snack.",
+            "Use water + stretch as a reset."
+          ],
+          "button": "Read guide"
+        },
+        "2": {
+          "type": "Guide",
+          "title": "How to build a \"good enough\" plate",
+          "bullets": [
+            "Half plants, quarter protein, quarter starch.",
+            "Add a small fat for flavor, not fear.",
+            "Make it look inviting, not perfect."
+          ],
+          "button": "Read guide"
+        },
+        "3": {
+          "type": "Guide",
+          "title": "Evening snacks that do not turn into all-you-can-eat",
+          "bullets": [
+            "Pre-plate your snack away from screens.",
+            "Pair carbs with protein for calm energy.",
+            "Keep a 5-minute wind-down ritual."
+          ],
+          "button": "Read guide"
+        }
+      }
+    },
+    "library": {
+      "eyebrow": "Library",
+      "title": "All articles",
+      "subtitle": "Browse every piece by theme. Filters are decorative for now - start wherever feels helpful.",
+      "filters": {
+        "all": "All",
+        "stories": "Success stories",
+        "tips": "Tips & guides",
+        "mindset": "Mindset",
+        "routine": "Routine"
+      },
+      "items": {
+        "1": {
+          "type": "Guide",
+          "readTime": "6 min read",
+          "title": "Resetting after a chaotic week",
+          "text": "Use a simple Sunday check-in to set two gentle anchors instead of rebuilding everything at once.",
+          "tags": [
+            "Mindset",
+            "Routine",
+            "Weekend"
+          ],
+          "button": "Read more"
+        },
+        "2": {
+          "type": "Success story",
+          "readTime": "5 min read",
+          "title": "How Sam stopped grazing at night",
+          "text": "Small pre-dinner snack, screen-free meals, and a pre-bed tea ritual lowered late-night cravings.",
+          "tags": [
+            "Evenings",
+            "Mindful eating"
+          ],
+          "button": "Read more"
+        },
+        "3": {
+          "type": "Guide",
+          "readTime": "7 min read",
+          "title": "Meal ideas for busy office days",
+          "text": "Quick assemblies, shelf-stable backups, and how to choose takeout without feeling off track.",
+          "tags": [
+            "Office days",
+            "Planning",
+            "Takeout"
+          ],
+          "button": "Read more"
+        },
+        "4": {
+          "type": "Mindset",
+          "readTime": "4 min read",
+          "title": "What to do after a big holiday meal",
+          "text": "Skip the punishment. Hydrate, move gently, and plan one balanced plate for the next day.",
+          "tags": [
+            "Holidays",
+            "Recovery"
+          ],
+          "button": "Read more"
+        }
+      }
+    },
+    "nextStep": {
+      "eyebrow": "Next step",
+      "title": "Have a question after reading?",
+      "subtitle": "Ask HealthyBite AI to shape a small plan based on what you just explored.",
+      "primary": "Ask HealthyBite AI",
+      "secondary": "See how AI works"
+    }
+  }
+}

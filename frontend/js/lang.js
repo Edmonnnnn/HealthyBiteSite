@@ -1,3 +1,5 @@
+// frontend/js/lang.js
+
 const HB_SUPPORTED_LANGS = ["en", "ru", "am"];
 const HB_DEFAULT_LANG = "en";
 
@@ -8,29 +10,57 @@ function hbGetInitialLang() {
       return saved;
     }
   } catch (e) {
-    // игнорируем ошибки localStorage
+    // ignore localStorage errors
   }
 
   const browser =
-    (navigator.language || navigator.userLanguage || "").slice(0, 2).toLowerCase();
+    (navigator.language || navigator.userLanguage || "")
+      .slice(0, 2)
+      .toLowerCase();
+
   if (HB_SUPPORTED_LANGS.includes(browser)) {
     return browser;
   }
   return HB_DEFAULT_LANG;
 }
 
-async function hbLoadTranslations(lang) {
+// Определяем тип страницы: ai, blog, ...
+function hbGetPageKey() {
+  const el = document.querySelector("[data-hb-page]");
+  return el ? el.getAttribute("data-hb-page") : null;
+}
+
+// Загружаем один JSON с защитой
+async function hbLoadJson(url) {
   try {
-    const res = await fetch(`lang/${lang}.json`, { cache: "no-cache" });
+    const res = await fetch(url, { cache: "no-cache" });
     if (!res.ok) {
-      console.error("[HB i18n] Failed to load lang file:", lang, res.status);
+      console.warn("[HB i18n] Failed to load", url, res.status);
       return null;
     }
     return await res.json();
   } catch (e) {
-    console.error("[HB i18n] Error loading lang file:", lang, e);
+    console.error("[HB i18n] Error loading", url, e);
     return null;
   }
+}
+
+// Грузим базовый словарь + страничный словарь и мержим
+async function hbLoadTranslations(lang) {
+  const dict = {};
+
+  // базовый файл (nav, footer, home, about, contact и т.п.)
+  const base = await hbLoadJson(`lang/${lang}.json`);
+  if (base) Object.assign(dict, base);
+
+  // страничный файл (ai / blog), если указан data-hb-page
+  const pageKey = hbGetPageKey(); // "ai" | "blog" | null
+  if (pageKey) {
+    const pageDict = await hbLoadJson(`lang/${lang}.${pageKey}.json`);
+    if (pageDict) Object.assign(dict, pageDict);
+  }
+
+  return dict;
 }
 
 function hbResolveKey(dict, key) {

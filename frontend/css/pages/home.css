@@ -124,10 +124,9 @@
 
 /* Чтобы переход по якорям не прятался под фиксированную шапку */
 #hero,
-#about,
-#why,
-#week,
-#chat-demo {
+#section-steps,
+#section-week,
+#section-ai {
   scroll-margin-top: 160px;
 }
 

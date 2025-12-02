@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Healthy Bite — smart nutrition assistant"
+    "title": "Healthy Bite - smart nutrition assistant"
   },
   "nav": {
     "home": "Home",
@@ -24,7 +24,10 @@
     "home": {
       "title": "Home",
       "overview": "Overview",
-      "video": "Intro video"
+      "video": "Intro video",
+      "smallSteps": "Small steps",
+      "week": "Week with Healthy Bite",
+      "ai": "HealthyBite AI"
     },
     "about": {
       "title": "About",
@@ -54,13 +57,35 @@
   "aboutPage": {
     "hero": {
       "title": "Healthy Bite: mindful eating without extremes",
-      "subtitle": "We help you build a way of eating you can actually live with — not just survive for two weeks on a diet.",
+      "subtitle": "We help you build a way of eating you can actually live with - not just survive for two weeks on a diet.",
       "cta_primary": "Start with AI assistant",
       "cta_secondary": "Learn our approach"
     },
+    "how": {
+      "title": "How Healthy Bite works",
+      "intro": "Instead of strict rules and \"perfect\" diets, Healthy Bite helps you change your eating habits step by step - in a way that actually fits your real life.",
+      "steps": {
+        "checkin": {
+          "title": "1. Quick check-in",
+          "text": "You answer a few questions about your day, energy, sleep and meals - no calorie spreadsheets."
+        },
+        "plan": {
+          "title": "2. Simple plan for the week",
+          "text": "The AI suggests 1-2 realistic changes for the next days: portions, snacks, water, timing."
+        },
+        "track": {
+          "title": "3. Gentle tracking, not control",
+          "text": "You mark how your week went, what was easy and what was hard - without guilt for \"slips\"."
+        },
+        "adapt": {
+          "title": "4. Adapting to your real life",
+          "text": "The assistant adjusts recommendations to your schedule, preferences and mood, so changes stay with you long-term."
+        }
+      }
+    },
     "story": {
       "title": "Why we created Healthy Bite",
-      "p1": "We were tired of diets that work only in before/after photos, but not in real life. Strict bans, guilt after every \"mistake\" and the feeling that food controls you — not the other way around.",
+      "p1": "We were tired of diets that work only in before/after photos, but not in real life. Strict bans, guilt after every \"mistake\" and the feeling that food controls you - not the other way around.",
       "p2": "Healthy Bite grew out of a simple idea: small realistic changes plus a smart assistant that helps you stay consistent. Without toxic fitness culture, magic detoxes or rigid lists of \"forbidden\" foods.",
       "p3": "Our goal is not to turn your life into endless calorie counting. We want you to understand your own patterns and build a way of eating that supports your energy, mood and health for years."
     },
@@ -77,7 +102,7 @@
         },
         "data": {
           "title": "Data over myths",
-          "text": "We rely on questions, check-ins and science-based guidelines — not random tips from social media or miracle products."
+          "text": "We rely on questions, check-ins and science-based guidelines - not random tips from social media or miracle products."
         },
         "support": {
           "title": "Support, not pressure",
@@ -112,5 +137,217 @@
       "text": "Answer a few questions and the AI assistant will suggest simple first steps and a rough structure for your meals based on your preferences.",
       "button": "Start with a free AI plan"
     }
+  },
+  "homePage": {
+    "hero": {
+      "title": "Eat Smart. Live Better.",
+      "subtitle": "Your personal guide to healthy eating and lifestyle.",
+      "cta_primary": "Start with AI assistant",
+      "cta_secondary": "Learn our approach"
+    },
+    "why": {
+      "eyebrow": "Why Healthy Bite works",
+      "title": "Small steps. Smart support. Real change.",
+      "subtitle": "We don't force strict diets. We help you build gentle, sustainable habits.",
+      "cards": {
+        "1": {
+          "title": "Gentle pace",
+          "text": "You change 1-2 habits at a time - no burnout."
+        },
+        "2": {
+          "title": "AI adapts to you",
+          "text": "The assistant learns from your routines and goals."
+        },
+        "3": {
+          "title": "No forbidden foods",
+          "text": "You can enjoy your meals - we focus on balance."
+        },
+        "4": {
+          "title": "Sustainable progress",
+          "text": "Small steps turn into long-term results."
+        }
+      }
+    },
+    "week": {
+      "eyebrow": "Your first 7 days",
+      "title": "A week with Healthy Bite",
+      "steps": {
+        "1": {
+          "title": "Day 1",
+          "text": "Quick onboarding."
+        },
+        "2": {
+          "title": "Day 2-3",
+          "text": "First small habits."
+        },
+        "3": {
+          "title": "Day 4",
+          "text": "Smart adjustments."
+        },
+        "4": {
+          "title": "Day 5-6",
+          "text": "Light experiments."
+        },
+        "5": {
+          "title": "Day 7",
+          "text": "Summary."
+        }
+      }
+    },
+    "chat": {
+      "eyebrow": "See how AI talks",
+      "title": "Healthy Bite AI in action",
+      "messages": {
+        "user1": "I snack late at night. Help?",
+        "ai1": "Let's find your triggers.",
+        "user2": "Probably stress.",
+        "ai2": "Try a 2-minute pause ritual tonight."
+      }
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "eyebrow": "Healthy Bite contact",
+      "title": "Let us talk about your nutrition, not just your inbox",
+      "lead": "Reach out about plans, the AI assistant, or consultations. We will help you choose a gentle next step and keep the conversation human.",
+      "buttons": {
+        "book": "Book a consultation",
+        "question": "Ask a question"
+      },
+      "card": {
+        "badge": "Human support",
+        "title": "What to expect",
+        "items": {
+          "1": "Average reply time: within 24 hours",
+          "2": "No spam, no sharing your email",
+          "3": "Human support first, AI suggestions where helpful"
+        }
+      }
+    },
+    "help": {
+      "eyebrow": "Support options",
+      "title": "How we can help",
+      "lead": "Choose the option closest to your request - it helps us respond faster.",
+      "cards": {
+        "consultation": {
+          "title": "Nutrition consultation",
+          "text": "Book a 1:1 session to review your habits and get a gentle starting plan.",
+          "hint": "Linked to the consultation form below."
+        },
+        "ai": {
+          "title": "Questions about HealthyBite AI",
+          "text": "Trouble with access, answers you are unsure about, or ideas for new features.",
+          "hint": "We will route this to our product and support team."
+        },
+        "partnerships": {
+          "title": "Partnerships and media",
+          "text": "Clinics, companies, press and collaborations around mindful nutrition.",
+          "hint": "Tell us briefly who you are and what you have in mind."
+        }
+      }
+    },
+    "consult": {
+      "eyebrow": "Consultation",
+      "title": "Book a consultation",
+      "lead": "Share a few details and we will get back with 2-3 time options and a simple prep checklist.",
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Your name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "you@example.com"
+        },
+        "time": {
+          "label": "Preferred time window",
+          "options": {
+            "morning": "Morning",
+            "afternoon": "Afternoon",
+            "evening": "Evening"
+          }
+        },
+        "topic": {
+          "label": "Topic",
+          "options": {
+            "first": "First consultation",
+            "followup": "Follow-up",
+            "family": "Family / child nutrition",
+            "other": "Other"
+          }
+        },
+        "notes": {
+          "label": "Anything you want us to know in advance?",
+          "placeholder": "Share context, goals, or constraints"
+        },
+        "submit": "Request a consultation",
+        "footnote": "We will reply from a real person, not a bot. You can always reschedule or say no."
+      }
+    },
+    "support": {
+      "eyebrow": "Support",
+      "title": "Contact and support",
+      "lead": "Technical issues, questions about plans or AI, or anything that does not fit the boxes above.",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "you@example.com"
+        },
+        "category": {
+          "label": "Category",
+          "options": {
+            "ai": "AI assistant",
+            "blog": "Blog and content",
+            "tech": "Technical issue",
+            "other": "Other"
+          }
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Tell us what you need help with"
+        },
+        "aiOk": "I am okay if you answer with AI-powered suggestions first.",
+        "submit": "Send message"
+      }
+    },
+    "faq": {
+      "eyebrow": "Questions",
+      "title": "Contact FAQ",
+      "lead": "Quick answers to the most common things people ask before reaching out.",
+      "items": {
+        "1": {
+          "question": "How fast do you usually reply?",
+          "answer": "Most messages receive an answer within 24 hours on business days."
+        },
+        "2": {
+          "question": "Can I get medical advice here?",
+          "answer": "No. We do not diagnose or replace medical care. We can help you prepare questions for your doctor or think through habits."
+        },
+        "3": {
+          "question": "Do you offer meal plans for families?",
+          "answer": "Yes, we can discuss flexible structures that work for shared meals and different appetites."
+        },
+        "4": {
+          "question": "Can I cancel or reschedule a consultation?",
+          "answer": "Yes, just reply to our email or use the link inside the confirmation message."
+        },
+        "5": {
+          "question": "Do you store my messages forever?",
+          "answer": "We keep only what we need to support you and improve the service, and you can ask us to delete your data."
+        }
+      }
+    },
+    "trust": {
+      "badges": {
+        "noExtremes": "No extreme diets",
+        "respect": "Respectful tone only",
+        "freedom": "You are free to say no",
+        "noSell": "We do not sell your email"
+      },
+      "text": "You are in control of how much you share and what kind of help you want."
+    }
+  },
+  "footer": {
+    "copy": "(c) 2025 Healthy Bite. Small steps. Real change."
   }
 }

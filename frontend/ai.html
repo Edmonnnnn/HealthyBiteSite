@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthy Bite - AI</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/ai.css" />
+</head>
+<body data-hb-page="ai">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-bar">
+      <div class="logo">Healthy <span>Bite</span></div>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html#hero" data-i18n="nav.home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="ai.html" data-i18n="nav.ai">AI</a></li>
+          <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-switcher">
+        <button class="lang-btn is-active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="am">AM</button>
+      </div>
+
+      <button class="nav-toggle" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="header-panel">
+      <div class="container header-panel-inner">
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.home.title">Home</h4>
+          <a href="index.html#hero" data-i18n="panel.home.overview">Overview</a>
+          <a href="index.html#intro-video" data-i18n="panel.home.video">Intro video</a>
+          <a href="index.html#section-steps" data-i18n="panel.home.smallSteps">Small steps</a>
+          <a href="index.html#section-week" data-i18n="panel.home.week">Week with Healthy Bite</a>
+          <a href="index.html#section-ai" data-i18n="panel.home.ai">HealthyBite AI</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.about.title">About</h4>
+          <a href="about.html#how-it-works" data-i18n="panel.about.how">How it works</a>
+          <a href="about.html#mission" data-i18n="panel.about.mission">Mission & values</a>
+          <a href="about.html#team" data-i18n="panel.about.team">Team</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.ai.title">AI</h4>
+          <a href="ai.html#ai-assistant" data-i18n="panel.ai.assistant">AI Assistant</a>
+          <a href="ai.html#meal-plans" data-i18n="panel.ai.plans">Meal plans</a>
+          <a href="ai.html#ai-faq" data-i18n="panel.ai.faq">AI FAQ</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.blog.title">Blog</h4>
+          <a href="blog.html#all-articles" data-i18n="panel.blog.all">All articles</a>
+          <a href="blog.html#success-stories" data-i18n="panel.blog.stories">Success stories</a>
+          <a href="blog.html#tips-guides" data-i18n="panel.blog.tips">Tips & guides</a>
+        </div>
+
+        <div class="header-panel-col">
+          <h4 data-i18n="panel.contact.title">Contact</h4>
+          <a href="contact.html#contact-consultation" data-i18n="panel.contact.consult">Book a consultation</a>
+          <a href="contact.html#contact-support" data-i18n="panel.contact.contact">Contact & support</a>
+          <a href="contact.html#contact-faq" data-i18n="panel.contact.faq">FAQ</a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="ai-hero" id="ai-hero">
+      <div class="container ai-hero-inner">
+        <div class="ai-hero-copy">
+          <p class="ai-eyebrow" data-i18n="aiPage.hero.eyebrow">HealthyBite AI</p>
+          <h1 data-i18n="aiPage.hero.title">
+            HealthyBite AI - your mindful nutrition co-pilot
+          </h1>
+          <p class="ai-lead" data-i18n="aiPage.hero.subtitle">
+            A gentle assistant that helps you structure eating habits without strict diets.
+            Share your routine, get small steps, and keep balance instead of chasing perfection.
+          </p>
+          <div class="ai-hero-actions">
+            <a class="btn" href="#ai-cta" data-i18n="aiPage.hero.cta_primary">
+              Start chat with AI
+            </a>
+            <a class="btn ai-btn-secondary" href="#ai-assistant" data-i18n="aiPage.hero.cta_secondary">
+              How it works
+            </a>
+          </div>
+          <div class="ai-hero-highlights">
+            <div class="ai-highlight" data-i18n="aiPage.pillars.items.schedule">Built around your schedule</div>
+            <div class="ai-highlight" data-i18n="aiPage.pillars.items.noExtremes">No guilt, no extremes</div>
+            <div class="ai-highlight" data-i18n="aiPage.pillars.items.smallSteps">Small steps that stick</div>
+          </div>
+        </div>
+
+        <div class="ai-hero-visual">
+          <div class="ai-chat-card">
+            <div class="ai-chat-card-header">
+              <div class="ai-chat-status">
+                <span class="ai-status-dot"></span>
+                <span data-i18n="aiPage.preview.eyebrow">Live preview</span>
+              </div>
+              <span class="ai-chat-tag" data-i18n="aiPage.preview.badge">Supportive AI</span>
+            </div>
+            <div class="ai-chat-thread">
+              <div class="ai-msg ai-msg-user">
+                <div class="ai-bubble" data-i18n="aiPage.preview.messages.user1">
+                  I overeat at night, what can I change?
+                </div>
+              </div>
+              <div class="ai-msg ai-msg-ai">
+                <div class="ai-avatar">AI</div>
+                <div class="ai-bubble" data-i18n="aiPage.preview.messages.ai1">
+                  Let's make evenings calmer: keep a light snack ready at 6 pm, add a 5-minute unwind after work, and put dinner on a plate instead of eating from the pot.
+                </div>
+              </div>
+              <div class="ai-msg ai-msg-user">
+                <div class="ai-bubble" data-i18n="aiPage.preview.messages.user2">
+                  I also skip breakfast.
+                </div>
+              </div>
+              <div class="ai-msg ai-msg-ai">
+                <div class="ai-avatar">AI</div>
+                <div class="ai-bubble" data-i18n="aiPage.preview.messages.ai2">
+                  Try a 2-minute breakfast: yogurt + fruit or toast + eggs. We can scale it up later when mornings feel steadier.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-section ai-assistant" id="ai-assistant">
+      <div class="container">
+        <div class="ai-section-header">
+          <p class="ai-eyebrow" data-i18n="aiPage.assistant.eyebrow">AI Assistant</p>
+          <h2 data-i18n="aiPage.assistant.title">What HealthyBite AI can do for you</h2>
+          <p class="ai-lead" data-i18n="aiPage.assistant.intro">
+            The assistant listens first, then suggests small, realistic adjustments. No forbidden lists - just structure that fits your life.
+          </p>
+        </div>
+
+        <div class="ai-card-grid">
+          <article class="ai-card">
+            <span class="ai-icon">1</span>
+            <h3 data-i18n="aiPage.assistant.items.1.title">Turn vague goals into small steps</h3>
+            <p data-i18n="aiPage.assistant.items.1.text">Translate "eat better" into 1-2 doable actions each week.</p>
+          </article>
+          <article class="ai-card">
+            <span class="ai-icon">2</span>
+            <h3 data-i18n="aiPage.assistant.items.2.title">Adapt meals to your real schedule</h3>
+            <p data-i18n="aiPage.assistant.items.2.text">Plan around late shifts, school runs, or travel days.</p>
+          </article>
+          <article class="ai-card">
+            <span class="ai-icon">3</span>
+            <h3 data-i18n="aiPage.assistant.items.3.title">Suggest swaps instead of bans</h3>
+            <p data-i18n="aiPage.assistant.items.3.text">Keep your favorites, swap one element at a time.</p>
+          </article>
+          <article class="ai-card">
+            <span class="ai-icon">4</span>
+            <h3 data-i18n="aiPage.assistant.items.4.title">Help structure a shopping list</h3>
+            <p data-i18n="aiPage.assistant.items.4.text">Group by meals so you know what to buy and why.</p>
+          </article>
+          <article class="ai-card">
+            <span class="ai-icon">5</span>
+            <h3 data-i18n="aiPage.assistant.items.5.title">Explain "why", not only calories</h3>
+            <p data-i18n="aiPage.assistant.items.5.text">Learn simple reasons behind each suggestion.</p>
+          </article>
+          <article class="ai-card">
+            <span class="ai-icon">6</span>
+            <h3 data-i18n="aiPage.assistant.items.6.title">Remind about balance, not perfection</h3>
+            <p data-i18n="aiPage.assistant.items.6.text">Course-correct gently when life happens.</p>
+          </article>
+        </div>
+
+        <div class="ai-boundary">
+          <span class="ai-boundary-label" data-i18n="aiPage.assistant.disclaimer.title">Where we draw the line</span>
+          <div class="ai-boundary-items">
+            <span class="ai-chip" data-i18n="aiPage.assistant.disclaimer.items.1">We are not a doctor</span>
+            <span class="ai-chip" data-i18n="aiPage.assistant.disclaimer.items.2">We don't override medical advice</span>
+            <span class="ai-chip" data-i18n="aiPage.assistant.disclaimer.items.3">We don't promote extreme diets</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-section ai-meal-plans" id="meal-plans">
+      <div class="container ai-two-col">
+        <div class="ai-two-col-left">
+          <p class="ai-eyebrow" data-i18n="aiPage.plans.eyebrow">Smart meal plans</p>
+          <h2 data-i18n="aiPage.plans.title">Smart meal plans without strict diets</h2>
+          <p class="ai-lead" data-i18n="aiPage.plans.subtitle">
+            A flexible framework that follows your day instead of forcing you into a rigid menu.
+          </p>
+          <ol class="ai-stepper">
+            <li>
+              <div class="ai-step-number">1</div>
+              <div class="ai-step-body">
+                <h3 data-i18n="aiPage.plans.steps.1.title">Tell AI about your day and preferences</h3>
+                <p data-i18n="aiPage.plans.steps.1.text">Timing, hunger cues, foods you like, and what you want to avoid.</p>
+              </div>
+            </li>
+            <li>
+              <div class="ai-step-number">2</div>
+              <div class="ai-step-body">
+                <h3 data-i18n="aiPage.plans.steps.2.title">AI suggests a flexible meal framework</h3>
+                <p data-i18n="aiPage.plans.steps.2.text">Portions, timing, and anchors that fit your energy curve.</p>
+              </div>
+            </li>
+            <li>
+              <div class="ai-step-number">3</div>
+              <div class="ai-step-body">
+                <h3 data-i18n="aiPage.plans.steps.3.title">You tweak portions and foods together</h3>
+                <p data-i18n="aiPage.plans.steps.3.text">Swap ingredients, adjust sizes, keep favorites on the plan.</p>
+              </div>
+            </li>
+            <li>
+              <div class="ai-step-number">4</div>
+              <div class="ai-step-body">
+                <h3 data-i18n="aiPage.plans.steps.4.title">AI helps adapt after real life happens</h3>
+                <p data-i18n="aiPage.plans.steps.4.text">Missed lunch? Busy evening? Get a quick pivot without guilt.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="ai-two-col-right">
+          <div class="ai-plan-card">
+            <div class="ai-plan-card-head">
+              <div>
+                <p class="ai-plan-label" data-i18n="aiPage.plans.example.eyebrow">Example day plan</p>
+                <h3 data-i18n="aiPage.plans.example.title">Office day</h3>
+              </div>
+              <span class="ai-chip" data-i18n="aiPage.plans.example.subtitle">Gentle structure</span>
+            </div>
+
+            <div class="ai-plan-block">
+              <p class="ai-plan-title" data-i18n="aiPage.plans.example.meals.breakfast.title">Breakfast</p>
+              <p class="ai-plan-text" data-i18n="aiPage.plans.example.meals.breakfast.text">
+                Greek yogurt with berries, oats, and a handful of nuts.
+              </p>
+            </div>
+            <div class="ai-plan-block">
+              <p class="ai-plan-title" data-i18n="aiPage.plans.example.meals.lunch.title">Lunch</p>
+              <p class="ai-plan-text" data-i18n="aiPage.plans.example.meals.lunch.text">
+                Grain bowl with roasted chicken, greens, avocado, and lemon dressing.
+              </p>
+            </div>
+            <div class="ai-plan-block">
+              <p class="ai-plan-title" data-i18n="aiPage.plans.example.meals.snack.title">Snack</p>
+              <p class="ai-plan-text" data-i18n="aiPage.plans.example.meals.snack.text">
+                Apple with peanut butter or hummus with carrots.
+              </p>
+            </div>
+            <div class="ai-plan-block">
+              <p class="ai-plan-title" data-i18n="aiPage.plans.example.meals.dinner.title">Dinner</p>
+              <p class="ai-plan-text" data-i18n="aiPage.plans.example.meals.dinner.text">
+                Baked salmon, quinoa, and roasted vegetables. Optional dark chocolate after.
+              </p>
+            </div>
+
+            <div class="ai-plan-footer">
+              <span class="ai-chip subtle" data-i18n="aiPage.plans.example.footnote">
+                Designed to be adjustable, not perfect.
+              </span>
+            </div>
+          </div>
+
+          <div class="ai-chip-list">
+            <span class="ai-chip" data-i18n="aiPage.plans.example.tags.0">Vegetarian</span>
+            <span class="ai-chip" data-i18n="aiPage.plans.example.tags.1">Office days</span>
+            <span class="ai-chip" data-i18n="aiPage.plans.example.tags.2">Night shifts</span>
+            <span class="ai-chip" data-i18n="aiPage.plans.example.tags.3">Family cooking</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-section ai-flow" id="ai-flow">
+      <div class="container">
+        <div class="ai-section-header">
+          <p class="ai-eyebrow" data-i18n="aiPage.conversation.eyebrow">Conversation flow</p>
+          <h2 data-i18n="aiPage.conversation.title">From chaos to clarity in a few messages</h2>
+          <p class="ai-lead" data-i18n="aiPage.conversation.intro">
+            The chat stays short and practical, guiding you from a messy routine to a plan you can keep.
+          </p>
+        </div>
+
+        <div class="ai-flow-steps">
+          <article class="ai-flow-card">
+            <div class="ai-step-number">1</div>
+            <h3 data-i18n="aiPage.conversation.steps.1.title">You: "I snack randomly all day."</h3>
+            <p data-i18n="aiPage.conversation.steps.1.text">You share when hunger hits and what snacks you reach for.</p>
+          </article>
+          <article class="ai-flow-card">
+            <div class="ai-step-number">2</div>
+            <h3 data-i18n="aiPage.conversation.steps.2.title">AI asks simple follow-ups</h3>
+            <p data-i18n="aiPage.conversation.steps.2.text">Schedule, sleep, stress, and where you eat - no long forms.</p>
+          </article>
+          <article class="ai-flow-card">
+            <div class="ai-step-number">3</div>
+            <h3 data-i18n="aiPage.conversation.steps.3.title">AI proposes 1-2 changes for this week</h3>
+            <p data-i18n="aiPage.conversation.steps.3.text">
+              For example: anchor lunch at 1 pm and add a protein snack at 4 pm.
+            </p>
+          </article>
+          <article class="ai-flow-card">
+            <div class="ai-step-number">4</div>
+            <h3 data-i18n="aiPage.conversation.steps.4.title">You adjust together</h3>
+            <p data-i18n="aiPage.conversation.steps.4.text">
+              Swap foods, set reminders, and save a "good enough" plan in minutes.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-section ai-faq" id="ai-faq">
+      <div class="container">
+        <div class="ai-section-header">
+          <p class="ai-eyebrow" data-i18n="aiPage.faq.eyebrow">AI FAQ & safety</p>
+          <h2 data-i18n="aiPage.faq.title">AI FAQ & safety</h2>
+          <p class="ai-lead" data-i18n="aiPage.faq.intro">
+            Honest answers about what HealthyBite AI can and cannot do.
+          </p>
+        </div>
+
+        <div class="ai-faq-list">
+          <article class="ai-faq-item">
+            <button class="ai-faq-question" aria-expanded="false">
+              <span data-i18n="aiPage.faq.items.1">Is HealthyBite AI a doctor?</span>
+              <span class="ai-faq-toggle">+</span>
+            </button>
+            <div class="ai-faq-answer" data-i18n="aiPage.faq.answers.1">
+              No. It offers general guidance only and should not replace medical care.
+            </div>
+          </article>
+          <article class="ai-faq-item">
+            <button class="ai-faq-question" aria-expanded="false">
+              <span data-i18n="aiPage.faq.items.2">Can AI replace a nutritionist?</span>
+              <span class="ai-faq-toggle">+</span>
+            </button>
+            <div class="ai-faq-answer" data-i18n="aiPage.faq.answers.2">
+              It can give structure and ideas, but complex cases still need a professional.
+            </div>
+          </article>
+          <article class="ai-faq-item">
+            <button class="ai-faq-question" aria-expanded="false">
+              <span data-i18n="aiPage.faq.items.3">How is my data used?</span>
+              <span class="ai-faq-toggle">+</span>
+            </button>
+            <div class="ai-faq-answer" data-i18n="aiPage.faq.answers.3">
+              We use your inputs to personalize suggestions. Data is handled according to our privacy policy.
+            </div>
+          </article>
+          <article class="ai-faq-item">
+            <button class="ai-faq-question" aria-expanded="false">
+              <span data-i18n="aiPage.faq.items.4">Can I use it if I have a medical condition?</span>
+              <span class="ai-faq-toggle">+</span>
+            </button>
+            <div class="ai-faq-answer" data-i18n="aiPage.faq.answers.4">
+              Only with guidance from your doctor. The AI will not override clinical advice.
+            </div>
+          </article>
+          <article class="ai-faq-item">
+            <button class="ai-faq-question" aria-expanded="false">
+              <span data-i18n="aiPage.faq.items.5">What if I don't follow the plan perfectly?</span>
+              <span class="ai-faq-toggle">+</span>
+            </button>
+            <div class="ai-faq-answer" data-i18n="aiPage.faq.answers.5">
+              That is expected. The assistant adapts with you and prefers "good enough" over strict rules.
+            </div>
+          </article>
+          <article class="ai-faq-item">
+            <button class="ai-faq-question" aria-expanded="false">
+              <span data-i18n="aiPage.faq.items.6">Does AI push restrictive diets?</span>
+              <span class="ai-faq-toggle">+</span>
+            </button>
+            <div class="ai-faq-answer" data-i18n="aiPage.faq.answers.6">
+              No. Recommendations focus on balance, satisfaction, and sustainable habits.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-section ai-cta" id="ai-cta">
+      <div class="container ai-cta-inner">
+        <div class="ai-cta-text">
+          <h2 data-i18n="aiPage.cta.title">Ready to try a kinder way to eat?</h2>
+          <p data-i18n="aiPage.cta.text">
+            Talk to HealthyBite AI and co-create a plan that respects your schedule, cravings, and real life.
+          </p>
+        </div>
+        <div class="ai-cta-actions">
+          <a class="btn" href="#ai-hero" data-i18n="aiPage.cta.primary">
+            Start with AI assistant
+          </a>
+          <a class="btn ai-btn-secondary" href="#meal-plans" data-i18n="aiPage.cta.secondary">
+            See example plans
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">Healthy <span>Bite</span></div>
+      <p class="footer-copy" data-i18n="footer.copy">
+        © 2025 Healthy Bite. Small steps. Real change.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/lang.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const faqItems = document.querySelectorAll(".ai-faq-item");
+      faqItems.forEach((item) => {
+        const button = item.querySelector(".ai-faq-question");
+        const answer = item.querySelector(".ai-faq-answer");
+        if (!button || !answer) return;
+
+        button.addEventListener("click", () => {
+          const isOpen = item.classList.toggle("is-open");
+          button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
