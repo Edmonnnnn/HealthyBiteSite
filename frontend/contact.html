@@ -171,7 +171,7 @@
           </p>
         </div>
         <div class="contact-form-card">
-          <form class="contact-form" method="post" action="#">
+          <form class="contact-form" id="contact-consult-form" method="post" action="#">
             <label>
               <span data-i18n="contactPage.consult.form.name.label">Name</span>
               <input
@@ -221,6 +221,12 @@
             <button type="submit" class="btn" data-i18n="contactPage.consult.form.submit">
               Request a consultation
             </button>
+            <p class="contact-status contact-status--success" id="contact-consult-success" hidden data-i18n="contactPage.consult.form.success">
+              Your consultation request has been sent.
+            </p>
+            <p class="contact-status contact-status--error" id="contact-consult-error" hidden data-i18n="contactPage.consult.form.error">
+              Something went wrong. Please try again.
+            </p>
             <p class="contact-footnote" data-i18n="contactPage.consult.form.footnote">
               We will reply from a real person, not a bot. You can always reschedule or say no.
             </p>
@@ -239,7 +245,7 @@
           </p>
         </div>
         <div class="contact-form-card">
-          <form class="contact-form" method="post" action="#">
+          <form class="contact-form" id="contact-support-form" method="post" action="#">
             <label>
               <span data-i18n="contactPage.support.form.email.label">Email</span>
               <input
@@ -276,6 +282,12 @@
             <button type="submit" class="btn" data-i18n="contactPage.support.form.submit">
               Send message
             </button>
+            <p class="contact-status contact-status--success" id="contact-support-success" hidden data-i18n="contactPage.support.form.success">
+              Your message has been sent.
+            </p>
+            <p class="contact-status contact-status--error" id="contact-support-error" hidden data-i18n="contactPage.support.form.error">
+              Something went wrong. Please try again.
+            </p>
           </form>
         </div>
       </div>
@@ -370,5 +382,6 @@
   <script src="js/lang.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
 </body>
 </html>

@@ -64,6 +64,11 @@
     "how": {
       "title": "How Healthy Bite works",
       "intro": "Instead of strict rules and \"perfect\" diets, Healthy Bite helps you change your eating habits step by step - in a way that actually fits your real life.",
+      "schedules": {
+        "title": "Built for real schedules",
+        "p1": "We combine gentle weekly goals with supportive check-ins so you can see steady progress without rigid plans.",
+        "p2": "The assistant adapts if you travel, work late, or cook for family — keeping momentum without pressure."
+      },
       "steps": {
         "checkin": {
           "title": "1. Quick check-in",
@@ -168,6 +173,11 @@
         }
       }
     },
+    "steady": {
+      "title": "Eat well, feel steady",
+      "p1": "Healthy Bite pairs small habits with meals you actually enjoy. The goal is calm, consistent energy — not perfection.",
+      "p2": "Each tweak is simple enough to repeat, so change feels doable even on busy days."
+    },
     "week": {
       "eyebrow": "Your first 7 days",
       "title": "A week with Healthy Bite",
@@ -203,6 +213,11 @@
         "user2": "Probably stress.",
         "ai2": "Try a 2-minute pause ritual tonight."
       }
+    },
+    "ctaCalmer": {
+      "eyebrow": "READY FOR A CALMER PLATE?",
+      "title": "Start with one small change today",
+      "text": "Tell Healthy Bite what your days look like. We will suggest two gentle shifts you can try this week — no strict rules needed."
     }
   },
   "contactPage": {
@@ -281,7 +296,9 @@
           "placeholder": "Share context, goals, or constraints"
         },
         "submit": "Request a consultation",
-        "footnote": "We will reply from a real person, not a bot. You can always reschedule or say no."
+        "footnote": "We will reply from a real person, not a bot. You can always reschedule or say no.",
+        "success": "Your consultation request has been sent.",
+        "error": "Something went wrong. Please try again."
       }
     },
     "support": {
@@ -307,7 +324,9 @@
           "placeholder": "Tell us what you need help with"
         },
         "aiOk": "I am okay if you answer with AI-powered suggestions first.",
-        "submit": "Send message"
+        "submit": "Send message",
+        "success": "Your message has been sent.",
+        "error": "Something went wrong. Please try again."
       }
     },
     "faq": {

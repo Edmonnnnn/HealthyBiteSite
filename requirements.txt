@@ -1,0 +1,42 @@
+# --- Core backend ---
+fastapi>=0.110
+uvicorn[standard]>=0.27
+
+# --- Database / ORM ---
+SQLAlchemy>=2.0
+
+# --- Settings / validation ---
+pydantic>=2.6
+pydantic-settings>=2.2
+
+# --- HTTP / utils ---
+requests>=2.31
+python-multipart>=0.0.9
+
+# --- Future AI (PREPARED, NOT USED YET) ---
+openai>=1.0.0
+
+# --- Testing (used by run_full_test.py / run_super_test.py) ---
+pytest>=8.0
+pytest-asyncio>=0.23
+# --- Core backend ---
+fastapi>=0.110
+uvicorn[standard]>=0.27
+
+# --- Database / ORM ---
+SQLAlchemy>=2.0
+
+# --- Settings / validation ---
+pydantic>=2.6
+pydantic-settings>=2.2
+
+# --- HTTP / utils ---
+requests>=2.31
+python-multipart>=0.0.9
+
+# --- Future AI (PREPARED, NOT USED YET) ---
+openai>=1.0.0
+
+# --- Testing (used by run_full_test.py / run_super_test.py) ---
+pytest>=8.0
+pytest-asyncio>=0.23

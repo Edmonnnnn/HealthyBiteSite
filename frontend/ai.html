@@ -111,15 +111,15 @@
         </div>
 
         <div class="ai-hero-visual">
-          <div class="ai-chat-card">
-            <div class="ai-chat-card-header">
-              <div class="ai-chat-status">
-                <span class="ai-status-dot"></span>
-                <span data-i18n="aiPage.preview.eyebrow">Live preview</span>
+            <div class="ai-chat-card">
+              <div class="ai-chat-card-header">
+                <div class="ai-chat-status">
+                  <span class="ai-status-dot"></span>
+                  <span data-i18n="aiPage.preview.eyebrow">Live preview</span>
+                </div>
+                <span class="ai-chat-tag" data-i18n="aiPage.preview.badge">Supportive AI</span>
               </div>
-              <span class="ai-chat-tag" data-i18n="aiPage.preview.badge">Supportive AI</span>
-            </div>
-            <div class="ai-chat-thread">
+            <div class="ai-chat-thread" id="ai-chat-thread">
               <div class="ai-msg ai-msg-user">
                 <div class="ai-bubble" data-i18n="aiPage.preview.messages.user1">
                   I overeat at night, what can I change?
@@ -143,6 +143,21 @@
                 </div>
               </div>
             </div>
+            <div class="ai-chat-suggestions" id="ai-chat-suggestions"></div>
+            <p class="ai-chat-status-text" id="ai-chat-status" hidden data-i18n="aiPage.chat.status.ready">
+              Ready to chat.
+            </p>
+            <span id="ai-chat-sending-text" hidden data-i18n="aiPage.chat.status.sending">Sending...</span>
+            <span id="ai-chat-error-text" hidden data-i18n="aiPage.chat.status.error">The assistant is temporarily unavailable.</span>
+            <div class="ai-chat-composer">
+              <input
+                type="text"
+                id="ai-chat-input"
+                placeholder="Ask HealthyBite AI..."
+                data-i18n="aiPage.chat.inputPlaceholder"
+              />
+              <button class="btn" type="button" id="ai-chat-send" data-i18n="aiPage.chat.send">Send</button>
+            </div>
           </div>
         </div>
       </div>
@@ -150,53 +165,62 @@
 
     <section class="ai-section ai-assistant" id="ai-assistant">
       <div class="container">
-        <div class="ai-section-header">
-          <p class="ai-eyebrow" data-i18n="aiPage.assistant.eyebrow">AI Assistant</p>
-          <h2 data-i18n="aiPage.assistant.title">What HealthyBite AI can do for you</h2>
-          <p class="ai-lead" data-i18n="aiPage.assistant.intro">
-            The assistant listens first, then suggests small, realistic adjustments. No forbidden lists - just structure that fits your life.
-          </p>
-        </div>
+        <div class="hb-layout-two">
+          <div class="hb-layout-two__text">
+            <div class="ai-section-header">
+              <p class="ai-eyebrow" data-i18n="aiPage.assistant.eyebrow">AI Assistant</p>
+              <h2 data-i18n="aiPage.assistant.title">What HealthyBite AI can do for you</h2>
+              <p class="ai-lead" data-i18n="aiPage.assistant.intro">
+                The assistant listens first, then suggests small, realistic adjustments. No forbidden lists - just structure that fits your life.
+              </p>
+            </div>
 
-        <div class="ai-card-grid">
-          <article class="ai-card">
-            <span class="ai-icon">1</span>
-            <h3 data-i18n="aiPage.assistant.items.1.title">Turn vague goals into small steps</h3>
-            <p data-i18n="aiPage.assistant.items.1.text">Translate "eat better" into 1-2 doable actions each week.</p>
-          </article>
-          <article class="ai-card">
-            <span class="ai-icon">2</span>
-            <h3 data-i18n="aiPage.assistant.items.2.title">Adapt meals to your real schedule</h3>
-            <p data-i18n="aiPage.assistant.items.2.text">Plan around late shifts, school runs, or travel days.</p>
-          </article>
-          <article class="ai-card">
-            <span class="ai-icon">3</span>
-            <h3 data-i18n="aiPage.assistant.items.3.title">Suggest swaps instead of bans</h3>
-            <p data-i18n="aiPage.assistant.items.3.text">Keep your favorites, swap one element at a time.</p>
-          </article>
-          <article class="ai-card">
-            <span class="ai-icon">4</span>
-            <h3 data-i18n="aiPage.assistant.items.4.title">Help structure a shopping list</h3>
-            <p data-i18n="aiPage.assistant.items.4.text">Group by meals so you know what to buy and why.</p>
-          </article>
-          <article class="ai-card">
-            <span class="ai-icon">5</span>
-            <h3 data-i18n="aiPage.assistant.items.5.title">Explain "why", not only calories</h3>
-            <p data-i18n="aiPage.assistant.items.5.text">Learn simple reasons behind each suggestion.</p>
-          </article>
-          <article class="ai-card">
-            <span class="ai-icon">6</span>
-            <h3 data-i18n="aiPage.assistant.items.6.title">Remind about balance, not perfection</h3>
-            <p data-i18n="aiPage.assistant.items.6.text">Course-correct gently when life happens.</p>
-          </article>
-        </div>
+            <div class="ai-card-grid">
+              <article class="ai-card">
+                <span class="ai-icon">1</span>
+                <h3 data-i18n="aiPage.assistant.items.1.title">Turn vague goals into small steps</h3>
+                <p data-i18n="aiPage.assistant.items.1.text">Translate "eat better" into 1-2 doable actions each week.</p>
+              </article>
+              <article class="ai-card">
+                <span class="ai-icon">2</span>
+                <h3 data-i18n="aiPage.assistant.items.2.title">Adapt meals to your real schedule</h3>
+                <p data-i18n="aiPage.assistant.items.2.text">Plan around late shifts, school runs, or travel days.</p>
+              </article>
+              <article class="ai-card">
+                <span class="ai-icon">3</span>
+                <h3 data-i18n="aiPage.assistant.items.3.title">Suggest swaps instead of bans</h3>
+                <p data-i18n="aiPage.assistant.items.3.text">Keep your favorites, swap one element at a time.</p>
+              </article>
+              <article class="ai-card">
+                <span class="ai-icon">4</span>
+                <h3 data-i18n="aiPage.assistant.items.4.title">Help structure a shopping list</h3>
+                <p data-i18n="aiPage.assistant.items.4.text">Group by meals so you know what to buy and why.</p>
+              </article>
+              <article class="ai-card">
+                <span class="ai-icon">5</span>
+                <h3 data-i18n="aiPage.assistant.items.5.title">Explain "why", not only calories</h3>
+                <p data-i18n="aiPage.assistant.items.5.text">Learn simple reasons behind each suggestion.</p>
+              </article>
+              <article class="ai-card">
+                <span class="ai-icon">6</span>
+                <h3 data-i18n="aiPage.assistant.items.6.title">Remind about balance, not perfection</h3>
+                <p data-i18n="aiPage.assistant.items.6.text">Course-correct gently when life happens.</p>
+              </article>
+            </div>
 
-        <div class="ai-boundary">
-          <span class="ai-boundary-label" data-i18n="aiPage.assistant.disclaimer.title">Where we draw the line</span>
-          <div class="ai-boundary-items">
-            <span class="ai-chip" data-i18n="aiPage.assistant.disclaimer.items.1">We are not a doctor</span>
-            <span class="ai-chip" data-i18n="aiPage.assistant.disclaimer.items.2">We don't override medical advice</span>
-            <span class="ai-chip" data-i18n="aiPage.assistant.disclaimer.items.3">We don't promote extreme diets</span>
+            <div class="ai-boundary">
+              <span class="ai-boundary-label" data-i18n="aiPage.assistant.disclaimer.title">Where we draw the line</span>
+              <div class="ai-boundary-items">
+                <span class="ai-chip" data-i18n="aiPage.assistant.disclaimer.items.1">We are not a doctor</span>
+                <span class="ai-chip" data-i18n="aiPage.assistant.disclaimer.items.2">We don't override medical advice</span>
+                <span class="ai-chip" data-i18n="aiPage.assistant.disclaimer.items.3">We don't promote extreme diets</span>
+              </div>
+            </div>
+          </div>
+          <div class="hb-layout-two__image">
+            <div class="hb-img-card hb-img-card--illustration">
+              <img src="assets/images/habit-tracking-girl.jpg" alt="Person tracking healthy habits on a tablet" />
+            </div>
           </div>
         </div>
       </div>
@@ -437,6 +461,7 @@
   <script src="js/lang.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/ai.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const faqItems = document.querySelectorAll(".ai-faq-item");

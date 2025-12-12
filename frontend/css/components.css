@@ -12,4 +12,67 @@
   .btn:hover {
     background-color: #219150;
   }
+
+/* === SHARED LAYOUT BLOCKS (HB) === */
+
+.hb-layout-two {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  margin: 32px 0;
+}
+
+.hb-layout-two--reverse .hb-layout-two__text {
+  order: 2;
+}
+
+.hb-layout-two--reverse .hb-layout-two__image {
+  order: 1;
+}
+
+.hb-layout-two__text {
+  display: grid;
+  gap: 12px;
+  color: #1a3d2d;
+}
+
+.hb-layout-two__text h2,
+.hb-layout-two__text h3 {
+  margin: 0;
+  color: #1a3d2d;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.hb-layout-two__text p {
+  margin: 0;
+  color: #34495e;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.hb-layout-two__image img {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  object-fit: cover;
+}
+
+.hb-img-card {
+  background: linear-gradient(120deg, #f9fff9, #e6fff1);
+  border: 1px solid rgba(39, 174, 96, 0.14);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 16px 36px rgba(31, 97, 72, 0.08);
+}
+
+.hb-img-card--illustration img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+  object-fit: cover;
+}
   

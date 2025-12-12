@@ -150,6 +150,14 @@
         "4": "Կարո՞ղ եմ օգտվել, եթե ունեմ առողջական խնդիր։",
         "5": "Ի՞նչ եթե պլանը իդեալական չկատարեմ։",
         "6": "AI-ը խթանում է խիստ սահմանափակող դիետանե՞ր։"
+      },
+      "answers": {
+        "1": "No. It offers general guidance only and should not replace medical care.",
+        "2": "It can give structure and ideas, but complex cases still need a professional.",
+        "3": "We use your inputs to personalize suggestions. Data is handled according to our privacy policy.",
+        "4": "Only with guidance from your doctor. The AI will not override clinical advice.",
+        "5": "That is expected. The assistant adapts with you and prefers 'good enough' over strict rules.",
+        "6": "No. Recommendations focus on balance, satisfaction, and sustainable habits."
       }
     },
     "cta": {
@@ -157,6 +165,15 @@
       "text": "Խոսիր HealthyBite AI-ի հետ և կազմիր համատեղ պլան, որը հաշվի է առնում քո գրաֆիկը, ցանկությունները և իրական կյանքը։",
       "primary": "Սկսել AI օգնականից",
       "secondary": "Դիտել օրինակային պլանները"
+    },
+    "chat": {
+      "inputPlaceholder": "Ask HealthyBite AI...",
+      "send": "Send",
+      "status": {
+        "ready": "Ready to chat.",
+        "sending": "Sending...",
+        "error": "The assistant is temporarily unavailable."
+      }
     }
   }
 }

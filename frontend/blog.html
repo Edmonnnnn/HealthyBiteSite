@@ -85,53 +85,63 @@
   <main>
     <section class="blog-hero" id="blog-hero">
       <div class="container blog-hero-inner">
-        <div class="blog-hero-copy">
-          <p class="blog-eyebrow" data-i18n="blogPage.hero.eyebrow">HealthyBite Blog</p>
-          <h1 data-i18n="blogPage.hero.title">
-            HealthyBite Blog - stories, guides and gentle nutrition
-          </h1>
-          <p class="blog-lead" data-i18n="blogPage.hero.lead">
-            A calm corner for real stories, practical guides, and mindful eating tips. No extremes, just ideas you can use this week.
-          </p>
-          <div class="blog-search">
-            <span class="blog-search-icon" aria-hidden="true"></span>
-            <input
-              type="search"
-              aria-label="Search articles"
-              data-i18n="blogPage.hero.search.placeholder"
-              placeholder="Search articles, stories, topics..."
-            />
-            <button type="button" class="blog-search-btn" data-i18n="blogPage.hero.search.button">
-              Search
-            </button>
+        <div class="blog-hero-grid">
+        <div class="blog-hero-text">
+          <div class="blog-hero-copy">
+            <p class="blog-eyebrow" data-i18n="blogPage.hero.eyebrow">HealthyBite Blog</p>
+            <h1 data-i18n="blogPage.hero.title">
+              HealthyBite Blog - stories, guides and gentle nutrition
+            </h1>
+            <p class="blog-lead" data-i18n="blogPage.hero.lead">
+              A calm corner for real stories, practical guides, and mindful eating tips. No extremes, just ideas you can use this week.
+            </p>
+            <div class="blog-search">
+              <span class="blog-search-icon" aria-hidden="true"></span>
+              <input
+                id="blog-search-input"
+                type="search"
+                aria-label="Search articles"
+                data-i18n="blogPage.hero.search.placeholder"
+                placeholder="Search articles, stories, topics..."
+              />
+              <button type="button" class="blog-search-btn" id="blog-search-btn" data-i18n="blogPage.hero.search.button">
+                Search
+              </button>
+            </div>
+            <div class="blog-chip-row">
+                <button class="blog-chip is-active" data-i18n="blogPage.hero.filters.all">All</button>
+                <button class="blog-chip" data-i18n="blogPage.hero.filters.stories">Success stories</button>
+                <button class="blog-chip" data-i18n="blogPage.hero.filters.tips">Tips & guides</button>
+                <button class="blog-chip" data-i18n="blogPage.hero.filters.mindful">Mindful eating</button>
+                <button class="blog-chip" data-i18n="blogPage.hero.filters.busy">Busy days</button>
+            </div>
+            <div class="blog-hero-side">
+              <div class="blog-hero-card">
+                <div class="blog-badge" data-i18n="blogPage.hero.weekly.badge">Weekly picks</div>
+                <h3 data-i18n="blogPage.hero.weekly.title">What readers loved this week</h3>
+                <ul class="blog-hero-list" id="blog-weekly-list">
+                  <li data-i18n="blogPage.hero.weekly.items.1">
+                    Morning routines that do not involve strict meal prep.
+                  </li>
+                  <li data-i18n="blogPage.hero.weekly.items.2">
+                    How Anna learned to pause evening snacking.
+                    </li>
+                    <li data-i18n="blogPage.hero.weekly.items.3">
+                      3 gentle ways to balance work lunches.
+                    </li>
+                  </ul>
+                  <a class="blog-link" href="#blog-featured" data-i18n="blogPage.hero.weekly.link">
+                    See featured
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="blog-chip-row">
-            <button class="blog-chip is-active" data-i18n="blogPage.hero.filters.all">All</button>
-            <button class="blog-chip" data-i18n="blogPage.hero.filters.stories">Success stories</button>
-            <button class="blog-chip" data-i18n="blogPage.hero.filters.tips">Tips & guides</button>
-            <button class="blog-chip" data-i18n="blogPage.hero.filters.mindful">Mindful eating</button>
-            <button class="blog-chip" data-i18n="blogPage.hero.filters.busy">Busy days</button>
-          </div>
-        </div>
 
-        <div class="blog-hero-side">
-          <div class="blog-hero-card">
-            <div class="blog-badge" data-i18n="blogPage.hero.weekly.badge">Weekly picks</div>
-            <h3 data-i18n="blogPage.hero.weekly.title">What readers loved this week</h3>
-            <ul class="blog-hero-list">
-              <li data-i18n="blogPage.hero.weekly.items.1">
-                Morning routines that do not involve strict meal prep.
-              </li>
-              <li data-i18n="blogPage.hero.weekly.items.2">
-                How Anna learned to pause evening snacking.
-              </li>
-              <li data-i18n="blogPage.hero.weekly.items.3">
-                3 gentle ways to balance work lunches.
-              </li>
-            </ul>
-            <a class="blog-link" href="#blog-featured" data-i18n="blogPage.hero.weekly.link">
-              See featured
-            </a>
+          <div class="blog-hero-media">
+            <div class="hb-img-card blog-hero-image-card">
+              <img src="assets/images/calories-salad.jpg" alt="Colorful salad bowl showing balanced portions" />
+            </div>
           </div>
         </div>
       </div>
@@ -139,7 +149,7 @@
 
     <section class="blog-featured" id="blog-featured">
       <div class="container blog-featured-inner">
-        <div class="blog-featured-card">
+        <div class="blog-featured-card" id="blog-featured-card">
           <div class="blog-badge" data-i18n="blogPage.featured.badge">Success story</div>
           <h2 data-i18n="blogPage.featured.title">From chaotic snacking to steady energy</h2>
           <p class="blog-lead" data-i18n="blogPage.featured.lead">
@@ -152,7 +162,7 @@
             <span class="blog-dot" aria-hidden="true"></span>
             <span data-i18n="blogPage.featured.meta.readTime">6 min read</span>
           </div>
-          <a class="btn" href="#success-stories" data-i18n="blogPage.featured.button">
+          <a class="btn blog-featured-link" href="#success-stories" data-i18n="blogPage.featured.button">
             Read story
           </a>
         </div>
@@ -162,7 +172,7 @@
             <h3 data-i18n="blogPage.trending.title">Trending now</h3>
             <span class="blog-trending-note" data-i18n="blogPage.trending.note">Refreshed daily</span>
           </div>
-          <div class="blog-trending-list">
+          <div class="blog-trending-list" id="blog-trending-list">
             <article class="blog-trending-item">
               <div>
                 <div class="blog-badge subtle" data-i18n="blogPage.trending.items.1.badge">Guide</div>
@@ -232,7 +242,7 @@
           </p>
         </div>
 
-        <div class="blog-card-grid">
+        <div class="blog-card-grid" id="blog-success-grid">
           <article class="blog-card">
             <div class="blog-card-thumb">A</div>
             <div class="blog-badge" data-i18n="blogPage.success.cards.1.badge">Success story</div>
@@ -327,7 +337,7 @@
           </p>
         </div>
 
-        <div class="blog-tips-grid">
+        <div class="blog-tips-grid" id="blog-tips-grid">
           <article class="blog-guide-card">
             <div class="blog-badge" data-i18n="blogPage.tips.cards.1.badge">Guide</div>
             <h3 data-i18n="blogPage.tips.cards.1.title">
@@ -404,7 +414,17 @@
           <button class="blog-chip" data-i18n="blogPage.all.filters.routine">Routine</button>
         </div>
 
-        <div class="blog-list">
+        <article class="blog-list-card blog-detail-card" id="blog-article-detail" hidden>
+          <div class="blog-list-top">
+            <div class="blog-badge" id="blog-detail-badge"></div>
+            <span class="blog-list-meta" id="blog-detail-meta"></span>
+          </div>
+          <h3 id="blog-detail-title"></h3>
+          <div class="blog-tag-row" id="blog-detail-tags"></div>
+          <div class="blog-article-content" id="blog-detail-content"></div>
+        </article>
+
+        <div class="blog-list" id="blog-all-list">
           <article class="blog-list-card">
             <div class="blog-list-top">
               <div class="blog-badge" data-i18n="blogPage.all.cards.1.badge">Guide</div>
@@ -522,8 +542,10 @@
   </footer>
 
   <!-- Scripts -->
+  <!-- Scripts -->
   <script src="js/lang.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/blog.js"></script>
 </body>
 </html>

@@ -6,18 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const errorBox = document.getElementById("videoError");
 
   const videoSources = [
-    "assets/videos/3195728-uhd_3840_2160_25fps.mp4",
-    "assets/videos/3245641-uhd_3840_2160_25fps.mp4",
-    "assets/videos/5645055-hd_1920_1080_25fps.mp4",
-    "assets/videos/5865847-uhd_3840_2160_25fps.mp4",
-    "assets/videos/4253150-uhd_4096_2160_25fps.mp4",
-    "assets/videos/6617422-uhd_3840_2160_30fps.mp4",
-    "assets/videos/3298718-uhd_4096_2160_25fps.mp4",
-    "assets/videos/5645037-hd_1920_1080_25fps.mp4"
+    "assets/videos/10_varkyan_1.mp4",
   ];
 
-  const SHOW_MS = 7000;      // сколько держим один ролик
-  const OVERLAY_MS = 350;    // скорость появления белого экрана
+  const SHOW_MS = 7000;   // сколько держим один ролик в режиме слайдшоу
+  const OVERLAY_MS = 350; // скорость появления белого экрана
 
   let index = 0;
 
@@ -48,9 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             vLog("✅ Video started playing.");
             showError("");
 
-            // когда новое видео пошло — убираем белый слой
             if (useOverlay && overlay) {
-              // чуть подождём, чтобы кадр точно появился
               setTimeout(() => {
                 overlay.classList.remove("is-active");
               }, 50);
@@ -69,22 +60,35 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (useOverlay && overlay) {
-      // 1) плавно накрываем всё белым/светлым слоем
       overlay.classList.add("is-active");
-      // 2) когда слой полностью виден — меняем src "за кадром"
       setTimeout(doLoad, OVERLAY_MS);
     } else {
-      // первый старт — без белого экрана
       doLoad();
     }
   }
 
-  function startSlideshow() {
+  function initVideo() {
     if (!videoEl) {
       vLog("❌ #heroPlayer not found in DOM.");
       return;
     }
 
+    if (!videoSources || videoSources.length === 0) {
+      vLog("❌ No video sources provided.");
+      showError("⚠️ Нет доступных видео.");
+      return;
+    }
+
+    // ✅ Режим одного видео — без слайдшоу и без setInterval
+    if (videoSources.length === 1) {
+      vLog("▶️ Single video mode (no slideshow).");
+      // если нужно зациклить видео — оставляем loop = true
+      videoEl.loop = true;
+      playSource(videoSources[0], false);
+      return;
+    }
+
+    // ✅ Режим слайдшоу для нескольких роликов
     vLog("▶️ Starting slideshow with white overlay transitions...");
 
     // первый ролик — без белого экрана
@@ -96,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, SHOW_MS);
   }
 
-  startSlideshow();
+  initVideo();
 
   // --- Анимация появления секций .fade-up ---
   const faders = document.querySelectorAll(".fade-up");

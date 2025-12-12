@@ -150,6 +150,14 @@
         "4": "Можно ли использовать AI, если у меня есть заболевание?",
         "5": "Что, если я не соблюдаю план идеально?",
         "6": "Продвигает ли AI жёсткие ограничительные диеты?"
+      },
+      "answers": {
+        "1": "No. It offers general guidance only and should not replace medical care.",
+        "2": "It can give structure and ideas, but complex cases still need a professional.",
+        "3": "We use your inputs to personalize suggestions. Data is handled according to our privacy policy.",
+        "4": "Only with guidance from your doctor. The AI will not override clinical advice.",
+        "5": "That is expected. The assistant adapts with you and prefers 'good enough' over strict rules.",
+        "6": "No. Recommendations focus on balance, satisfaction, and sustainable habits."
       }
     },
     "cta": {
@@ -157,6 +165,15 @@
       "text": "Поговори с HealthyBite AI и составь совместный план, который уважает твой график, желания и реальную жизнь.",
       "primary": "Начать с AI-помощника",
       "secondary": "Посмотреть пример планов"
+    },
+    "chat": {
+      "inputPlaceholder": "Ask HealthyBite AI...",
+      "send": "Send",
+      "status": {
+        "ready": "Ready to chat.",
+        "sending": "Sending...",
+        "error": "The assistant is temporarily unavailable."
+      }
     }
   }
 }
