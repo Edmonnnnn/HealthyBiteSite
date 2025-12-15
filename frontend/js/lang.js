@@ -3,25 +3,39 @@
 const HB_SUPPORTED_LANGS = ["en", "ru", "am"];
 const HB_DEFAULT_LANG = "en";
 
+function hbNormalizeLang(raw) {
+  if (!raw) return HB_DEFAULT_LANG;
+  const primary = raw.toString().split(".")[0].split("_")[0].slice(0, 2).toLowerCase();
+  return HB_SUPPORTED_LANGS.includes(primary) ? primary : HB_DEFAULT_LANG;
+}
+
+function hbGetApiBase() {
+  const { protocol, hostname, port, pathname } = window.location || {};
+  const hasPrefix = pathname === "/HealthyBite" || pathname.startsWith("/HealthyBite/");
+  const basePrefix = hasPrefix ? "/HealthyBite" : "";
+  let effectivePort = port || "";
+  if (!hasPrefix && (hostname === "localhost" || hostname === "127.0.0.1") && port === "8080") {
+    effectivePort = "8810";
+  }
+  const portPart = effectivePort ? `:${effectivePort}` : "";
+  return `${protocol}//${hostname}${portPart}${basePrefix}/api/v1`;
+}
+
 function hbGetInitialLang() {
   try {
     const saved = localStorage.getItem("hb_lang");
-    if (saved && HB_SUPPORTED_LANGS.includes(saved)) {
-      return saved;
+    if (saved) {
+      const normalized = hbNormalizeLang(saved);
+      if (HB_SUPPORTED_LANGS.includes(normalized)) {
+        return normalized;
+      }
     }
   } catch (e) {
     // ignore localStorage errors
   }
 
-  const browser =
-    (navigator.language || navigator.userLanguage || "")
-      .slice(0, 2)
-      .toLowerCase();
-
-  if (HB_SUPPORTED_LANGS.includes(browser)) {
-    return browser;
-  }
-  return HB_DEFAULT_LANG;
+  const browser = hbNormalizeLang(navigator.language || navigator.userLanguage || "");
+  return HB_SUPPORTED_LANGS.includes(browser) ? browser : HB_DEFAULT_LANG;
 }
 
 // Определяем тип страницы: ai, blog, ...
@@ -115,6 +129,7 @@ async function hbSwitchLanguage(lang) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const initialLang = hbGetInitialLang();
+  document.documentElement.lang = initialLang;
   hbSwitchLanguage(initialLang);
 
   document.querySelectorAll(".lang-btn").forEach((btn) => {
@@ -125,3 +140,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// expose helpers for other scripts
+window.hbNormalizeLang = hbNormalizeLang;
+window.hbGetApiBase = hbGetApiBase;
+window.hbGetCurrentLang = function () {
+  const stored = (() => {
+    try {
+      return localStorage.getItem("hb_lang");
+    } catch (e) {
+      return null;
+    }
+  })();
+  const raw = stored || document.documentElement.lang || navigator.language || "en";
+  const normalized = hbNormalizeLang(raw);
+  document.documentElement.lang = normalized;
+  return normalized;
+};

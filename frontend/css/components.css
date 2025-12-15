@@ -75,4 +75,19 @@
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
   object-fit: cover;
 }
+
+@media (max-width: 768px) {
+  .hb-layout-two {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .hb-layout-two--reverse .hb-layout-two__text {
+    order: 1;
+  }
+
+  .hb-layout-two--reverse .hb-layout-two__image {
+    order: 2;
+  }
+}
   

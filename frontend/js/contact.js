@@ -1,7 +1,8 @@
-const HB_CONTACT_API_BASE = "http://127.0.0.1:8810";
+const HB_CONTACT_API_BASE = (window.hbGetApiBase && window.hbGetApiBase()) || "/api/v1";
 
 function hbContactLang() {
-  return window.hbGetCurrentLang?.() || localStorage.getItem("hb_lang") || "en";
+  const raw = window.hbGetCurrentLang?.() || localStorage.getItem("hb_lang") || "en";
+  return (window.hbNormalizeLang && window.hbNormalizeLang(raw)) || "en";
 }
 
 function hbEnsureStatusElement(form, selector, extraClass = "") {
@@ -66,7 +67,7 @@ function wireSupportForm(form) {
     if (submitBtn) submitBtn.disabled = true;
 
     try {
-      const response = await fetch(`${HB_CONTACT_API_BASE}/api/v1/contact/support`, {
+      const response = await fetch(`${HB_CONTACT_API_BASE}/contact/support`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -145,7 +146,7 @@ function wireConsultForm(form) {
     if (submitBtn) submitBtn.disabled = true;
 
     try {
-      const response = await fetch(`${HB_CONTACT_API_BASE}/api/v1/contact/consult`, {
+      const response = await fetch(`${HB_CONTACT_API_BASE}/contact/consult`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

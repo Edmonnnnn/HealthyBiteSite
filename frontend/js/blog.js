@@ -1,7 +1,7 @@
 // Chips are <button> so hash won't change automatically; we set it manually and reapply filters. Verify: backend 8810 + frontend 8080, open blog.html, click chips -> hash changes + list updates; reload with #blog-tips applies filter.
 console.log("[HB] blog.js is loaded");
 
-const HB_API_BASE = "http://127.0.0.1:8810";
+const HB_API_BASE = (window.hbGetApiBase && window.hbGetApiBase()) || "/api/v1";
 const DEBUG_FILTERS = true;
 
 let weeklyList;
@@ -43,11 +43,12 @@ const BLOG_STATE_RETURN = "hb_blog_return";
 function hbGetActiveLang() {
   try {
     const stored = localStorage.getItem("hb_lang");
-    if (stored) return stored;
+    if (stored && window.hbNormalizeLang) return window.hbNormalizeLang(stored);
   } catch (e) {
     // ignore
   }
-  return document.documentElement.lang || "en";
+  const fallback = document.documentElement.lang || navigator.language || "en";
+  return (window.hbNormalizeLang && window.hbNormalizeLang(fallback)) || "en";
 }
 
 function hbSafeText(el, value) {
@@ -345,14 +346,14 @@ function renderPostDetail(post) {
 async function openPost(slug) {
   if (!slug) return;
   const currentLang =
-    window.hbGetCurrentLang?.() ||
+    window.hbNormalizeLang?.(window.hbGetCurrentLang?.() || hbGetActiveLang()) ||
     hbGetActiveLang();
   hbSetSession(BLOG_STATE_LANG, currentLang);
   hbSetSession(BLOG_STATE_HASH, window.location.hash || "#blog-all");
   hbSetSession(BLOG_STATE_QUERY, searchInput?.value || "");
   hbSetSession(BLOG_STATE_RETURN, "1");
   try {
-    const res = await fetch(`${HB_API_BASE}/api/v1/blog/posts/${slug}?lang=${currentLang}`, {
+    const res = await fetch(`${HB_API_BASE}/blog/posts/${slug}?lang=${currentLang}`, {
       headers: { "Content-Type": "application/json" },
     });
     if (!res.ok) {
@@ -482,7 +483,7 @@ function applyFilterFromHash(options = {}) {
 }
 
 async function loadSections(lang) {
-  const url = `${HB_API_BASE}/api/v1/blog/sections?lang=${lang}`;
+  const url = `${HB_API_BASE}/blog/sections?lang=${lang}`;
   console.log("[HB] will call fetch for blog sections:", url);
   const response = await fetch(url);
   console.log("[HB] fetch returned response:", response.status);
@@ -591,8 +592,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const lang =
-    window.hbGetCurrentLang?.() ||
-    localStorage.getItem("hb_lang") ||
+    window.hbNormalizeLang?.(window.hbGetCurrentLang?.() || localStorage.getItem("hb_lang")) ||
     "en";
   loadBlogTranslations(lang);
   document.querySelectorAll(".lang-btn").forEach((btn) => {

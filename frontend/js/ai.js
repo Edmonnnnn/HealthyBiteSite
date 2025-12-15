@@ -1,4 +1,4 @@
-const HB_AI_API_BASE = "http://127.0.0.1:8810";
+const HB_AI_API_BASE = (window.hbGetApiBase && window.hbGetApiBase()) || "/api/v1";
 
 function hbCreateSessionId() {
   return "sess_" + Math.random().toString(36).slice(2) + "_" + Date.now();
@@ -8,10 +8,8 @@ const HB_AI_SESSION_ID = hbCreateSessionId();
 const hbAiMessages = [];
 
 function hbGetCurrentLangSafe() {
-  if (window.hbGetCurrentLang) {
-    return window.hbGetCurrentLang();
-  }
-  return localStorage.getItem("hb_lang") || "en";
+  const raw = window.hbGetCurrentLang ? window.hbGetCurrentLang() : localStorage.getItem("hb_lang");
+  return (window.hbNormalizeLang && window.hbNormalizeLang(raw)) || "en";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -124,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearSuggestions();
 
     try {
-      const response = await fetch(`${HB_AI_API_BASE}/api/v1/ai/chat`, {
+      const response = await fetch(`${HB_AI_API_BASE}/ai/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
