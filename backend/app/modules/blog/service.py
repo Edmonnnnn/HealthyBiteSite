@@ -28,6 +28,8 @@ _SECTION_TITLES: Dict[str, str] = {
     "trending": "Trending Now",
     "success": "Success Stories",
     "tips": "Quick Tips",
+    "mindset": "Mindset",
+    "routine": "Routine",
     "all": "All Articles",
 }
 
@@ -68,6 +70,7 @@ def _to_short(post: models.BlogPost) -> schemas.BlogPostShort:
     return schemas.BlogPostShort(
         id=post.id,
         slug=post.slug,
+        section=post.section,
         eyebrow=post.eyebrow,
         title=post.title,
         summary=post.summary or post.subtitle or "",
@@ -132,7 +135,7 @@ def get_sections(db: Session, lang: str = "en") -> schemas.BlogSectionsResponse:
     for post in selected_posts:
         short = _to_short(post)
         section_key = post.section if post.section in grouped else "all"
-        grouped.setdefault(section_key, []).append(short)
+        grouped[section_key].append(short)
         if section_key != "all":
             grouped["all"].append(short)
 
@@ -142,6 +145,8 @@ def get_sections(db: Session, lang: str = "en") -> schemas.BlogSectionsResponse:
         trending=schemas.BlogSection(title=_SECTION_TITLES["trending"], items=grouped.get("trending", [])),
         success=schemas.BlogSection(title=_SECTION_TITLES["success"], items=grouped.get("success", [])),
         tips=schemas.BlogSection(title=_SECTION_TITLES["tips"], items=grouped.get("tips", [])),
+        mindset=schemas.BlogSection(title=_SECTION_TITLES["mindset"], items=grouped.get("mindset", [])),
+        routine=schemas.BlogSection(title=_SECTION_TITLES["routine"], items=grouped.get("routine", [])),
         all=schemas.BlogSection(title=_SECTION_TITLES["all"], items=grouped.get("all", [])),
     )
 

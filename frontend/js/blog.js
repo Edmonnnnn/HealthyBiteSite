@@ -1,7 +1,8 @@
-// Verify: backend on 8810 + frontend on 8080, open blog.html, click chips to see list filter, reload with #blog-tips to confirm persistence.
+// Chips are <button> so hash won't change automatically; we set it manually and reapply filters. Verify: backend 8810 + frontend 8080, open blog.html, click chips -> hash changes + list updates; reload with #blog-tips applies filter.
 console.log("[HB] blog.js is loaded");
 
 const HB_API_BASE = "http://127.0.0.1:8810";
+const DEBUG_FILTERS = true;
 
 let weeklyList;
 let featuredCard;
@@ -13,7 +14,14 @@ let detailCard;
 let filterChips;
 let sectionsData = {};
 let allPosts = [];
-let initialFilterKey = "all";
+let searchInput;
+let searchButton;
+let searchQuery = "";
+let allArticlesSection;
+let scrollOnNextHash = false;
+let initialHashScrollPending = true;
+let blogTranslations = null;
+let blogTranslationsLang = null;
 
 let trendingTemplate;
 let successTemplate;
@@ -24,9 +32,13 @@ const FILTER_SECTION_MAP = {
   all: null,
   success: "success",
   tips: "tips",
-  mindset: "featured",
-  routine: "weekly",
+  mindset: "mindset",
+  routine: "routine",
 };
+const BLOG_STATE_LANG = "hb_blog_lang";
+const BLOG_STATE_HASH = "hb_blog_hash";
+const BLOG_STATE_QUERY = "hb_blog_query";
+const BLOG_STATE_RETURN = "hb_blog_return";
 
 function hbGetActiveLang() {
   try {
@@ -47,6 +59,52 @@ function hbSafeText(el, value) {
 function hbFormatReadingMinutes(minutes) {
   if (!minutes && minutes !== 0) return "";
   return `${minutes} min read`;
+}
+
+function blogTranslate(key, fallback) {
+  if (blogTranslations && blogTranslationsLang) {
+    const val = hbResolveKey(blogTranslations, key);
+    if (val) return val;
+  }
+  return fallback;
+}
+
+function hbSetSession(key, value) {
+  try {
+    if (value == null) {
+      sessionStorage.removeItem(key);
+    } else {
+      sessionStorage.setItem(key, value);
+    }
+  } catch (e) {
+    // ignore
+  }
+}
+
+function hbGetSession(key, fallback = null) {
+  try {
+    const val = sessionStorage.getItem(key);
+    return val !== null ? val : fallback;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+async function loadBlogTranslations(lang) {
+  try {
+    const dict = await hbLoadTranslations(lang);
+    if (dict) {
+      blogTranslations = dict;
+      blogTranslationsLang = lang;
+    }
+  } catch (e) {
+    console.warn("[HB blog] Could not load translations for", lang, e);
+  }
+}
+
+function scrollToArticles(options = { behavior: "smooth" }) {
+  if (!allArticlesSection) return;
+  allArticlesSection.scrollIntoView({ behavior: options.behavior || "smooth", block: "start" });
 }
 
 function hbCreateChip(label) {
@@ -167,7 +225,22 @@ function renderTips(items) {
 function renderAll(items) {
   if (!allList || !allTemplate) return;
   allList.innerHTML = "";
-  (items || []).forEach((item) => {
+  const listItems = items || [];
+  if (listItems.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "blog-empty-state";
+    const title = document.createElement("h3");
+    title.className = "blog-empty-title";
+    title.textContent = blogTranslate("blog.noResultsTitle", "No articles found");
+    const hint = document.createElement("p");
+    hint.className = "blog-empty-hint";
+    hint.textContent = blogTranslate("blog.noResultsHint", "Try changing the filter or the search keyword.");
+    empty.appendChild(title);
+    empty.appendChild(hint);
+    allList.appendChild(empty);
+    return;
+  }
+  listItems.forEach((item) => {
     const card = allTemplate.cloneNode(true);
     hbSafeText(card.querySelector(".blog-badge"), item.eyebrow || "");
     hbSafeText(card.querySelector(".blog-list-meta"), hbFormatReadingMinutes(item.readingMinutes));
@@ -190,6 +263,18 @@ function renderAll(items) {
 
 function renderPostDetail(post) {
   if (!detailCard) return;
+  let backBtn = detailCard.querySelector("#blog-detail-back");
+  if (!backBtn) {
+    backBtn = document.createElement("button");
+    backBtn.id = "blog-detail-back";
+    backBtn.type = "button";
+    backBtn.className = "blog-link blog-back-link";
+    backBtn.dataset.i18n = "blog.backToAll";
+    backBtn.addEventListener("click", handleBackToList);
+    detailCard.insertBefore(backBtn, detailCard.firstChild);
+  }
+  hbSafeText(backBtn, blogTranslate("blog.backToAll", "Back to all articles"));
+
   const badge = detailCard.querySelector("#blog-detail-badge");
   const meta = detailCard.querySelector("#blog-detail-meta");
   const title = detailCard.querySelector("#blog-detail-title");
@@ -259,11 +344,15 @@ function renderPostDetail(post) {
 
 async function openPost(slug) {
   if (!slug) return;
+  const currentLang =
+    window.hbGetCurrentLang?.() ||
+    hbGetActiveLang();
+  hbSetSession(BLOG_STATE_LANG, currentLang);
+  hbSetSession(BLOG_STATE_HASH, window.location.hash || "#blog-all");
+  hbSetSession(BLOG_STATE_QUERY, searchInput?.value || "");
+  hbSetSession(BLOG_STATE_RETURN, "1");
   try {
-    const lang =
-      window.hbGetCurrentLang?.() ||
-      hbGetActiveLang();
-    const res = await fetch(`${HB_API_BASE}/api/v1/blog/posts/${slug}?lang=${lang}`, {
+    const res = await fetch(`${HB_API_BASE}/api/v1/blog/posts/${slug}?lang=${currentLang}`, {
       headers: { "Content-Type": "application/json" },
     });
     if (!res.ok) {
@@ -289,17 +378,17 @@ function renderSections(data) {
 }
 
 function normalizeAllPosts(sections) {
-  const seen = new Set();
-  const collected = [];
+  const collected = new Map();
   Object.entries(sections || {}).forEach(([key, section]) => {
     (section?.items || []).forEach((item) => {
       if (!item || !item.slug) return;
-      if (seen.has(item.slug)) return;
-      seen.add(item.slug);
-      collected.push({ ...item, section: item.section || key });
+      const slug = item.slug;
+      const sectionKey = (item.section || key || "").toString().trim().toLowerCase() || "all";
+      if (collected.has(slug)) return;
+      collected.set(slug, { ...item, section: sectionKey });
     });
   });
-  return collected;
+  return Array.from(collected.values());
 }
 
 function getFilterFromHash(hash) {
@@ -317,22 +406,79 @@ function setActiveChip(key) {
 function updateHash(key) {
   const newHash = `#blog-${key}`;
   if (window.location.hash === newHash) return;
-  const url = new URL(window.location.href);
-  url.hash = newHash;
-  history.replaceState(null, "", url.toString());
+  window.location.hash = newHash;
 }
 
-function applyFilter(key) {
+function applyFilter(key, opts = { updateHash: true }) {
   if (!FILTER_KEYS.includes(key)) {
     key = "all";
   }
-  const available = new Set(Object.keys(sectionsData || {}));
   const desiredSection = FILTER_SECTION_MAP[key];
-  const section = desiredSection && available.has(desiredSection) ? desiredSection : null;
-  const items = section ? allPosts.filter((p) => p.section === section) : allPosts;
+  const normalizedSection = desiredSection ? desiredSection.toLowerCase() : null;
+  const totalPosts = allPosts.length;
+  const baseItems = normalizedSection
+    ? allPosts.filter((p) => (p.section || "").toLowerCase() === normalizedSection)
+    : [...allPosts];
+  const q = (searchQuery || "").trim().toLowerCase();
+  const items = q
+    ? baseItems.filter((p) => {
+        const haystack = [
+          p.title || "",
+          p.subtitle || "",
+          p.summary || "",
+        ]
+          .join(" ")
+          .toLowerCase();
+        return haystack.includes(q);
+      })
+    : baseItems;
+  if (DEBUG_FILTERS) {
+    console.log("[HB blog] filter debug", {
+      hash: window.location.hash,
+      key,
+      section: normalizedSection,
+      totalPosts,
+      afterSectionFilter: baseItems.length,
+      afterSearchFilter: items.length,
+      searchQuery: q,
+      slugs: items.map((p) => p.slug),
+    });
+  }
   renderAll(items);
   setActiveChip(key);
-  updateHash(key);
+  if (opts.updateHash) {
+    updateHash(key);
+  }
+  if (opts.scroll) {
+    scrollToArticles({ behavior: "smooth" });
+  }
+  return {
+    key,
+    section: normalizedSection,
+    counts: {
+      totalPosts,
+      afterSectionFilter: baseItems.length,
+      afterSearchFilter: items.length,
+    },
+    items,
+  };
+}
+
+function applyFilterFromHash(options = {}) {
+  const key = getFilterFromHash(window.location.hash) || "all";
+  const shouldScroll =
+    options.scroll === true ||
+    (options.scroll === undefined && (scrollOnNextHash || (initialHashScrollPending && window.location.hash)));
+  const result = applyFilter(key, { updateHash: false, scroll: shouldScroll });
+  initialHashScrollPending = false;
+  scrollOnNextHash = false;
+  if (DEBUG_FILTERS) {
+    console.log("[HB blog] applyFilterFromHash", {
+      hash: window.location.hash,
+      key,
+      count: result?.counts?.afterSearchFilter ?? 0,
+    });
+  }
 }
 
 async function loadSections(lang) {
@@ -344,7 +490,6 @@ async function loadSections(lang) {
   renderSections(data);
   sectionsData = data.sections || {};
   allPosts = normalizeAllPosts(sectionsData);
-  applyFilter(initialFilterKey);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -369,23 +514,134 @@ document.addEventListener("DOMContentLoaded", () => {
   if (successGrid) successGrid.innerHTML = "";
   if (tipsGrid) tipsGrid.innerHTML = "";
   if (allList) allList.innerHTML = "";
+  allArticlesSection = document.getElementById("all-articles");
 
   const filterRow = document.querySelector(".blog-filter-row");
   filterChips = Array.from(filterRow?.querySelectorAll(".blog-chip") || []);
   filterChips.forEach((chip, idx) => {
     const key = chip.dataset.filterKey || FILTER_KEYS[idx] || "all";
     chip.dataset.filterKey = key;
-    chip.addEventListener("click", (e) => {
-      e.preventDefault();
-      applyFilter(key);
-    });
   });
-  initialFilterKey = getFilterFromHash(window.location.hash) || "all";
+  const textMap = {
+    "all": "all",
+    "success stories": "success",
+    "tips & guides": "tips",
+    "mindful eating": "mindset",
+    "busy days": "routine",
+  };
+  const resolveFilterKey = (chip) => {
+    const label = (chip.textContent || "").trim().toLowerCase();
+    return (
+      chip.dataset.filter ||
+      chip.dataset.key ||
+      chip.dataset.filterKey ||
+      textMap[label]
+    );
+  };
+  document.addEventListener(
+    "click",
+    (e) => {
+      const chip = e.target.closest("button");
+      if (!chip) return;
+      // Root cause: chips are buttons (no href), so hash never changes automatically—set it manually on click with exact mapping.
+      const label = (chip.textContent || "").trim().toLowerCase();
+      if (!chip.classList.contains("blog-chip") && !textMap[label]) {
+        return;
+      }
+      const key = resolveFilterKey(chip);
+      e.preventDefault();
+      if (!key) return;
+      scrollOnNextHash = true;
+      const nextHash = `#blog-${key}`;
+      if (DEBUG_FILTERS) {
+        console.log("[HB blog] chip click", { label, key, nextHash });
+      }
+      if (window.location.hash !== nextHash) {
+        window.location.hash = nextHash;
+      } else {
+        applyFilterFromHash();
+      }
+    },
+    true
+  );
+  window.addEventListener("hashchange", applyFilterFromHash);
+  const applySearch = () => {
+    searchQuery = (searchInput?.value || "").trim();
+    if (DEBUG_FILTERS) {
+      console.log("[HB blog] search change", { query: searchQuery });
+    }
+    applyFilterFromHash({ scroll: false });
+  };
+  searchInput = document.getElementById("blog-search-input");
+  searchButton = document.getElementById("blog-search-btn");
+  if (searchInput) {
+    searchInput.addEventListener("input", applySearch);
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        applySearch();
+      }
+    });
+  }
+  if (searchButton) {
+    searchButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      applySearch();
+    });
+  }
 
   const lang =
     window.hbGetCurrentLang?.() ||
     localStorage.getItem("hb_lang") ||
     "en";
+  loadBlogTranslations(lang);
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const nextLang = btn.dataset.lang || "en";
+      loadBlogTranslations(nextLang);
+    });
+  });
 
-  loadSections(lang).catch(handleError);
+  const pendingReturn = hbGetSession(BLOG_STATE_RETURN) === "1";
+  if (pendingReturn) {
+    const storedQuery = hbGetSession(BLOG_STATE_QUERY, "");
+    if (searchInput) {
+      searchInput.value = storedQuery;
+    }
+    searchQuery = (storedQuery || "").trim();
+    const storedHash = hbGetSession(BLOG_STATE_HASH, "#blog-all");
+    if (storedHash && window.location.hash !== storedHash) {
+      window.location.hash = storedHash;
+    }
+  }
+
+  loadSections(lang)
+    .then(() => {
+      applyFilterFromHash({ scroll: pendingReturn });
+      if (pendingReturn) {
+        hbSetSession(BLOG_STATE_RETURN, null);
+      }
+    })
+    .catch(handleError);
 });
+
+function handleBackToList() {
+  const storedHash = hbGetSession(BLOG_STATE_HASH, "#blog-all");
+  const storedQuery = hbGetSession(BLOG_STATE_QUERY, "");
+  const validKey = getFilterFromHash(storedHash) || "all";
+  const targetHash = `#blog-${validKey}`;
+  if (searchInput) {
+    searchInput.value = storedQuery;
+  }
+  searchQuery = (storedQuery || "").trim();
+  detailCard.hidden = true;
+  hbSetSession(BLOG_STATE_RETURN, null);
+  hbSetSession(BLOG_STATE_HASH, null);
+  hbSetSession(BLOG_STATE_QUERY, null);
+  if (window.location.hash !== targetHash) {
+    scrollOnNextHash = true;
+    window.location.hash = targetHash;
+  } else {
+    applyFilterFromHash({ scroll: true });
+  }
+}

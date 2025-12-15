@@ -1,7 +1,0 @@
-cd C:\Users\edmon\Desktop\HealthyBiteSite\backend
-.\.venv\Scripts\activate
-uvicorn app.main:app --host 127.0.0.1 --port 8810
-
-
-cd C:\Users\edmon\Desktop\HealthyBiteSite\frontend
-python -m http.server 8080

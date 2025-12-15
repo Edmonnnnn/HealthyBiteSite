@@ -28,6 +28,7 @@ class BlogPostShort(BaseModel):
     eyebrow: Optional[str] = None
     title: str
     summary: str
+    section: str
     readingMinutes: int
     tags: List[str]
     imageUrl: Optional[str] = None
@@ -49,6 +50,8 @@ class BlogSections(BaseModel):
     trending: BlogSection
     success: BlogSection
     tips: BlogSection
+    mindset: BlogSection
+    routine: BlogSection
     all: BlogSection
     class Config:
         orm_mode = True
