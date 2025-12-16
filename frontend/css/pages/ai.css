@@ -558,6 +558,42 @@
   }
 }
 
+@media (max-width: 768px) {
+  .ai-section .container,
+  .ai-hero-inner,
+  .ai-two-col,
+  .hb-layout-two,
+  .ai-cta-inner {
+    max-width: 100%;
+  }
+
+  .ai-hero-inner > *,
+  .ai-two-col > *,
+  .hb-layout-two > *,
+  .ai-cta-inner > *,
+  .ai-card,
+  .ai-flow-card,
+  .ai-plan-card,
+  .ai-boundary {
+    min-width: 0;
+  }
+
+  .ai-boundary-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .ai-chip {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
 @media (max-width: 700px) {
   .ai-hero {
     padding: 70px 0 50px;
