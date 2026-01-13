@@ -1,5 +1,8 @@
 """Service layer for AI replies using a real provider with a safe mock fallback."""
 
+from __future__ import annotations
+
+import logging
 from typing import List, Optional, Tuple
 
 from sqlalchemy.orm import Session
@@ -8,17 +11,47 @@ from app.config import settings
 from . import models
 from .schemas import ChatRequest, ChatResponse, ChatMessage
 
-SUGGESTED_NEXT_QUESTIONS: List[str] = [
-    "Which meal feels easiest to start with?",
-    "What usually makes that meal stressful or rushed?",
-    "Do you prefer very specific steps or more general guidance?",
-    "Is there a time of day when overeating feels most likely?",
-]
+logger = logging.getLogger(__name__)
 
-SYSTEM_PROMPT = (
-    "You are HealthyBite AI. Provide supportive, non-medical guidance. "
-    "If the user mentions urgent medical symptoms, advise them to seek professional help."
+
+SUGGESTED_NEXT_QUESTIONS_BY_LANG: dict[str, list[str]] = {
+    "en": [
+        "Which meal feels easiest to start with?",
+        "What usually makes that meal stressful or rushed?",
+        "Do you prefer very specific steps or more general guidance?",
+        "Is there a time of day when overeating feels most likely?",
+    ],
+    "ru": [
+        "С какого приёма пищи проще всего начать?",
+        "Что обычно делает этот приём пищи стрессовым или «на бегу»?",
+        "Тебе нужны очень конкретные шаги или общий вектор?",
+        "В какое время дня чаще всего тянет переесть?",
+    ],
+}
+
+SYSTEM_PROMPT_BASE = (
+    "You are HealthyBite AI: a gentle, practical assistant helping people improve eating habits and daily routines. "
+    "Do NOT provide medical diagnoses, do NOT override medical advice, and do NOT prescribe medications. "
+    "Focus on small, realistic steps, emotional support, and balanced, non-restrictive habits. "
+    "Avoid shame, moralizing, and extreme dieting advice."
 )
+
+
+def _norm_lang(lang: Optional[str]) -> str:
+    raw = (lang or "en").strip().lower()
+    if raw.startswith("ru"):
+        return "ru"
+    return "en"
+
+
+def _lang_instruction(lang: str) -> str:
+    if lang == "ru":
+        return "Отвечай по-русски."
+    return "Respond in English."
+
+
+def _suggestions_for(lang: str) -> list[str]:
+    return SUGGESTED_NEXT_QUESTIONS_BY_LANG.get(lang, SUGGESTED_NEXT_QUESTIONS_BY_LANG["en"])
 
 
 def _extract_last_user_message(messages: List[ChatMessage]) -> Optional[str]:
@@ -28,42 +61,61 @@ def _extract_last_user_message(messages: List[ChatMessage]) -> Optional[str]:
     return None
 
 
-def build_mock_reply(messages: List[ChatMessage]) -> ChatResponse:
-    last_user = _extract_last_user_message(messages) or "Tell me a bit about your eating routine this week."
-    reply = (
-        f"I hear that you said: '{last_user}'. Let's start with one small, calmer change this week. "
-        "Choose one meal to slow down, notice hunger and fullness cues, and remove one distraction like your phone."
+def build_mock_reply(messages: List[ChatMessage], lang: str) -> ChatResponse:
+    last_user = _extract_last_user_message(messages) or (
+        "Расскажи немного, как у тебя обычно проходит питание на неделе." if lang == "ru"
+        else "Tell me a bit about your eating routine this week."
     )
-    return ChatResponse(reply=reply, suggestedNextQuestions=SUGGESTED_NEXT_QUESTIONS)
+    if lang == "ru":
+        reply = (
+            f"Я услышал: «{last_user}». Давай начнём с одного маленького, спокойного шага на этой неделе. "
+            "Выбери один приём пищи, попробуй есть чуть медленнее, замечая голод/насыщение, "
+            "и убери один отвлекающий фактор — например, телефон."
+        )
+    else:
+        reply = (
+            f"I hear that you said: '{last_user}'. Let's start with one small, calmer change this week. "
+            "Choose one meal to slow down, notice hunger and fullness cues, and remove one distraction like your phone."
+        )
+
+    return ChatResponse(reply=reply, suggestedNextQuestions=_suggestions_for(lang))
 
 
-def _prepare_openai_messages(messages: List[ChatMessage]) -> List[dict]:
-    context = messages[-6:]  # cap context to reduce prompt size
-    prepared = [{"role": "system", "content": SYSTEM_PROMPT}]
+def _prepare_openai_messages(messages: List[ChatMessage], lang: str) -> List[dict]:
+    context = messages[-8:]  # modest cap to reduce token usage
+    system_text = f"{SYSTEM_PROMPT_BASE} {_lang_instruction(lang)}"
+    prepared: List[dict] = [{"role": "system", "content": system_text}]
+
+    # Only forward user/assistant messages; ignore client-side system messages
     for msg in context:
         if msg.role not in {"user", "assistant"}:
             continue
         prepared.append({"role": msg.role, "content": msg.content})
+
     return prepared
 
 
-def call_openai(messages: List[ChatMessage]) -> ChatResponse:
+def call_openai(messages: List[ChatMessage], lang: str) -> ChatResponse:
     try:
         from openai import OpenAI  # type: ignore
-    except Exception as exc:  # pragma: no cover - defensive import for missing dependency
+    except Exception as exc:
         raise RuntimeError("openai_package_missing") from exc
+
+    if not settings.OPENAI_API_KEY:
+        raise RuntimeError("openai_api_key_missing")
 
     client_kwargs = {
         "api_key": settings.OPENAI_API_KEY,
-        "timeout": settings.OPENAI_TIMEOUT_S,
+        "timeout": float(settings.OPENAI_TIMEOUT_S),
     }
     if settings.OPENAI_BASE_URL:
         client_kwargs["base_url"] = settings.OPENAI_BASE_URL
 
     client = OpenAI(**client_kwargs)
+
     completion = client.chat.completions.create(
         model=settings.OPENAI_MODEL,
-        messages=_prepare_openai_messages(messages),
+        messages=_prepare_openai_messages(messages, lang=lang),
         temperature=settings.OPENAI_TEMPERATURE,
         max_tokens=settings.OPENAI_MAX_TOKENS,
     )
@@ -74,31 +126,40 @@ def call_openai(messages: List[ChatMessage]) -> ChatResponse:
     if not reply:
         raise RuntimeError("openai_empty_reply")
 
-    return ChatResponse(reply=reply, suggestedNextQuestions=SUGGESTED_NEXT_QUESTIONS)
+    return ChatResponse(reply=reply, suggestedNextQuestions=_suggestions_for(lang))
 
 
 def generate_reply(payload: ChatRequest) -> Tuple[ChatResponse, str, Optional[str]]:
     """Generate a reply using OpenAI when configured, otherwise fallback to mock."""
-    desired_provider = (settings.AI_PROVIDER or "mock").lower()
+    lang = _norm_lang(payload.lang)
+    desired_provider = (settings.AI_PROVIDER or "mock").strip().lower()
+
+    # Only support: "openai" or "mock"
+    if desired_provider not in {"openai", "mock"}:
+        logger.warning("[HB ai] Unknown AI_PROVIDER=%r, falling back to mock", desired_provider)
+        desired_provider = "mock"
+
     use_openai = desired_provider == "openai" and bool(settings.OPENAI_API_KEY)
+
     response: Optional[ChatResponse] = None
     provider_used = "mock"
     fallback_reason: Optional[str] = None
 
     if use_openai:
         try:
-            response = call_openai(payload.messages)
+            response = call_openai(payload.messages, lang=lang)
             provider_used = "openai"
         except Exception as exc:
             fallback_reason = f"openai_failed: {exc}"
-            print("[HB ai] OpenAI call failed, falling back to mock:", exc)
+            logger.exception("[HB ai] OpenAI call failed, falling back to mock")
 
     if response is None:
         if not fallback_reason and desired_provider == "openai" and not settings.OPENAI_API_KEY:
             fallback_reason = "openai_api_key_missing"
         elif not fallback_reason and desired_provider != "openai":
             fallback_reason = "provider_mock_config"
-        response = build_mock_reply(payload.messages)
+
+        response = build_mock_reply(payload.messages, lang=lang)
         provider_used = "mock"
 
     return response, provider_used, fallback_reason
@@ -112,7 +173,7 @@ def handle_chat(db: Session, payload: ChatRequest) -> ChatResponse:
 
     db_log = models.AiChatLog(
         session_id=payload.sessionId or "unknown",
-        lang=payload.lang or "en",
+        lang=_norm_lang(payload.lang),
         user_message=user_text,
         reply=response.reply,
         suggested_next_questions=response.suggestedNextQuestions,
@@ -120,7 +181,8 @@ def handle_chat(db: Session, payload: ChatRequest) -> ChatResponse:
     db.add(db_log)
     db.commit()
     db.refresh(db_log)
-    print("[HB db] Stored AI chat log id:", db_log.id)
-    print("[HB ai] provider_used:", provider_used, "| fallback_reason:", fallback_reason or "none")
+
+    logger.info("[HB db] Stored AI chat log id=%s", db_log.id)
+    logger.info("[HB ai] provider_used=%s fallback_reason=%s", provider_used, fallback_reason or "none")
 
     return response

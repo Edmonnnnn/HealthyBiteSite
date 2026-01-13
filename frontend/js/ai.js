@@ -1,4 +1,21 @@
-const HB_AI_API_BASE = (window.hbGetApiBase && window.hbGetApiBase()) || "/api/v1";
+function hbDetectApiBase() {
+  if (window.hbGetApiBase && typeof window.hbGetApiBase === "function") {
+    return window.hbGetApiBase();
+  }
+
+  // If the site is hosted under /HealthyBite/, default API under the same prefix.
+  const path = window.location.pathname || "/";
+  const firstSegmentMatch = path.match(/^\/([^\/]+)\//);
+  const first = firstSegmentMatch ? firstSegmentMatch[1] : "";
+
+  if (first && first.toLowerCase() === "healthybite") {
+    return "/HealthyBite/api/v1";
+  }
+
+  return "/api/v1";
+}
+
+const HB_AI_API_BASE = hbDetectApiBase();
 
 function hbCreateSessionId() {
   return "sess_" + Math.random().toString(36).slice(2) + "_" + Date.now();
@@ -13,7 +30,7 @@ function hbGetCurrentLangSafe() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("[HB ai] init ai chat page");
+  console.log("[HB ai] init ai chat page", { HB_AI_API_BASE });
 
   const chatContainer = document.querySelector("#ai-chat-thread");
   const input = document.querySelector("#ai-chat-input");
@@ -131,7 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("[HB ai] response status", response.status);
 
       if (!response.ok) {
-        throw new Error("HTTP " + response.status);
+        let bodyText = "";
+        try {
+          bodyText = await response.text();
+        } catch (_) {}
+        throw new Error("HTTP " + response.status + (bodyText ? " | " + bodyText.slice(0, 300) : ""));
       }
 
       const data = await response.json();
