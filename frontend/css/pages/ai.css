@@ -90,14 +90,125 @@
 }
 
 .ai-chat-card {
-  background: #ffffff;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 22px;
   padding: 18px;
   width: 100%;
-  max-width: 520px;
-  box-shadow: 0 20px 50px rgba(31, 97, 72, 0.12);
-  border: 1px solid rgba(39, 174, 96, 0.12);
+  max-width: 540px;
+  border: 1px solid rgba(39, 174, 96, 0.16);
+  box-shadow:
+    0 18px 45px rgba(31, 97, 72, 0.14),
+    0 2px 10px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(8px);
 }
+
+.ai-chat-thread {
+  background: rgba(16, 24, 40, 0.03);
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  border-radius: 16px;
+  padding: 14px;
+  height: 260px;
+  overflow-y: auto;
+}
+
+.ai-msg {
+  display: flex;
+  margin: 10px 0;
+}
+
+.ai-msg-user {
+  justify-content: flex-end;
+}
+
+.ai-msg-ai {
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.ai-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(39, 174, 96, 0.14);
+  border: 1px solid rgba(39, 174, 96, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: #166534;
+  flex: 0 0 auto;
+}
+
+.ai-bubble {
+  border-radius: 16px;
+  padding: 10px 12px;
+  line-height: 1.35;
+  max-width: 78%;
+  border: 1px solid rgba(16, 24, 40, 0.08);
+}
+
+.ai-msg-user .ai-bubble {
+  background: rgba(39, 174, 96, 0.14);
+  border-color: rgba(39, 174, 96, 0.18);
+}
+
+.ai-msg-ai .ai-bubble {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.ai-chat-input-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ai-chat-input {
+  flex: 1 1 auto;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(16, 24, 40, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0 12px;
+}
+
+.ai-chat-input:focus {
+  outline: none;
+  border-color: rgba(39, 174, 96, 0.35);
+  box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.12);
+}
+
+.ai-chat-send {
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 14px;
+}
+
+.ai-chat-suggestions {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ai-chip {
+  border-radius: 999px;
+  padding: 8px 10px;
+  border: 1px solid rgba(39, 174, 96, 0.18);
+  background: rgba(39, 174, 96, 0.08);
+}
+
+@media (max-width: 520px) {
+  .ai-chat-thread {
+    height: 220px;
+    padding: 12px;
+  }
+
+  .ai-bubble {
+    max-width: 100%;
+  }
+}
+
 
 .ai-chat-card-header {
   display: flex;

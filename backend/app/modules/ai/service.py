@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from typing import List, Optional, Tuple
 
 from sqlalchemy.orm import Session
@@ -31,10 +32,33 @@ SUGGESTED_NEXT_QUESTIONS_BY_LANG: dict[str, list[str]] = {
 
 SYSTEM_PROMPT_BASE = (
     "You are HealthyBite AI: a gentle, practical assistant helping people improve eating habits and daily routines. "
+    "Scope: nutrition, eating habits, meal structure, mindful eating, cravings, energy, sleep/routine as it relates to habits. "
+    "If the user asks about unrelated topics (cars, tech support, finance, coding, politics, etc.), politely decline and redirect to HealthyBite topics. "
     "Do NOT provide medical diagnoses, do NOT override medical advice, and do NOT prescribe medications. "
+    "If the user reports urgent or severe symptoms, advise seeking professional medical help. "
     "Focus on small, realistic steps, emotional support, and balanced, non-restrictive habits. "
     "Avoid shame, moralizing, and extreme dieting advice."
 )
+
+# Lightweight off-topic filter. This makes behavior deterministic even if the model "tries" to answer.
+# We keep it intentionally conservative to avoid false positives.
+OFFTOPIC_KEYWORDS = {
+    "en": [
+        "car", "engine", "bmw", "mercedes", "toyota", "honda", "tesla", "oil", "gearbox", "transmission", "tires",
+        "laptop", "windows", "linux", "python", "javascript", "server", "database", "credit", "loan", "crypto",
+        "stock", "trading", "mortgage", "tax", "politics",
+    ],
+    "ru": [
+        "машин", "авто", "двигател", "коробк", "акпп", "мкпп", "шины", "резин", "масло", "аккумулятор",
+        "ноутбук", "виндовс", "линукс", "питон", "javascript", "сервер", "база данных", "кредит", "займ",
+        "крипто", "акции", "трейдинг", "ипотек", "налог", "политик",
+    ],
+}
+
+ONTOPIC_HINTS = {
+    "en": ["food", "eat", "meal", "diet", "nutrition", "hunger", "craving", "snack", "protein", "calories", "weight"],
+    "ru": ["еда", "питани", "приём пищ", "диет", "рацион", "голод", "тяга", "перекус", "белок", "калори", "вес"],
+}
 
 
 def _norm_lang(lang: Optional[str]) -> str:
@@ -45,9 +69,7 @@ def _norm_lang(lang: Optional[str]) -> str:
 
 
 def _lang_instruction(lang: str) -> str:
-    if lang == "ru":
-        return "Отвечай по-русски."
-    return "Respond in English."
+    return "Отвечай по-русски." if lang == "ru" else "Respond in English."
 
 
 def _suggestions_for(lang: str) -> list[str]:
@@ -61,28 +83,81 @@ def _extract_last_user_message(messages: List[ChatMessage]) -> Optional[str]:
     return None
 
 
+def _is_offtopic(user_text: str, lang: str) -> bool:
+    """Conservative rule: off-topic keywords present AND no strong nutrition hints."""
+    if not user_text:
+        return False
+
+    t = user_text.strip().lower()
+
+    # quick accept if clearly on-topic
+    if any(h in t for h in ONTOPIC_HINTS.get(lang, [])):
+        return False
+
+    # keyword hit
+    hits = 0
+    for kw in OFFTOPIC_KEYWORDS.get(lang, []):
+        if kw in t:
+            hits += 1
+            if hits >= 1:
+                return True
+
+    # fallback: if user asks "which car" style questions
+    if lang == "ru":
+        if re.search(r"\bкакую\b.*\bмашин", t) or re.search(r"\bкакой\b.*\bавто", t):
+            return True
+    else:
+        if re.search(r"\bwhich\b.*\bcar\b", t) or re.search(r"\bwhat\b.*\bcar\b", t):
+            return True
+
+    return False
+
+
+def _offtopic_reply(lang: str) -> ChatResponse:
+    if lang == "ru":
+        reply = (
+            "Я могу помочь только по теме питания и привычек (HealthyBite). "
+            "По вопросам вроде выбора машины или техники я не самый подходящий помощник. "
+            "Если хочешь — расскажи, какая у тебя цель по питанию (вес, энергия, режим, тяга к сладкому), "
+            "и я предложу конкретные, спокойные шаги."
+        )
+    else:
+        reply = (
+            "I’m built specifically for HealthyBite topics: nutrition and habit-building. "
+            "I can’t help with unrelated requests (like choosing a car or tech advice). "
+            "If you tell me your goal around food (weight, energy, routine, cravings), I’ll suggest a few calm, practical next steps."
+        )
+    return ChatResponse(reply=reply, suggestedNextQuestions=_suggestions_for(lang))
+
+
 def build_mock_reply(messages: List[ChatMessage], lang: str) -> ChatResponse:
     last_user = _extract_last_user_message(messages) or (
         "Расскажи немного, как у тебя обычно проходит питание на неделе." if lang == "ru"
         else "Tell me a bit about your eating routine this week."
     )
+
+    if _is_offtopic(last_user, lang=lang):
+        return _offtopic_reply(lang)
+
     if lang == "ru":
         reply = (
-            f"Я услышал: «{last_user}». Давай начнём с одного маленького, спокойного шага на этой неделе. "
-            "Выбери один приём пищи, попробуй есть чуть медленнее, замечая голод/насыщение, "
-            "и убери один отвлекающий фактор — например, телефон."
+            "Понял. Давай начнём с одного маленького, спокойного шага на этой неделе: "
+            "выбери один приём пищи и попробуй есть чуть медленнее, замечая голод/насыщение, "
+            "и убери один отвлекающий фактор — например, телефон. "
+            "Если скажешь, в какое время дня сложнее всего, я подстрою шаги точнее."
         )
     else:
         reply = (
-            f"I hear that you said: '{last_user}'. Let's start with one small, calmer change this week. "
-            "Choose one meal to slow down, notice hunger and fullness cues, and remove one distraction like your phone."
+            "Got it. Let’s start with one small, calmer change this week: "
+            "pick one meal to slow down, notice hunger/fullness cues, and remove one distraction (like your phone). "
+            "If you tell me when your day feels hardest, I’ll tailor the next steps."
         )
 
     return ChatResponse(reply=reply, suggestedNextQuestions=_suggestions_for(lang))
 
 
 def _prepare_openai_messages(messages: List[ChatMessage], lang: str) -> List[dict]:
-    context = messages[-8:]  # modest cap to reduce token usage
+    context = messages[-10:]  # modest cap to reduce token usage
     system_text = f"{SYSTEM_PROMPT_BASE} {_lang_instruction(lang)}"
     prepared: List[dict] = [{"role": "system", "content": system_text}]
 
@@ -103,6 +178,11 @@ def call_openai(messages: List[ChatMessage], lang: str) -> ChatResponse:
 
     if not settings.OPENAI_API_KEY:
         raise RuntimeError("openai_api_key_missing")
+
+    last_user = _extract_last_user_message(messages) or ""
+    if _is_offtopic(last_user, lang=lang):
+        # Deterministic off-topic behavior; do not call external API.
+        return _offtopic_reply(lang)
 
     client_kwargs = {
         "api_key": settings.OPENAI_API_KEY,
