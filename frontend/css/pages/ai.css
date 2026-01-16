@@ -838,3 +838,20 @@
   border-radius:12px;
   padding:10px 16px;
 }
+
+
+/* --- Fix user bubble contrast --- */
+.ai-msg-user .ai-bubble{
+  background: #1f6f4a;          /* более “уверенный” зелёный */
+  color: #ffffff;              /* белый текст */
+  border-color: rgba(0,0,0,.06);
+}
+
+/* на всякий случай: если где-то бледный текст задаётся отдельно */
+.ai-msg-user .ai-bubble *{
+  color: #ffffff !important;
+}
+
+.ai-msg-user .ai-bubble{
+  box-shadow: 0 10px 22px rgba(31,111,74,.18);
+}

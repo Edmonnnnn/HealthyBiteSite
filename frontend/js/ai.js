@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const suggestionsContainer = document.querySelector("#ai-chat-suggestions");
   const statusLine = document.querySelector("#ai-chat-status");
 
+  if (suggestionsContainer) suggestionsContainer.style.display = "none";
+
   if (!chatContainer || !input || !sendButton) {
     console.warn("[HB ai] required chat elements missing");
     return;
@@ -87,21 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderSuggestions(list) {
-    if (!suggestionsContainer) return;
-    clearSuggestions();
-    if (!Array.isArray(list) || list.length === 0) return;
-    list.forEach((item) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "ai-chip";
-      btn.textContent = item;
-      btn.addEventListener("click", () => {
-        input.value = item;
-        sendMessage(item, true);
-      });
-      suggestionsContainer.appendChild(btn);
-    });
-  }
+  // disabled: we do not show suggested questions
+  return;
+}
+
 
   function ensureSystemMessage() {
     if (!hbAiMessages.some((m) => m.role === "system")) {
@@ -169,9 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       clearSuggestions();
-      if (suggestions.length > 0) {
-        renderSuggestions(suggestions);
-      }
 
       setStatus("");
     } catch (err) {
